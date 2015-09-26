@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/app/views/equipment_and_supplies
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/app/views/equipment_and_supplies/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/app/views/equipment_and_supplies/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/app/views/equipment_and_supplies/new.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/app/views/equipment_and_supplies/show.html.erb
+END
+_equipment_and_supply.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/app/views/equipment_and_supplies/_equipment_and_supply.html.erb
+END

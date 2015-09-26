@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate
+END
+20080708051731_create_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20080708051731_create_users.rb
+END
+20091129015213_create_chemicals.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20091129015213_create_chemicals.rb
+END
+20090920201830_add_columns_to_bacterial_plasmids.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20090920201830_add_columns_to_bacterial_plasmids.rb
+END
+20130131001204_add_initials_to_oligo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20130131001204_add_initials_to_oligo.rb
+END
+20080706011943_create_yeast_strains.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20080706011943_create_yeast_strains.rb
+END
+20080706012104_create_bacterial_plasmids.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20080706012104_create_bacterial_plasmids.rb
+END
+20080706013028_create_oligos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20080706013028_create_oligos.rb
+END
+20090107081116_add_bacteria_drug_resistance_column.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20090107081116_add_bacteria_drug_resistance_column.rb
+END
+20110303193756_add_initials_to_yeast_strain.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20110303193756_add_initials_to_yeast_strain.rb
+END
+20080708070739_create_sessions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20080708070739_create_sessions.rb
+END
+20090209083821_create_equipment_and_supplies.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20090209083821_create_equipment_and_supplies.rb
+END
+20090920003300_rename_oligo_columns.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20090920003300_rename_oligo_columns.rb
+END
+20110303193247_add_initials_to_bacterial_plasmids.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/shoulab/!svn/ver/2324/database/trunk/db/migrate/20110303193247_add_initials_to_bacterial_plasmids.rb
+END

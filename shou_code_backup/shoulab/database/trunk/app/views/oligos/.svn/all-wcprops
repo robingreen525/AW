@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/oligos
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/oligos/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/oligos/index.html.erb
+END
+_oligo.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/oligos/_oligo.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/oligos/new.html.erb
+END
+copy.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/oligos/copy.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/oligos/show.html.erb
+END

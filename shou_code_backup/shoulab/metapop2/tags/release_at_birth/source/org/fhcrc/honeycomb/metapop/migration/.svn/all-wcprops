@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/source/org/fhcrc/honeycomb/metapop/migration
+END
+MigrationRule.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/source/org/fhcrc/honeycomb/metapop/migration/MigrationRule.java
+END
+IndividualMigration.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/source/org/fhcrc/honeycomb/metapop/migration/IndividualMigration.java
+END
+NoMigration.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/source/org/fhcrc/honeycomb/metapop/migration/NoMigration.java
+END
+PropaguleMigration.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/source/org/fhcrc/honeycomb/metapop/migration/PropaguleMigration.java
+END

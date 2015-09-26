@@ -1,0 +1,579 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Getopt::Std;
+use Data::Dumper;
+use Hspipeline;
+use Time::HiRes;
+
+my $start = Time::HiRes::gettimeofday();
+main();
+my $end = Time::HiRes::gettimeofday();
+print_time("hspipeline", $start, $end);
+exit;
+
+sub main {
+    $| = 1; # autoflush buffer.
+    my %opts;
+    getopts('AFCPxt:', \%opts);
+
+    check_install();
+    HELP_MESSAGE() and die unless @ARGV == 5;
+
+    # Controls which parts will be run
+    my $align = $opts{'A'} || 0;
+    my $find  = $opts{'F'} || 0;
+    my $compare = $opts{'C'} || 0;
+    my $plot  = $opts{'P'} || 0;
+
+    # Should sequences be trimmed before processing?
+    my $trim  = $opts{'x'} || 0;
+
+    # Number of threads to use for the alignment.
+    my ($nthread) = $opts{'t'} =~ /^\d+$/;
+
+    my ($end_type)     = $ARGV[0] =~ /^(p|e)$/;
+    my ($project_path) = $ARGV[1] =~ /^([-\/.\w]+)$/;
+    my ($ref_seq)      = $ARGV[2] =~ /^([-\/.\w]+)$/;
+    my ($anc_folder)   = $ARGV[3] =~ /^([-\/.\w]+)$/;
+    my ($R_code_path)  = $ARGV[4] =~ /^([-\/.\w]+)$/;
+
+    my $program_tag = "[hspipeline]";
+    die "$program_tag Can't find reference sequence: $ref_seq"
+        unless -e $ref_seq;
+    die "$program_tag Can't find project folder!"
+        unless -e -d $project_path;
+    die "$program_tag Can't find ancestor folder!"
+        unless -e -d $anc_folder;
+    die "$program_tag Can't find plotting functions!"
+        unless -e -d $R_code_path;
+
+    for ($project_path, $anc_folder, $R_code_path) {
+        chop if $_ =~ /\/$/;
+    }
+
+    my $align_func;
+    my $pattern;
+    my $concat;
+    if ($end_type eq "p") {
+        $align_func = \&pe_align;
+        $pattern  = '\.fastq\.gz$';
+        $concat   = 1;
+    } elsif ($end_type eq "s") {
+        $align_func = \&se_align;
+        $pattern  = '\_sequence\.txt$';
+        $concat   = 0;
+    } else {
+        die HELP_MESSAGE();
+    }
+
+    print "$program_tag Beginning pipeline...\n";
+    index_reference($ref_seq);
+
+    print "$program_tag Making paths...";
+    my $seq_paths = generate_paths({proj    => $project_path, 
+                                    pattern => $pattern,
+                                    concat  => $concat});
+    print "done!\n";
+
+    my $evo_folders = get_evo_folders($seq_paths, $anc_folder);
+    #print Dumper($seq_paths);
+    #print Dumper($evo_folders);
+    #print $anc_folder;
+    #print "\n";
+
+    # Creates _aligned.bam, _sorted.bam, _sorted.bam.bai, 
+    if ($align) {
+        my $start = Time::HiRes::gettimeofday();
+        
+        while (my ($strain_name, $seqs) = each %$seq_paths) {
+            &$align_func({
+                    strain_name  => $strain_name,
+                    seqs    => $seqs,
+                    ref     => $ref_seq,
+                    nthread => $nthread,
+                    trim    => $trim
+            });
+        }
+        my $end = Time::HiRes::gettimeofday();
+        print_time("align", $start, $end);
+    }
+
+    # Creates _sorted.pileup, _sorted_pileup.bcf, _raw_vars.vcf,
+    # _raw_vars.bcf
+    if ($find) {
+        print "\n[hspipeline] Finding CNV...\n";
+        my $pileup_ext = "_sorted.pileup";
+
+        my $start = Time::HiRes::gettimeofday();
+        find_cnv({
+                ref        => $ref_seq,
+                anc_folder => $anc_folder,
+                evo_folder => $anc_folder,
+                pileup_ext => $pileup_ext,
+                R_path     => $R_code_path,
+            });
+        for my $evo_folder (@$evo_folders) {
+            find_cnv({
+                    ref        => $ref_seq,
+                    anc_folder => $anc_folder,
+                    evo_folder => $evo_folder,
+                    pileup_ext => $pileup_ext,
+                    R_path     => $R_code_path,
+                });
+        }
+        my $end = Time::HiRes::gettimeofday();
+        print_time("find", $start, $end);
+    }
+
+    # Generates plots AND produces 'cnv_locations.txt' and 
+    # 'deletion_locations.txt' which are needed for the comparison step.
+    if ($plot) {
+        print "\n[hspipeline] Generating plots...\n";
+        my $cnv_ext = "_cnvfind.txt";
+
+        my $start = Time::HiRes::gettimeofday();
+        plot_cnv({
+                anc_folder  => $anc_folder,
+                evo_folders => $evo_folders,
+                cnv_ext   => $cnv_ext,
+                smooth_window => 50,
+                plot_every    => 10, 
+                R_path    => $R_code_path,
+        });
+        my $end = Time::HiRes::gettimeofday();
+        print_time("plot", $start, $end);
+    }
+
+    # Creates in_x_and_y.txt, in_x_not_y.txt, etc. files.
+    if ($compare) {
+        print "\n[hspipeline] Comparing to ancestor...\n";
+        my $start = Time::HiRes::gettimeofday();
+        while (my ($strain,$seq) = each %$seq_paths) {
+            #run_breakdancer({
+            #        proj => $project_path,
+            #        strain => $strain,
+            #        anc_folder => $anc_folder,
+            #    });
+            compare_to_anc({
+                    proj     => $project_path,
+                    strain   => $strain,
+                    anc_folder => $anc_folder,
+                    file     => "_raw_vars.vcf",
+                    vcf_tol  => 1,
+            });
+
+            compare_to_anc({
+                    proj     => $project_path,
+                    strain   => $strain,
+                    anc_folder => $anc_folder,
+                    file     => "_deletion_locations.txt",
+                    vcf_tol  => 50,
+            });
+
+            #run_breakdancer({
+            #        proj => $project_path,
+            #        strain => $strain,
+            #        anc_folder => $anc_folder,
+            #});
+        }
+        my $end = Time::HiRes::gettimeofday();
+        print_time("compare", $start, $end);
+    }
+
+    print "Setting folder permissions...\n";
+    my $chmod = "chmod -R g+w $project_path";
+    system($chmod) == 0 
+        or print "Changing folder permissions gave error: $!\n";
+
+    print "Indexing vcfs...\n";
+    my $index_vcfs = "find $project_path -name '*.vcf' | ".
+                     "xargs -I{} igvtools index {}";
+    system($index_vcfs) == 0 or die "Indexing vcfs failed: $!";
+
+    print "Done!\n\n";
+}
+
+sub pe_align {
+    my $p = shift;
+    my $strain_name = $p->{strain_name};
+    my $seqs    = $p->{seqs};
+    my $ref_seq = $p->{ref};
+    my $nthread = $p->{nthread};
+    my $trim_reads = $p->{trim};
+
+    my $dir = get_parent($seqs->[0]);
+    my @seqs = sort @$seqs;
+
+    my $program_tag = "[pe_align]";
+
+    my $ref_folder   = get_parent($ref_seq);
+    my $ref_name     = get_name($ref_folder);
+    my $ref_location = $ref_folder.'/'.$ref_name;
+
+    # Input/output filenames
+    my $pfx          = $dir.'/'.$strain_name;
+    my $singles      = $pfx.'_singles.fastq';
+    my $bam          = $pfx.'_aligned.bam';
+    my $sorted       = $pfx.'_sorted';
+
+    print "$program_tag Processing $strain_name...\n";
+
+    my @trimmed_names = ();
+    my @filtered_seqs = ();
+    for my $seq (@seqs) {
+        next if $seq =~ /trimmed/;
+        next unless $seq =~ /^(.*)cat\.fastq\.gz$/;
+        #print "seq: $seq\n";
+        my $name = $1;
+        my $trimmed_name = $name.'_trimmed.fastq';
+        push @trimmed_names, $trimmed_name;
+        push @filtered_seqs, $seq;
+    }
+
+    my @seqs_to_align = @filtered_seqs;
+
+    if ($trim_reads) {
+        @seqs_to_align = @trimmed_names;
+        print "Trimming reads...\n";
+        my $trim = "sickle pe -t sanger -x".
+                   " -f $filtered_seqs[0] -r $filtered_seqs[1]".
+                   " -o $seqs_to_align[0] -p $seqs_to_align[1] -s $singles";
+        system($trim) == 0 or die "Trimming failed: $!";
+    }
+    
+    my $align = "bowtie2 -p $nthread -x $ref_location".
+                " -1 $seqs_to_align[0] -2 $seqs_to_align[1]".
+                " | samtools view -bS - > $bam";
+
+    my $sort = "samtools sort $bam $sorted";
+    my $index = "samtools index $sorted.bam";
+
+    print "$program_tag Aligning...\n";
+    system($align) == 0 or die "$program_tag Alignment failed: $!";
+
+    print "$program_tag Sorting...\n";
+    system($sort) == 0 or die "$program_tag Sorting failed: $!";
+
+    print "$program_tag Indexing BAM file...\n";
+    system($index) == 0 or die "$program_tag Indexing failed: $!";
+}
+
+sub find_cnv {
+    my $p = shift;
+    my $ref_seq    = $p->{ref};
+    my $anc_folder = $p->{anc_folder};
+    my $evo_folder = $p->{evo_folder};
+    my $pileup_ext = $p->{pileup_ext};
+    my $R_path     = $p->{R_path};
+
+    my $evo_name = get_name($evo_folder);
+    my $anc_name = get_name($anc_folder);
+
+    print "anc: $anc_name\n";
+    print "evo: $evo_name\n";
+
+    my $pfx          = $evo_folder.'/'.$evo_name;
+    my $sorted       = $pfx."_sorted";
+    my $pileup       = $sorted.".pileup";
+    my $likelihoods_bcf = $pfx."_var_likelihoods.bcf";
+    my $var_bcf      = $pfx."_raw_vars.bcf";
+    my $var_vcf      = $pfx."_raw_vars.vcf";
+
+    my $program_tag = "[find_cnv]";
+
+    my $make_pileup = 
+        "samtools mpileup -BQ0 -d10000000 -f $ref_seq  $sorted.bam > $pileup";
+    my $make_pileup_bcf = 
+        "samtools mpileup -Bg -C50 -q30 -f $ref_seq $sorted.bam > ".
+        $likelihoods_bcf;
+    my $call_vars   = "bcftools view -Nbvcg $likelihoods_bcf > $var_bcf";
+    my $vars_to_vcf = "bcftools view $var_bcf > $var_vcf";
+
+    print "$program_tag Generating pileup...\n";
+    system($make_pileup) == 0 or die "$program_tag Pileup failed: $!";
+
+    print "$program_tag Generating pileup bcf...\n";
+    system($make_pileup_bcf) == 0 or die "$program_tag Pileup failed: $!";
+
+    print "$program_tag Calling variants...\n";
+    system($call_vars) == 0 or die "$program_tag Calling variants failed: $!";
+
+    print "$program_tag Converting variants to vcf...\n";
+    system($vars_to_vcf) == 0 
+        or die "$program_tag Converting vars to vcf failed: $!";
+
+
+    unless ($anc_folder eq $evo_folder) {
+        my $evo_pileup = $evo_folder.'/'.$evo_name.$pileup_ext;
+        my $anc_pileup  = $anc_folder.'/'.$anc_name.$pileup_ext;
+
+        my @cnvfind = ("cnvfind", $R_path, $anc_folder, $anc_pileup,
+                       $evo_pileup);
+
+        system(@cnvfind)==0 or die "cnvfind failed: $!";
+    }
+}
+
+sub plot_cnv {
+    my $p = shift;
+    my $anc_folder  = $p->{anc_folder};
+    my $evo_folders = $p->{evo_folders};
+    my $cnv_ext   = $p->{cnv_ext};
+    my $window    = $p->{smooth_window};
+    my $every     = $p->{plot_every};
+    my $R_path    = $p->{R_path};
+
+    my @plot_cnv_args = ("--vanilla"," --slave",
+                         "--file=$R_path/call_plot_cnv.r",
+                         "--args", 
+                         $R_path, 
+                         $anc_folder,
+                         join(",", @$evo_folders),
+                         $window, 
+                         $every,);
+
+    #print "@plot_cnv_args","\n" and die;
+    system('R', @plot_cnv_args)==0 or die "plotting CNV failed: $!";
+}
+
+sub index_reference {
+    my $ref_path = shift;
+
+    my $parent      = get_parent($ref_path);
+    my $index_name  = get_name($parent);
+    my $index_match = 'bt2$';
+
+    my $index = "bowtie2-build $ref_path $parent/$index_name";
+
+    # Look for files ending in '.bt2', which indicates indexing has been
+    # performed.
+    opendir(my $dh, $parent);
+    unless (grep /$index_match/, readdir($dh)) {
+        print "[hspipeline] Indexing genome...\n";
+        system($index) == 0 or die "Indexing failed: $!";
+    } else {
+        print "[hspipeline] Looks like sequence has been indexed,".
+              " continuing...\n";
+    }
+    close $dh;
+}
+
+
+sub run_breakdancer {
+    my $p = shift;
+    my $anc_folder  = $p->{anc_folder};
+    my $proj_path = $p->{proj};
+    my $strain    = $p->{strain};
+
+    my $program_tag = "[run_breakdancer]";
+
+    my $anc_name = get_name($anc_folder);
+    my $anc_pfx  = $anc_folder.'/'.$anc_name;
+    my $evo_pfx  = $proj_path.'/'.$strain.'/'.$strain;
+
+    my $anc_bam  = $anc_pfx.'_sorted.bam';
+    my $cfg_file = $anc_pfx.'.cfg';
+    my $ctx_file = $anc_pfx.'.ctx';
+    my $evo_bam  = '';
+
+    if ($strain ne $anc_name) {
+        $evo_bam  = $evo_pfx.'_sorted.bam';
+        $cfg_file = $evo_pfx.'.cfg';
+        $ctx_file = $evo_pfx.'.ctx';
+    }
+
+    my $make_cfg = "bam2cfg.pl -hg $evo_bam $anc_bam > $cfg_file";
+    my $breakdancer =
+        "breakdancer-max1.2 -q10 -d $ctx_file $cfg_file > $ctx_file";
+
+    print "$program_tag Making config file for breakdancer...\n";
+    system($make_cfg) == 0 
+        or die "$program_tag Making config failed: $!\n";
+
+    print "$program_tag Running breakdancer...\n";
+    system($breakdancer) == 0 
+        or die "$program_tag Making config failed: $!\n";
+
+}
+
+sub compare_to_anc {
+    my $p = shift;
+    my $anc_folder   = $p->{anc_folder};
+    my $strain       = $p->{strain};
+    my $project_path = $p->{proj};
+    my $file_suffix  = $p->{file};
+    my $vcf_tol      = $p->{vcf_tol};
+
+    my $anc_name = get_name($anc_folder);
+    return if $strain =~ /$anc_name/;
+
+    my $evo_folder  = $project_path.'/'.$strain;
+    my $save_folder = $evo_folder.'/'.'comparisons';
+
+    my $anc = $anc_folder.'/'.$anc_name.$file_suffix;
+    my $evo = $evo_folder.'/'.$strain.$file_suffix;
+
+    print "Finding entries in ".$strain.$file_suffix.
+          " that are not in ancestral strain...";
+    my $vcfunique = "vcfunique -d$vcf_tol $anc $evo $save_folder";
+    system($vcfunique) == 0 or die "vcfunique failed: $!";
+
+    print "done!\n";
+}
+
+sub get_evo_folders {
+    my $path_hash  = shift;
+    my $anc_folder = shift;
+    my @paths;
+
+    for my $path (values %$path_hash) {
+        next if get_parent($path->[0]) eq $anc_folder;
+        push @paths, get_parent(@$path);
+    }
+    return \@paths;
+}
+
+sub HELP_MESSAGE {
+    print STDERR<<"EOF";
+
+    Usage: hspipeline [options] <end type> <project folder> <reference genome> <ancestor folder> <R code>
+
+    REQUIREMENTS:
+        Install R, bowtie2, and samtools (which includes 'bcftools' and
+        'vcfutils.pl').  Ensure that all of these programs are on the
+        computer's search path (i.e., they run when typed at a terminal
+        prompt from your home folder).
+        
+        hspipeline includes two executable files 'hspipeline' and 'cnvfind',
+        both of which must be on the computer's search path.  'depthstats'
+        is a convenience function to get information about depth coverage
+        of a genome, but is not required for the pipeline.
+
+    Positional arguments:
+        end type            Either 's' or 'p' for single- or paired-end data.
+
+        project folder      Path to the folder that contains folders that
+                            contain the sequence data to be analyzed. 
+        
+        reference genome    Path to the reference genome, in fasta format
+                            (.fasta or .fa).  Can be gzipped (ends with
+                            .gz).
+        
+        ancestor folder     Path to the folder containing sequence data
+                            that will be treated as the 'ancestor'.  All
+                            other samples will be compared to the sample in
+                            this folder.
+
+                            Once the 'align' and 'find' portions of
+                            hspipeline have been performed on this folder,
+                            it can be removed from the project folder and
+                            used for subsequent comparisons without
+                            re-analyzing the data.
+
+        R code              Path to the folder containing 'call_plot_cnv.r'
+                            and 'plot_cnv.r'.
+
+    Options: 
+             -A     Do alignment.
+             -F     Find copy number variation and compare to ancestor.
+             -C     Compare SNPS in strains to ancestor.
+             -P     Plot results and generate deletion and cnv locations.
+             -t     Number of threads to use in alignment [1].
+
+EOF
+    exit;
+}
+
+sub se_align {
+    my $p = shift;
+    my $strain  = $p->{strain};
+    my $seq     = $p->{seqs}[0];
+    my $ref_seq = $p->{ref};
+    my $nthread = $p->{nthread};
+    my $parent = get_parent($seq);
+
+    my $program_tag = "[align se]";
+
+    my $ref_folder   = get_parent($ref_seq);
+    my $ref_name     = get_name($ref_folder);
+    my $ref_location = $ref_folder.'/'.$ref_name;
+
+    # input/output filenames
+    my $pfx          = $parent.'/'.$strain;
+    my $sai          = $pfx.".sai";
+    my $bam          = $pfx."_aligned.bam";
+    my $sorted       = $pfx."_sorted";
+    my $pileup       = $sorted.".pileup";
+    my $pileup_bcf   = ${sorted}."_pileup.bcf";
+    my $var_bcf      = $pfx."_raw_vars.bcf";
+    my $var_vcf      = $pfx."_raw_vars.vcf";
+    my $depth        = $pfx."_depthstats.txt";
+
+    # commands
+    my $align = "bowtie2 -p $nthread -x $ref_location -U $seq |".
+                " samtools view -bS - > $bam";
+    my $sort  = "samtools sort $bam $sorted";
+
+    my $index = "samtools index $sorted.bam";
+    my $make_pileup = 
+    "samtools mpileup -BQ0 -d10000000 -f $ref_seq  $sorted.bam > $pileup";
+    my $make_pileup_bcf = 
+    "samtools mpileup -Bg -C50 -q30 -f $ref_seq $sorted.bam > $pileup_bcf";
+
+    my $call_vars   = "bcftools view -Nbvcg $pileup_bcf > $var_bcf";
+
+    my $vars_to_vcf = "bcftools view $var_bcf > $var_vcf";
+
+    # system calls
+    print("$program_tag processing strain $strain...\n");
+
+    print "$program_tag aligning...\n";
+    system($align) == 0 or die "$program_tag conversion to sam failed: $!";
+
+    print "$program_tag sorting...\n";
+    system($sort) == 0 or die "$program_tag filtering failed: $!";
+
+    print "$program_tag indexing bam file...\n";
+    system($index) == 0 or die "$program_tag indexing failed: $!";
+
+    print "$program_tag generating pileup...\n";
+    system($make_pileup) == 0 or die "$program_tag pileup failed: $!";
+
+    print "$program_tag generating pileup bcf...\n";
+    system($make_pileup_bcf) == 0 
+        or die "$program_tag pileup bcf failed: $!";
+
+    print "$program_tag calling variants...\n";
+    system($call_vars) == 0 
+        or die "$program_tag calling variants failed: $!";
+
+    print "$program_tag converting variants to vcf...\n";
+    system($vars_to_vcf) == 0 
+    or die "$program_tag converting vars to vcf failed: $!";
+
+    print "$program_tag calculating depth stats...\n";
+    my $calc_depth = "depthstats $pileup $depth";
+    system($calc_depth) == 0 
+        or die "$program_tag calculating depth stats failed: $!";
+
+    print "$program_tag finished $strain!\n\n";
+}
+
+sub check_install {
+    for (qw/fastq_quality_trimmer R bowtie2 bowtie2-align bowtie2-build 
+            bowtie2-inspect cnvfind sickle igvtools bcftools vcfutils.pl 
+            vcfunique breakdancer-max bam2cfg.pl/)
+    {
+        die "$_ is not installed." if system("which $_ >/dev/null");
+    }
+}
+
+sub print_time {
+    my $what = shift;
+    my $start = shift;
+    my $end = shift;
+
+    my $min = ($end-$start)/60.0;
+    printf("\n***[hspipeline] $what took %.2f minutes to run.***\n\n", $min);
+}

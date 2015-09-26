@@ -1,0 +1,260 @@
+<!doctype html public "-//w3c//dtd xhtml 1.0 strict//en" "http://www.w3.org/tr/xhtml/dtd/xhtml1-strict.dtd">
+<html>
+  <head>
+      <meta http-equiv="content-type" 
+       content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Adam Waite" />
+      <meta name="revised" content="Adam Waite, 8 Dec, 2010" />
+      <tmpl_if name="waiting"><meta http-equiv=refresh content=30></tmpl_if>
+  </head>
+  <style>
+    body {
+      background-color: #E5EEEE;
+    }
+
+    p,h1,ul,ol,legend {
+      font-family: verdana,sans-serif;
+      size=12px;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    .cen {
+      text-align: center;
+    }
+    .lef {
+      text-align: left;
+    }
+    fieldset {
+      padding: 1em;
+    }
+    label {
+      float: left;
+      width: 25%;
+      margin-right:0.5em;
+      padding-top:0.2em;
+      text-align:left;
+      font-weight:bold;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+
+  <script type="text/javascript">
+  <!--
+  function popup(mylink, windowname) {
+    if(! window.focus) return true;
+    var href;
+    if (typeof(mylink) == 'string')
+      href=mylink;
+    else
+      href=mylink.href;
+    window.open(href, windowname, 'width=400,height=200,scrollbars=yes');
+    return false;
+  }
+  //-->
+  </script>
+
+  <body>
+
+    <div>
+      <h1>flustrw</h1>
+    </div>
+
+    <div>
+    <form action="flustrw" method="get">
+      <fieldset>
+        <legend><b>User</b></legend> 
+          <input type="text" name="user" 
+            value="<tmpl_var name="user">" size="3" /></p>
+          <tmpl_if name="user_error">
+            <div class="error">
+              <p><tmpl_var name="user_error"></p>
+            </div>
+          </tmpl_if>
+      </fieldset>
+
+      <fieldset>
+        <legend><b>Beads</b></legend>
+
+          <input type="checkbox" name="beads" 
+            value="TRUE" <tmpl_if name="beads">checked</tmpl_if> />
+              Look for beads?
+
+          <p>Concentration:
+          <tmpl_if name="bead_conc">
+          <input type="text" name="bead_conc" 
+            value="<tmpl_var name="bead_conc">" size="5" />
+          <tmpl_else>
+          <input type="text" name="bead_conc" 
+            value="<tmpl_var name="def_bead_conc">" size="3" />
+          </tmpl_if> beads/&#x03BCl</p>
+
+          <p>Dilution:
+          <tmpl_if name="bead_dil">
+          <input type="text" name="bead_dil" 
+            value="<tmpl_var name="bead_dil">" size="2" />
+          <tmpl_else>
+          <input type="text" name="bead_dil" 
+            value="<tmpl_var name="def_bead_dil">" size="2" />
+          </tmpl_if></p>
+      </fieldset>
+
+      <fieldset>
+        <legend><b>Select channels</b></legend>
+        <p>Pick maximum expected in any file you plan to run.<p>
+          <input type="checkbox" name="channels" value="fitc" 
+            <tmpl_if name="fitc">checked</tmpl_if>/> FITC 
+          <input type="checkbox" name="channels" value="pe" 
+            <tmpl_if name="pe">checked</tmpl_if>/> PE 
+          <input type="checkbox" name="channels" value="amcyan"
+            <tmpl_if name="amcyan">checked</tmpl_if>/> Am-Cyan 
+          <input type="checkbox" name="channels" value="percp"
+            <tmpl_if name="percp">checked</tmpl_if>/> PerCP
+          <input type="checkbox" name="channels" value="tex" 
+            <tmpl_if name="tex">checked</tmpl_if>/> PE-Texas Red
+      </fieldset>
+
+      <fieldset>
+        <legend><b>Parameters</b> (<a href="../flustrw/paramhelp.html" 
+             onClick="return popup(this, 'Parameter help')">help</a>)
+        </legend>
+        <fieldset>
+          <legend>Significance thresholds</legend>
+          <p><b>Increasing</b> significance makes it <b>harder</b> to be a
+          cluster of the indicated type.</p>
+        <table>
+          <tr>
+            <td>FSC:</td>
+            <td>
+              <tmpl_if name="fsc_sig">
+              <input type="text" name="fsc_sig" 
+                value="<tmpl_var name="fsc_sig">" size="2" />
+              <tmpl_else>
+              <input type="text" name="fsc_sig" 
+                value="<tmpl_var name="def_fsc_sig">" size="2" />
+              </tmpl_if>
+            </td>
+          </tr>
+
+          <tr>
+           <td>Dead:</td>
+           <td>
+             <tmpl_if name="dead_sig">
+             <input type="text" name="dead_sig" 
+               value="<tmpl_var name="dead_sig">" size="2" />
+             <tmpl_else>
+             <input type="text" name="dead_sig" 
+               value="<tmpl_var name="def_dead_sig">" size="2" />
+             </tmpl_if>
+           </td>
+          </tr>
+        </table>
+
+        <table>
+          <tr>
+           <td>Single-color cluster:</td>
+           <td>
+             <tmpl_if name="cluster_sig">
+             <input type="text" name="cluster_sig" 
+               value="<tmpl_var name="cluster_sig">" size="2" />
+             <tmpl_else>
+             <input type="text" name="cluster_sig" 
+               value="<tmpl_var name="def_cluster_sig">" size="2" />
+             </tmpl_if>
+           </td>
+          </tr>
+        </table>
+        </fieldset>
+
+        <fieldset>
+        <legend>Intensity thresholds</legend>
+        <p>Sets intensity threshold to be considered a cluster of the 
+           indicated type.
+        <table>
+          <tr>
+           <td>All bright:</td>
+           <td>
+             <tmpl_if name="all_bright">
+             <input type="text" name="all_bright" 
+               value="<tmpl_var name="all_bright">" size="1" />
+             <tmpl_else>
+             <input type="text" name="all_bright" 
+               value="<tmpl_var name="def_all_bright">" size="1" />
+             </tmpl_if>
+             or more.
+           </td>
+          </tr>
+          <tr>
+           <td>All dim:</td>
+           <td>
+             <tmpl_if name="all_dim">
+             <input type="text" name="all_dim" 
+               value="<tmpl_var name="all_dim">" size="1" />
+             <tmpl_else>
+             <input type="text" name="all_dim" 
+               value="<tmpl_var name="def_all_dim">" size="1" />
+             </tmpl_if>
+             or less.
+           </td>
+          </tr>
+        </table>
+        </fieldset>
+      </fieldset>
+
+      <fieldset>
+        <legend>Folder (anything <b>after</b> //fred/shougroup/)</legend>
+        <ul>
+          <li>Folder must contain .fcs files.</li>  
+          <li>Names <b>cannot</b> contain spaces!</li>
+
+          <input type="text" name="data_folder" 
+            value="<tmpl_var name="data_folder">" /></br>
+          <tmpl_if name="folder_error">
+            <div class="error">
+              <p><tmpl_var name="folder_error"></p>
+            </div>
+          </tmpl_if>
+      </fieldset>
+      <input type="submit" value="Run!" />
+    </form>
+    </div>
+
+  <tmpl_if name="success">
+    <div class="result">
+      <br />
+      <hr>
+      <h1>Success!</h1>
+      <p>Results can be found at <b><tmpl_var name="result_path"></b></p>
+    </div>
+  </tmpl_if>
+
+  <tmpl_if name="waiting">
+    <div>
+      <br />
+      <hr>
+      <h1>Running...sit tight!</h1>
+    </div>
+  </tmpl_if>
+
+  <tmpl_if name="error">
+    <div>
+      <br />
+      <hr>
+      <h1 class="error">Uh oh...something is amiss!</h1>
+    </div>
+  </tmpl_if>
+
+  <tmpl_if name="runlog">
+    <div>
+      <br />
+      <h2>Current output</h2>
+      <pre><tmpl_var name="runlog"></pre>
+    </div>
+  </tmpl_if>
+
+
+  </body>
+</html>

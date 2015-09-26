@@ -1,0 +1,11 @@
+{% macro render_field(field) %}
+    <fieldset>
+        <legend><b>{{field.label}}</b></legend>
+        {{ field()|safe }}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <p class=error>{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+    </fieldset>
+{% endmacro %}

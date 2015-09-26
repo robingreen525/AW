@@ -1,0 +1,170 @@
+<!doctype html public "-//w3c//dtd xhtml 1.0 strict//en" "http://www.w3.org/tr/xhtml/dtd/xhtml1-strict.dtd">
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Adam Waite" />
+      <meta name="revised" content="Adam Waite, 19 March 2009" />
+  </head>
+  <style>
+    body {
+      background-color: #E5E5E5;
+    }
+
+    p,h1,ul,ol,legend {
+      font-family: verdana,sans-serif;
+      size=12px;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    .cen {
+      text-align: center;
+    }
+    .lef {
+      text-align: left;
+    }
+    fieldset {
+      padding: 1em;
+    }
+    label {
+      float: left;
+      width: 25%;
+      margin-right:0.5em;
+      padding-top:0.2em;
+      text-align:left;
+      font-weight:bold;
+    }
+
+    .error p {
+      color: red;
+    }
+  </style>
+
+  <body>
+
+    <div>
+      <h1>Checkflow</h1>
+    </div>
+
+    <div>
+    <form action="ckfl" method="get">
+      <fieldset>
+        <legend>User</legend> 
+          <input type="text" name="user" value="<tmpl_var name="user">" size="3" /></p>
+          <tmpl_if name="user_error">
+            <div class="error">
+              <p><tmpl_var name="user_error"></p>
+            </div>
+          </tmpl_if>
+      </fieldset>
+
+      <fieldset>
+        <legend>Concentration (beads/&#x3BC;L)</legend>
+          <tmpl_if name="bead_conc">
+          <input type="text" name="bead_conc" value="<tmpl_var name="bead_conc">" size="20" />
+          <tmpl_else>
+          <input type="text" name="bead_conc" value="<tmpl_var name="def_bead_conc">" size="20" />
+          </tmpl_if>
+      </fieldset>
+
+      <fieldset>
+        <legend>Dilutions (comma separated)</legend>
+        <tmpl_if name="dils">
+          <input type="text" name="dils" value="<tmpl_var name="dils">" size="20" />
+        <tmpl_else>
+          <input type="text" name="dils" value="<tmpl_var name="def_dils">" size="20" />
+        </tmpl_if>
+      </fieldset>
+
+      <fieldset>
+        <legend>Region to Include (optional)</legend>
+        <table>
+            <td>FITC:</td>
+            <tmpl_if name="fitc_min">
+            <td class="cen"><input type="text" name="fitc_min" value="<tmpl_var name="fitc_min">" size="5" /></td>
+            <tmpl_else>
+              <td class="cen"><input type="text" name="fitc_min" value="<tmpl_var name="def_fitc_min">" size="5" /></td>
+            </tmpl_if>
+            <td class="cen">to</td>
+            <tmpl_if name="fitc_max">
+            <td class="cen"><input type="text" name="fitc_max" value="<tmpl_var name="fitc_max">" size="5" /></td>
+            <tmpl_else>
+              <td class="cen"><input type="text" name="fitc_max" value="<tmpl_var name="def_fitc_max">" size="5" /></td>
+            </tmpl_if>
+          </tr>
+          <tr>
+            <td>Forward scattering:</td>
+            <tmpl_if name="fsc_min">
+            <td class="cen"><input type="text" name="fsc_min" value="<tmpl_var name="fsc_min">" size="5" /></td>
+            <tmpl_else>
+              <td class="cen"><input type="text" name="fsc_min" value="<tmpl_var name="def_fsc_min">" size="5" /></td>
+            </tmpl_if>
+            <td class="cen">to</td>
+            <tmpl_if name="fsc_max">
+            <td class="cen"><input type="text" name="fsc_max" value="<tmpl_var name="fsc_max">" size="5" /></td>
+            <tmpl_else>
+              <td class="cen"><input type="text" name="fsc_max" value="<tmpl_var name="def_fsc_max">" size="5" /></td>
+            </tmpl_if>
+          </tr>
+          <tr>
+            <td>Side scattering:</td>
+            <tmpl_if name="ssc_min">
+            <td class="cen"><input type="text" name="ssc_min" value="<tmpl_var name="ssc_min">" size="5" /></td>
+            <tmpl_else>
+              <td class="cen"><input type="text" name="ssc_min" value="<tmpl_var name="def_ssc_min">" size="5" /></td>
+            </tmpl_if>
+            <td class="cen">to</td>
+            <tmpl_if name="ssc_max">
+            <td class="cen"><input type="text" name="ssc_max" value="<tmpl_var name="ssc_max">" size="5" /></td>
+            <tmpl_else>
+              <td class="cen"><input type="text" name="ssc_max" value="<tmpl_var name="def_ssc_max">" size="5" /></td>
+            </tmpl_if>
+        </tr>
+      </table>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Folder (anything <b>after</b> //fred/shougroup/FACS/checkflow)</legend>
+        <ul>
+          <li>Folder must contain .fcs files.</li>  
+          <li>Names <b>cannot</b> contain spaces!</li>
+          <li>The part of the name immediately preceeding <i>.fcs</i> should increase alphabetically or numerically
+              corresponding to increasing bead concentration.<br /><br />
+              Some examples include:<br />
+              <i>A1.fcs, A2.fcs, A3.fcs</i><br />
+              or<br />
+              <i>A1.fcs, B1.fcs, C1.fcs</i><br />
+              or<br />
+              <i>A1.fcs, A2.fcs, B1.fcs, B2.fcs</i><br /><br />
+              In other words, if the beads are set up on a plate and processed from left to right
+              and top to bottom, it should work.</li>
+        </ul>
+
+          <input type="text" name="data_folder" value="<tmpl_var name="data_folder">" /></br>
+          <tmpl_if name="folder_error">
+            <div class="error">
+              <p><tmpl_var name="folder_error"></p>
+            </div>
+          </tmpl_if>
+      </fieldset>
+      <input type="submit" value="Check!" />
+    </form>
+    </div>
+
+
+  <tmpl_if name="success">
+    <div class="result">
+      <br />
+      <hr>
+      <h1>Results</h1>
+      <img src="<tmpl_var name="flow_rate">" alt="Flow rate" /><br />
+      <img src="<tmpl_var name="bead_flow">" alt="Bead flow"  /><br />
+    </div>
+  </tmpl_if>
+
+  <!-- <img src="/data/checkflow/test/flow_rate.png" /><br /> -->
+
+    
+  </body>
+</html>

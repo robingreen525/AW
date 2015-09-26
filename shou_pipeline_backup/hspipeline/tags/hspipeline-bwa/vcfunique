@@ -1,0 +1,75 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Getopt::Std;
+use Data::Dumper;
+
+# Finds the set of variations in file1 that are not in file2, and the
+# variations that are in file1 and file2.
+main();
+exit;
+
+sub main {
+  $| = 1;
+  my %opts;
+  getopts('d:',\%opts);
+  $opts{'d'} = 0 unless exists $opts{'d'};
+  unique($ARGV[0],$ARGV[1], $opts{'d'});
+  unique($ARGV[1],$ARGV[0], $opts{'d'});
+}
+
+sub unique {
+  my ($f1, $f2, $d) = @_;
+
+  die "$f1 does not exist!" unless -e $f1;
+  die "$f2 does not exist!" unless -e $f2;
+
+  (my $f1_name = $f1) =~ s/^.*\/(.*)$/$1/;
+  (my $f2_name = $f2) =~ s/^.*\/(.*)$/$1/;
+
+  open my $uout, "> in_${f2_name}_not_${f1_name}.txt" 
+    or die "couldn't open: $!";
+  open my $sout, "> in_${f2_name}_and_${f1_name}.txt" 
+    or die "couldn't open: $!";
+
+  my %seen = ();
+  my $in;
+  open $in, '<', $f1;
+  while (<$in>) {
+    next if /^#+/;
+    my @line = split;
+    $seen{$line[0]}{$line[1]} = 1;
+  }
+  close $in;
+  #print Dumper(\%seen);
+
+
+  open $in, '<', $f2;
+  while (<$in>) {
+    next if /^##/;
+    if (/^#[^#]/) {
+      print $sout $_;
+      print $uout $_;
+      next;
+    } else {
+      my @line = split;
+      my $close = 0;
+      for my $pos ($line[1]-$d..$line[1]+$d) {
+        $close = 1 if ($seen{$line[0]}{$pos});
+      }
+      if ($close) {
+        print $sout $_;
+      } else {
+        print $uout $_;
+      }
+    }
+  }
+  close $in;
+  close $uout;
+  close $sout;
+}
+
+sub usage {
+  print qq/Usage: vcfunique file1.vcf file2.vcf\n"/;
+  exit;
+}

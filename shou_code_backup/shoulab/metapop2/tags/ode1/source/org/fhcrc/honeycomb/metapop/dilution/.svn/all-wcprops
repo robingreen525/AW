@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/repos/shoulab/!svn/ver/2336/metapop2/tags/ode1/source/org/fhcrc/honeycomb/metapop/dilution
+END
+DilutionRule.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/shoulab/!svn/ver/2336/metapop2/tags/ode1/source/org/fhcrc/honeycomb/metapop/dilution/DilutionRule.java
+END
+NoDilution.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/shoulab/!svn/ver/2336/metapop2/tags/ode1/source/org/fhcrc/honeycomb/metapop/dilution/NoDilution.java
+END
+ThresholdDilution.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/shoulab/!svn/ver/2336/metapop2/tags/ode1/source/org/fhcrc/honeycomb/metapop/dilution/ThresholdDilution.java
+END
+GlobalThresholdDilution.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/repos/shoulab/!svn/ver/2336/metapop2/tags/ode1/source/org/fhcrc/honeycomb/metapop/dilution/GlobalThresholdDilution.java
+END
+PeriodicDilution.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/shoulab/!svn/ver/2336/metapop2/tags/ode1/source/org/fhcrc/honeycomb/metapop/dilution/PeriodicDilution.java
+END
+IndividualThresholdDilution.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/repos/shoulab/!svn/ver/2336/metapop2/tags/ode1/source/org/fhcrc/honeycomb/metapop/dilution/IndividualThresholdDilution.java
+END

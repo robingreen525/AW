@@ -1,0 +1,159 @@
+#!/usr/bin/perl -T
+use strict;
+use warnings;
+
+use CGI::Minimal;
+use CGI::Carp qw(fatalsToBrowser);
+use Storable;
+use HTML::Template;
+use Data::Dumper;
+
+$ENV{"PATH"}="/bin:/usr/bin";
+CGI::Minimal::max_read_size(1000000);
+
+my $fred_path = '/mnt/fred/shougroup/FACS/checkflow';
+
+my $root_path       = '/var/www/projects/checkflow';
+my $local_data_path = '/var/www/data/checkflow';
+my $tmpl_path       = $root_path.'/tmpl/ckfl.tmpl';
+my $script          = $root_path.'/bin/flowcheck.R';
+
+my $default_conc_ul = 1780;
+my $def_dils = '25,10,5,2.5';
+
+
+my $q = CGI::Minimal->new();
+
+my $t = HTML::Template->new(
+                            filename => $tmpl_path,
+                            debug    => '0',
+                            associate => $q,
+                           );
+
+my ($user)      = $q->param('user')      =~ /^(\w+)$/;
+my ($timestamp) = $q->param('timestamp') =~ /^(\d+_\d+)$/;
+my ($result)    = $q->param('result')    =~ /^(\d)$/;
+
+my ($bead_conc_ul) = $q->param('bead_conc') =~ /^(\d+)$/;
+$q->param('def_bead_conc' => $default_conc_ul);
+$q->param('def_dils'     => $def_dils);
+$q->param('def_fitc_min' => '-Inf');
+$q->param('def_fitc_max' => 'Inf');
+$q->param('def_fsc_min'  => '-Inf');
+$q->param('def_fsc_max'  => 'Inf');
+$q->param('def_ssc_min'  => '-Inf');
+$q->param('def_ssc_max'  => 'Inf');
+
+$bead_conc_ul      = $default_conc_ul unless $bead_conc_ul;
+
+my ($dils) = $q->param('dils') =~ /^([.,;\d -]+)$/;
+$dils      = join ",", split /[^\d.]/, $dils;
+
+my ($fitc_min) = $q->param('fitc_min') =~ /^(\d+)$/;
+my ($fitc_max) = $q->param('fitc_max') =~ /^(\d+)$/;
+my ($fsc_min) = $q->param('fsc_min') =~ /^(\d+)$/;
+my ($fsc_max) = $q->param('fsc_max') =~ /^(\d+)$/;
+my ($ssc_min) = $q->param('ssc_min') =~ /^(\d+)$/;
+my ($ssc_max) = $q->param('ssc_max') =~ /^(\d+)$/;
+
+map{$_ = 'Inf' if $_ eq ''} ($fsc_max, $ssc_max, $fitc_max);
+map{$_ = '-Inf' if $_ eq ''} ($fsc_min, $ssc_min, $fitc_min);
+my $fsc_gate = join ",", ($fsc_min,$fsc_max);
+my $ssc_gate = join ",", ($ssc_min,$ssc_max);
+my $fitc_gate = join ",", ($fitc_min,$fitc_max);
+
+my ($data_folder) = $q->param('data_folder') =~ /^([\s+\/\w-]+)$/; 
+$data_folder =~ s/\\/\//g;
+my $in_dir = $fred_path.'/'.$data_folder;
+
+if ($data_folder and not $user) {
+  $t->param(user_error => "Need user's initials!");
+  print_page($t);
+} elsif (!$user) {
+  print_page($t);
+} elsif ($timestamp and $result and $user) {
+  my $res_path = '/data/checkflow/'.$user.'/'.$timestamp;
+  $t->param(bead_flow => $res_path.'/bead_slopes.png');
+  $t->param(flow_rate => $res_path.'/flow_rate.png');
+  $t->param(success   => '1');
+  print_page($t);
+}
+
+unless (-e $in_dir) {
+  $t->param(folder_error => "Can't find '$data_folder'  in $fred_path!");
+  print_page($t);
+}
+
+if ($data_folder =~ /\s+/) {
+  $t->param(folder_error => "Folder name ('$data_folder') contains spaces!");
+  print_page($t);
+}
+
+opendir DIR, $in_dir or croak "Can't open dir '$in_dir': $!";
+my @fs = readdir DIR;
+@fs = grep{ !-d && /\.fcs$/ } @fs;
+closedir DIR;
+
+unless (@fs) {
+  $t->param(folder_error => "No '.fcs' files in folder '$data_folder'!");
+  print_page($t);
+}
+
+if (grep{ /\s+/ } @fs) {
+  $t->param(folder_error => "File name(s) contain spaces!");
+  print_page($t);
+}
+
+
+my $in_files = join ",",
+  sort{ 
+        by_alpha($a) cmp by_alpha($b) ||
+        by_num($a) <=> by_num($b)
+      } map{ $_ =~ /(\w+\.fcs)$/;$1 } grep{!/^\./} @fs;
+
+
+system("mkdir $local_data_path/$user") unless -e $local_data_path.'/'.$user;
+
+my $timestamp = make_ts();
+my $out_dir   = $local_data_path.'/'.$user.'/'.$timestamp;
+
+my $run_r = 'R --vanilla --slave';
+my $args  = join " ", ($in_dir, $in_files, $out_dir, 
+                       $bead_conc_ul, $dils, 
+                       $fsc_gate, $ssc_gate, $fitc_gate);
+
+system("mkdir $out_dir") == 0 or croak "Couldn't mkdir '$out_dir': $?";
+system("$run_r < $script > /dev/null 2>&1 --args $args") == 0 or croak "R failed!: $?";
+system("chmod -R a+x $out_dir") == 0 or croak "Couldn't chmod:$?";
+
+my $home_url = "http://honeycomb.fhcrc.org/cgi-bin";
+#my $home_url = "http://localhost/cgi-bin";
+print "Status: 302 Moved\nLocation: $home_url/ckfl?user=$user&bead_conc=$bead_conc_ul&dils=$dils&data_folder=$data_folder&timestamp=$timestamp&fsc_min=$fsc_min&fsc_max=$fsc_max&ssc_min=$ssc_min&ssc_max=$ssc_max&fitc_min=$fitc_min&fitc_max=$fitc_max&result=1\n\n";
+
+
+sub by_alpha {
+  my $s = shift;
+  return if $s =~ /^\.+/;
+  my ($n) = $s =~ /([A-Za-z])\d+\.fcs$/;
+  return $n;
+}
+
+sub by_num {
+  my $s = shift;
+  return if $s =~ /^\.+/;
+  my ($n) = $s =~ /(\d+)\.fcs$/;
+  return $n;
+}
+
+sub make_ts {
+  my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime(time);
+  $mon = '0'.$mon if ++$mon < 10;
+  return ($year+1900).($mon).$mday.'_'.$hour.$min.$sec;
+}
+
+sub print_page {
+  my $t_obj = shift;
+  print "Content-type: text/html\n\n";
+  print $t_obj->output();
+  exit;
+}

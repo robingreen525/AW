@@ -1,0 +1,49 @@
+<h1>Listing Equipment</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Company</th>
+    <th>Catalog &#35;</th>
+    <th>Price</th>
+    <th>Unit</th>
+    <th>Notes</th>
+  </tr>
+
+  <% form_tag :controller => 'shoulab', :action => 'search', :table => 'equipment_and_supplies' do %>
+  <tr class="search">
+    <td class="search"><%= text_field_tag( :description, params[:description], :size => 20 ) %></td>
+    <td class="search"><%= text_field_tag( :company    , params[:company]    , :size => 20 ) %></td>
+    <td class="search"><%= text_field_tag( :cat_num    , params[:cat_num]    , :size => 10 ) %></td>
+    <td class="search"><%= text_field_tag( :price      , params[:price]      , :size => 5 ) %></td>
+    <td class="search"><%= text_field_tag( :unit       , params[:unit]       , :size => 7 ) %></td>
+    <td class="search"><%= text_field_tag( :notes      , params[:notes]      , :size => 20 ) %></td>
+  </tr>
+  <tr>
+    <td><%= submit_tag "Search" %></td>
+  </tr>
+  <% end %>
+
+<% for equipment_and_supply in @equipment_and_supplies %>
+  <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td><%=h equipment_and_supply.description %></td>
+    <td><%=h equipment_and_supply.company %></td>
+    <td class="cen"><%=h equipment_and_supply.cat_num %></td>
+    <td class="cen"><%=h number_to_currency(equipment_and_supply.price) %></td>
+    <td><%=h equipment_and_supply.unit %></td>
+    <td><%=h equipment_and_supply.notes %></td>
+  <% if session[:user_id] %>
+    <td><%= link_to 'Edit', edit_equipment_and_supply_path(equipment_and_supply) %></td>
+    <td><%= link_to 'Copy', url_for(:action=>'copy', :id=>equipment_and_supply.id) %></td>
+    <td><%= link_to 'Destroy', equipment_and_supply, :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+
+
+  <% if session[:user_id] %>
+    <br />
+    <%= link_to 'Add New Equipment', new_equipment_and_supply_path %>
+  <% end %>
+

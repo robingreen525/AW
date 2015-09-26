@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/repos/shoulab/!svn/ver/2350/metapop2/tags/v1.0_version_used_for_publication/source/org/fhcrc/honeycomb/metapop/environment
+END
+BinomialEnvironmentChanger.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/repos/shoulab/!svn/ver/2350/metapop2/tags/v1.0_version_used_for_publication/source/org/fhcrc/honeycomb/metapop/environment/BinomialEnvironmentChanger.java
+END
+SpecifiedEnvironmentChanger.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/repos/shoulab/!svn/ver/2350/metapop2/tags/v1.0_version_used_for_publication/source/org/fhcrc/honeycomb/metapop/environment/SpecifiedEnvironmentChanger.java
+END
+EnvironmentChanger.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/repos/shoulab/!svn/ver/2350/metapop2/tags/v1.0_version_used_for_publication/source/org/fhcrc/honeycomb/metapop/environment/EnvironmentChanger.java
+END
+StaticEnvironment.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/repos/shoulab/!svn/ver/2350/metapop2/tags/v1.0_version_used_for_publication/source/org/fhcrc/honeycomb/metapop/environment/StaticEnvironment.java
+END

@@ -1,0 +1,92 @@
+#!/usr/bin/perl -T
+use strict;
+use warnings;
+
+use CGI::Minimal;
+use CGI::Carp qw(fatalsToBrowser);
+use Storable;
+use HTML::Template;
+use Data::Dumper;
+use Math::BigInt;
+use Math::BigFloat;
+
+$ENV{"PATH"}="/bin:/usr/bin";
+CGI::Minimal::max_read_size(1000000);
+
+my $fred_path = '/mnt/fred/shougroup/FACS/checkflow';
+
+my $root_path = '/var/www/html/checkflow';
+my $local_data_path = '/var/www/data/checkflow';
+my $tmpl_path = $root_path.'/tmpl/ckfl.tmpl';
+my $script  = '/var/www/html/checkflow/bin/flowcheck.R';
+
+my $default_conc_ul = 1800;
+
+
+my $q = CGI::Minimal->new();
+
+my $t = HTML::Template->new(
+                            filename => $tmpl_path,
+                            debug    => '0',
+                            associate => $q,
+                           );
+
+my ($user)  = $q->param('user')  =~ /(\w+)/;
+my ($timestamp) = $q->param('timestamp') =~ /(\d+_\d+)/;
+my ($result)    = $q->param('result') =~ /(\d)/;
+
+my ($bead_conc_ul) = $q->param('bead_conc') =~ /(\d+)/;
+my ($dils)      = $q->param('dils') =~ /([.,;\d -]+)/;
+my ($f1)        = $q->param('f1')    =~ /([\w-]+)/; 
+
+unless ($user) {
+  print_page($t);
+} elsif ($timestamp and $result and $user) {
+  my $res_path = '/data/checkflow/'.$user.'/'.$timestamp;
+  $t->param(bead_flow => $res_path.'/bead_slopes.png');
+  $t->param(flow_rate => $res_path.'/flow_rate.png');
+  $t->param(success   => '1');
+  print_page($t);
+}
+
+$bead_conc_ul   = $default_conc_ul unless $bead_conc_ul;
+$f1 =~ s/\\/\//g;
+
+my $dils   = join ",", split /[^\d.]/, $dils;
+my $in_dir = $fred_path.'/'.$f1;
+
+unless (-e $in_dir) {
+  $t->param(folder_error => "Can't find '$f1'  in $fred_path!");
+  print_page($t);
+}
+
+
+system("mkdir $local_data_path/$user") unless -e $local_data_path.'/'.$user;
+
+my $timestamp = make_ts();
+my $out_dir   = $local_data_path.'/'.$user.'/'.$timestamp;
+
+my $run_r = 'R --vanilla --slave';
+my $args  = join " ", ($in_dir, $out_dir, $bead_conc_ul, $dils);
+
+system("mkdir $out_dir") == 0 or croak "Couldn't mkdir: $?";
+
+system("$run_r < $script >& /dev/null --args $args") == 0 or croak "R failed!: $?";
+system("chmod -R a+x $out_dir") == 0 or croak "Couldn't chmod:$?";
+
+my $home_url = "http://honeycomb.fhcrc.org/cgi-bin";
+print "Status: 302 Moved\nLocation: $home_url/ckfl?user=$user&bead_conc=$bead_conc_ul&dils=$dils&f1=$f1&timestamp=$timestamp&result=1\n\n";
+
+
+
+sub make_ts {
+  my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime(time);
+  return ($year+1900).($mon+1).$mday.'_'.$hour.$min.$sec;
+}
+
+sub print_page {
+  my $t_obj = shift;
+  print "Content-type: text/html\n\n";
+  print $t_obj->output();
+  exit;
+}

@@ -1,0 +1,56 @@
+#! /usr/bin/perl
+use warnings;
+use strict;
+
+use Bio::Trace::ABIF;
+use Data::Dumper;
+
+my $abif = Bio::Trace::ABIF->new();
+
+my $file   = $ARGV[0];
+my $target = $ARGV[1];
+my $target_length = length $target;
+
+usage() if (scalar @ARGV < 2);
+
+$abif->open_abif($file); 
+
+my $sequence  = $abif->edited_sequence();
+my @sequence  = split //, $sequence;
+my @locations = $abif->base_locations();
+
+my $target_start = index $sequence, $target;
+my $target_end = $target_start + $target_length - 1;
+
+my @target_locations = @locations[$target_start..$target_end];
+#print join("\t", @target_locations),"\n";
+
+my @peaks_of_interest = @target_locations[0..3];
+#print join("\t", @peaks_of_interest),"\n";
+
+# Base to channel number map.
+my %bases = $abif->order_base();
+
+my %data = ();
+for (qw\A C G T\) {
+  push @{$data{$_}}, $abif->analyzed_data_for_channel($bases{$_});
+}
+
+my @keys = sort keys %data;
+print "location\t";
+print join("\t", @keys),"\n";
+
+for my $i ($peaks_of_interest[0]..$peaks_of_interest[3]) {
+  my @line;
+  push @line, $i;
+  for my $base (@keys) {
+    push @line, $data{$base}[$i];
+  }
+  print join("\t", @line),"\n";
+}
+$abif->close_abif();
+
+sub usage {
+  print "\n usage: ab1extract [file] [target sequence]\n";
+  exit(1);
+}

@@ -1,0 +1,219 @@
+#!/usr/bin/perl -T
+# vim: set filetype=perl shiftwidth=2 tabstop=2 expandtab :
+use strict;
+use warnings;
+$|++;
+
+use CGI;
+use CGI::Carp qw(fatalsToBrowser);
+use HTML::Template;
+
+my $root_path       = '/var/www/projects/flustrw';
+my $local_data_path = '/var/www/data/flustrw';
+
+my $tmpl_path       = $root_path.'/tmpl/flustrw.tmpl';
+my $bin_path        = $root_path.'/bin';
+my $script          = $bin_path.'/flustrw.r';
+
+my $fred_root        = '/mnt/fred/shougroup';
+my $remote_data_path = $fred_root.'/Honeycomb/data/flustrw';
+my $result_folder_name = '-flustr_results';
+
+#my $home_url = "http://honeycomb.fhcrc.org/cgi-bin";
+my $home_url = "http://localhost/cgi-bin";
+
+$ENV{"PATH"}="/bin:/usr/bin";
+
+my $q = CGI->new();
+my $t = HTML::Template->new(
+                            filename  => $tmpl_path,
+                            debug     => '0',
+                            associate => $q,
+                           );
+
+my $p = get_params($q);
+
+# User forgot initials.
+if ($p->{input_data_location} and not $p->{user}) {
+  $t->param(user_error => "Need user's initials!");
+  print_page($t);
+
+# We're starting fresh.  Show a blank (except for defaults) form.
+} elsif (!$p->{user}) {
+  print_page($t);
+
+} elsif ($p->{waiting}) {
+  warn "WAITING";
+  my $local_result_path  = $local_data_path.'/'.
+    $p->{user}.'/'.$p->{timestamp}.$result_folder_name;
+  my $remote_result_path = $remote_data_path.'/'.$p->{user};
+
+  my $runlog_path = $local_result_path.'/'.$p->{timestamp}.'-run.log';
+  my $runlog_path_final = $runlog_path.'-final';
+
+  if (-e $runlog_path_final) {
+    open my $rl, $runlog_path_final
+      or die "Couldn't open final runlog for reading!:$!";
+    my $runlog = do { local $/; <$rl> };
+
+    system("cp -r $local_result_path $remote_result_path") == 0
+        or croak "Couldn't copy from ".
+                 $local_result_path." to ".$remote_result_path.": $!";
+
+    my $res_path = '//fred/shougroup/Honeycomb/data/flustrw/'.
+                   $p->{user}.'/'.$p->{timestamp}.$result_folder_name;
+
+    $t->param(runlog  => $runlog,
+              success => '1',
+              waiting => '0',
+              result_path => $res_path);
+
+    print_page($t);
+  } elsif (-e $runlog_path) {
+    open my $rl, $runlog_path 
+      or die "Couldn't open runlog for reading!:$!";
+    my $runlog = do { local $/; <$rl> };
+    $t->param(runlog => $runlog);
+    close $rl;
+    print_page($t);
+  } else {
+    print_page($t);
+    croak "Couldn't find runlog '".$runlog_path."'!";
+  }
+
+# Check the form values and run the code!
+} elsif ($p->{input_data_location} and $p->{user}) {
+  check_input_data($p->{input_data_location});
+
+  my $timestamp = make_ts();
+  my $local_result_path  = $local_data_path.'/'.$p->{user}.'/'.
+                           $timestamp.$result_folder_name;
+  my $r    = 'R --vanilla --slave';
+  my $args = join " ", ($p->{input_data_location},
+                        $local_result_path,
+                        $timestamp, 
+                        'TRUE',
+                        $p->{bead_dil},
+                        $p->{beads_per_ml});
+  my $runlog_path = $local_result_path.'/'.$timestamp.'-run.log';
+
+  my $run_command = join " ", ($r, "<", $script, "--args", $args);
+
+  system("mkdir -p $local_result_path") == 0
+    or croak "Couldn't make local data directory: $!";
+  system("chmod a+w $local_result_path") == 0
+    or croak "Couldn't chmod local data directory: $!:";
+
+  open my $fh, ">$runlog_path" 
+    or die "Couldn't open $runlog_path for writing: $!";
+
+  my $pid = fork;
+  croak "Cannot fork: $!" unless defined $pid;
+  if ($pid) { # parent
+    $q->param('waiting','1');
+    $q->param('timestamp', $timestamp);
+    print $q->redirect();
+  } else { # child
+    close STDOUT;
+    close STDIN;
+    unless (open F, "-|") {
+      open STDIN, "</dev/null";
+      open STDOUT, ">/dev/null";
+      open STDERR, ">&=1";
+      exec $run_command or die "Cannot execute script: $!";
+    }
+    while (<F>) { 
+      open my $fh, '>>', $runlog_path 
+        or die "Couldn't open $runlog_path to append!: $!";
+      print $fh $_;
+      close $fh;
+    }
+    close F;
+    system("mv $runlog_path $runlog_path-final");
+    exit 0;
+  }
+} else {
+  warn "DIDN'T MATCH ANYTHING!";
+  print_page($t);
+}
+
+sub get_params {
+  my $q = shift;
+  my ($user)         = $q->param('user')      =~ /^(\w+)$/;
+  my ($timestamp)    = $q->param('timestamp') =~ /^(\d+_\d+)$/;
+  my ($beads_per_ml) = $q->param('bead_conc') =~ /^(\d+)$/;
+  my ($bead_dil)     = $q->param('bead_conc') =~ /^(\d+)$/;
+  my ($data_folder)  = $q->param('data_folder') =~ /^([\s+\/\w-]+)$/; 
+  my ($result)       = $q->param('result')      =~ /^(\d)$/;
+  my ($waiting)      = $q->param('waiting')     =~ /^(\d)$/;
+
+  my $default_conc_ml = 7.8e6;
+  $q->param('def_bead_conc' => $default_conc_ml);
+
+  my $input_data_location;
+  if ($data_folder) {
+    $data_folder =~ s/\\/\//g;
+    $input_data_location = $fred_root.'/'.$data_folder;
+  }
+
+  return  { user => $user,
+            timestamp => $timestamp,
+            beads_per_ml => $beads_per_ml,
+            bead_dil => $bead_dil,
+            input_data_location => $input_data_location,
+            result => $result,
+            waiting => $waiting }
+}
+
+sub check_input_data {
+  my $path = shift;
+  if (-e $path) {
+    check_files($path);
+  } else {
+    $t->param(folder_error => "Path '$path'  doesn't exist!");
+    print_page($t);
+  }
+}
+
+sub check_folder_name {
+  my $name = shift;
+  if ($name =~ /\s+/) {
+    $t->param(folder_error => "Folder name ('$name') contains spaces!");
+    print_page($t);
+  }
+}
+
+sub check_files {
+  my $dir = shift;
+  opendir DIR, $dir or croak "Can't open dir '$dir': $!";
+  my @fs = readdir DIR;
+  @fs = grep{ !-d && /\.fcs$/ } @fs;
+  closedir DIR;
+
+  unless (@fs) {
+    $t->param(folder_error => "No '.fcs' files in folder '$dir'!");
+    print_page($t);
+  }
+
+  if (grep{ /\s+/ } @fs) {
+    $t->param(folder_error => "File name(s) contain spaces!");
+    print_page($t);
+  }
+}
+
+sub make_ts {
+  my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = 
+    localtime(time);
+
+  $mon  = '0'.$mon  if ++$mon < 10;
+  $min  = '0'.$min  if $min   < 10;
+  $hour = '0'.$hour if $hour < 10;
+  return ($year+1900).($mon).$mday.'_'.$hour.$min;
+}
+
+sub print_page {
+  my $t_obj = shift;
+  print $q->header();
+  print $t_obj->output();
+  exit;
+}

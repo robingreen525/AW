@@ -1,0 +1,38 @@
+<p>
+  <b>Number:</b>
+  <%=h @oligo.number %>
+</p>
+
+<p>
+  <b>Sequence:</b>
+  <%=h @oligo.sequence %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%=h @oligo.length %>
+</p>
+
+<p>
+  <b>&#37;GC:</b>
+  <%=h @oligo.GC %>
+</p>
+
+<p>
+  <b>Tm:</b>
+  <%=h @oligo.Tm %>
+<p>
+  <b>Direction:</b>
+  <%=h @oligo.direction %>
+</p>
+<p>
+  <b>Target:</b>
+  <%=h @oligo.target %>
+</p>
+<p>
+  <b>Plasmid:</b>
+  <%=h @oligo.plasmid %>
+</p>
+
+<%= link_to 'Edit', edit_oligo_path(@oligo) %> |
+<%= link_to 'Back', oligos_path %>

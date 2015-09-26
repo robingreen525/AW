@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shared
+END
+_equipment.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shared/_equipment.html.erb
+END
+_oligo.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shared/_oligo.html.erb
+END
+_plasmids.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shared/_plasmids.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shared/_form.html.erb
+END
+_chemical.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shared/_chemical.html.erb
+END
+_yeast.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shared/_yeast.html.erb
+END

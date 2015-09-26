@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  number: 1
+  sequence: MyString
+  length: 1
+  %GC: 9.99
+  Tm: 9.99
+
+two:
+  number: 1
+  sequence: MyString
+  length: 1
+  %GC: 9.99
+  Tm: 9.99

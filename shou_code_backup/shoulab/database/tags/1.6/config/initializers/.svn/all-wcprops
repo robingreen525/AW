@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/config/initializers
+END
+inflections.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/config/initializers/inflections.rb
+END
+new_rails_defaults.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/config/initializers/new_rails_defaults.rb
+END
+mime_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/config/initializers/mime_types.rb
+END

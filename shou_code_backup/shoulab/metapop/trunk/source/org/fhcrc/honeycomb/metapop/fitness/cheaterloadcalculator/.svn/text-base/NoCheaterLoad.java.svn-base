@@ -1,0 +1,21 @@
+package org.fhcrc.honeycomb.metapop.fitness.cheaterloadcalculator;
+
+/** 
+ * A <code>CheaterLoadCalculator</code> that returns the fitness given to it.
+ *
+ * Created on 9 Feb, 2012
+ * @author Adam Waite
+ * @version $Rev$, $Date$
+ *
+ */
+public class NoCheaterLoad implements CheaterLoadCalculator {
+    public NoCheaterLoad() { super(); }
+    public double calculate(final double cheater_freq, final double fitness) {
+        return fitness;
+    }
+
+    @Override
+    public String toString() {
+        return new String("NoCheaterLoad");
+    }
+}

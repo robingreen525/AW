@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/helpers
+END
+users_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/helpers/users_helper.rb
+END
+bacterial_plasmids_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/helpers/bacterial_plasmids_helper.rb
+END
+application_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/helpers/application_helper.rb
+END
+admin_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/helpers/admin_helper.rb
+END
+yeast_strains_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/helpers/yeast_strains_helper.rb
+END
+oligos_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/helpers/oligos_helper.rb
+END
+shoulab_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/helpers/shoulab_helper.rb
+END

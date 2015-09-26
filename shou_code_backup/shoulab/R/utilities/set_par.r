@@ -1,0 +1,12 @@
+par(mar=c(5,5,1.5,1), 
+    mex=0.8,
+    lwd=4.0,
+    cex=2, 
+    cex.axis=1.5,
+    cex.lab=1.5,
+    font=2,
+    font.axis=2,
+    font.lab=2,
+    font.main=2,
+    font.sub=2)
+palette(c("black","orange","green","steelblue","purple","magenta","grey","brown","red","violet","salmon","goldenrod","cyan","darkgreen"))

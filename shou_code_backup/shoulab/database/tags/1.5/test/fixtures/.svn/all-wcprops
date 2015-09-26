@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/test/fixtures
+END
+users.yml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/test/fixtures/users.yml
+END
+bacterial_plasmids.yml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/test/fixtures/bacterial_plasmids.yml
+END
+yeast_strains.yml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/test/fixtures/yeast_strains.yml
+END
+oligos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/test/fixtures/oligos.yml
+END

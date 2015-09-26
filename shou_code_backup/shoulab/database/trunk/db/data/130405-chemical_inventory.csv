@@ -1,0 +1,369 @@
+name,storage location,storage temp,company,cat. number,price,unit,notes
+Acrylamide,Chemical Room A,25,Bio-Rad,,,,"99.9%, 500g, 71.08g/mol, acrylamide gels"
+Adenine hemisulfate salt,Chemical Room A,25,Sigma,,,,"99%, 25g, 184.2g/mol, plant growth regulator"
+Ammonium chloride,Chemical Room A,25,Sigma,,,,"1kg, 53.49g/mol"
+Ammonium chloride,Chemical Room A,25,Fisher,,,,"1kg, 53.49g/mol"
+Ammonium persulfate,Chemical Room A,25,Sigma,,,,"98%, 10g, 228.2g/mol, for polymerization of acrylamide"
+Ammonium sulfate,Chemical Room A,25,Sigma,,,,"1kg, 132.13g/mol, protein purification"
+Aniline Blue,Chemical Room stains box,25,Sigma,,,,"25g, 789.91g/mol, dye"
+Avicel PH-101 ~50 µm particle size,Chemical Room A,25,Fluka,,,,"1kg, microcrystaline cellulose"
+?-amino-adipate,Chemical Room A,25,Bachem,,,,"25g, 161.16g/mol, lysine counterselection"
+Boric acid,Chemical Room B,25,J.T. Baker,,,,"500g, 61.83g/mol"
+Brilliant Blue G (Coomassie),Chemical Room stains box,25,Sigma,,,,"5g, 854g/mol, protein dye, pH indicator"
+Brilliant Blue R (Coomassie),Chemical Room stains box,25,Sigma,,,,"25g, protein dye, pH indicator"
+"Bromocresol green, sodium salt",Chemical Room stains box,25,Bio-Rad,,,,"5g, dye, pH indicator, electrophoresis, prostaglandin E2 transport protein inhibitor"
+Bromophenol Blue,Chemical Room stains box,25,Mallinckrodt,,,,"5g, dye, pH indicator"
+"N,N'-Methylene-bis-acrylamide (BIS)",Chemical Room B,25,Bio-Rad,,,,"50g, 154.17g/mol, acrylamide gels"
+Caffeine,Chemical Room C,25,?,,,,~5g
+Calcium chloride dihydrate,Chemical Room C,25,Sigma,,,,"99%, 1kg, 147g/mol"
+Calcium chloride dihydrate,Chemical Room C,25,Mallinckrodt,,,,"75%, 500g, 147.02g/mol"
+Casein,Chemical Room C,25,Sigma,,,,"500g, after dephos., suitable substrate for protein kinase"
+Cesium chloride,Chemical Room C,25,Cabot,,,,5.5lbs
+Cesium sulfate,Chemical Room C,25,"Kawecki Berylco Industries, Inc",,,,453.6g
+"Chelating resin, sodium form, dry mesh 50-100",Chemical Room C,25,Sigma,,,,"79%, 50g, ion exchange resin"
+Citric acid monohydrate,Chemical Room C,25,Fisher,,,,"99%, 453.6g, 210.14g/mol"
+Cobalt chloride hexahydrate,Chemical Room C,25,Sigma,,,,"100g, 237.9g/mol, dessication indicator"
+Copper(II) sulfate pentahydrate,Chemical Room C,25,Sigma,,,,"99%, 100g, 249.69g/mol, analytical reagent"
+Crystal violet solution,Chemical Room stains box,25,Sigma,,,,"2.3%, 250ml, dye"
+D-calcium pantothenate (vitamin B5),Chemical Room C,25,Acros,,,,"100g, 476.52g/mol, vitamin"
+2-deoxy-D-galactose,Chemical Room D,25,Sigma,,,,"98%, 5g, 164.2g/mol, hexose analog, inhibits 1,2-fucosylation"
+"Decyl Sodium Sulfate, HPLC grade",Chemical Room D,25,Kodak,,,,"5g, 260.32g/mol, surfactant, lysis agent"
+"Decyl Sodium Sulfate, HPLC grade (x3)",Chemical Room D,25,Acros,,,,"5g, 260.32g/mol, surfactant, lysis agent"
+"Deoxycholic acid, sodium salt",Chemical Room D,25,Sigma,,,,"100g, 414.5g/mol, membrane protein isolation"
+"Deoxycholic acid, sodium salt",Chemical Room D,25,Sigma,,,,"25g, 414.5g/mol, membrane protein isolation"
+Dextran sulfate sodium salt,Chemical Room D,25,Sigma,,,,"100g, ~500000g/mol, Nucleic acid hybridization STORAGE TEMP 2 to 8 C"
+"Dextrose, Anhydrous",Chemical Room D,25,Fisher,,,,"99.8%, 1kg, 180.16g/mol"
+Dimethyl sulfoxide (DMSO),Chemical Room D,25,Sigma,,,,"99.9%, 500ml, 78.13g/mol, polar aprotic solvent"
+Eosin Y,Chemical Room stains box,25,Fisher,,,,"88%, 25g, fluorescent red dye, stains cytoplasm, collagen, muscle fibres, other eosinophilic structures"
+EPPS (HEPPS),Chemical Room E,25,Sigma,,,,"99.5%, 25g, 252.33g/mol, buffering agent, pKa 8.00"
+Ethanolamine hydrochloride (ETA),Chemical Room E,25,Aldrich,,,,"98%, 250g, 97.55g/mol, Precursor to EDTA"
+"Ethylene glycol-bis(?-aminoethlether)-N,N,N',N'-tetraacetic acid (EGTA)",Chemical Room E,25,Sigma,,,,"97%, 100g, 380.4g/mol, Chelating agent (extra calcium affinity)"
+Ethylenediamine-tetraacetic acid disodium salt dihydrate (EDTA),Chemical Room E,25,Sigma,,,,"1kg, 372.2g/mol, Chelating agent"
+Ethylenediamine-tetraacetic acid tetrasodium salt (EDTA),Chemical Room E,25,Sigma,,,,"97%, 500g, 380.2g/mol, Chelating agent"
+?-estradiol,Chemical Room E,25,Sigma,,,,"98%, 250mg, 272.38g/mol, strong estrogen hormone, AVOID EXPOSURE"
+Ferric Chloride,Chemical Room F,25,Sigma,,,,"500g, 270.3g/mol"
+Ferrous ammonium sulfate hexahydrate,Chemical Room F,25,Sigma,,,,"500g, 392.1g/mol"
+Ferrous Chloride,Chemical Room F,25,Fisher,,,,"500g, 198.81g/mol"
+Ferrous sulfate,Chemical Room F,25,Sigma,,,,"99%, 250g, 278g/mol"
+Ficoll 400,Chemical Room F,25,Sigma,,,,"100g, 400g/mol"
+Ficoll PM 400,Chemical Room F,25,Sigma,,,,"25g, 400g/mol"
+Folinic acid calcium salt,Chemical Room F,25,Sigma,,,,"98%, 25mg, 511.5g/mol"
+Fuchsin - Basic,Chemical Room stains box,25,Harleco,,,,"92%, 25g"
+D-(+)-galactose,Chemical Room G,25,Sigma,,,,"500g, 180.2g/mol"
+D-(+)-glucose ,Chemical Room G,25,Sigma,,,,"500g, 180.16g/mol"
+Gelatin,Chemical Room G,25,Difco,,,,114g
+Giemsa stain,Chemical Room stains box,25,Matlinckrodt,,,,10g
+"Glass beads, 425-600 microns",Chemical Room G,25,Sigma,,,,100g
+"Glass beads, 425-600 microns",Chemical Room G,25,Sigma,,,,500g
+"Glass beads, 710-1180 microns",Chemical Room G,25,Sigma,,,,100g
+Glycine (Aminoacetic acid),Chemical Room G,25,Sigma,,,,"99%, 1kg, 75.07g/mol"
+Glyoxal trimeric dihydrate,Chemical Room G,25,Sigma,,,,"100g, 210.1g/mol, cross-linking agent"
+Guanidine (Aminomethanamidine) thiocyanate salt,Chemical Room G,25,Sigma,,,,"250g, 118.2g/mol"
+Gum arabic,Chemical Room G,25,Sigma,,,,500g
+8-hydroxyquinoline free base,Chemical Room HIJK,25,Sigma,,,,"100g, 145.2g/mol"
+HEPES,Chemical Room HIJK,25,Sigma,,,,"99.5%, 500g, 238.3g/mol"
+Hexamminecobalt(III) chloride,Chemical Room HIJK,25,Sigma,,,,"5g, 267.5g/mol"
+L-histidine monohydrochloride monohydrate,Chemical Room HIJK,25,Sigma,,,,"98%, 25g, 209.63g/mol"
+IGEPAL CA-630,Chemical Room HIJK,25,,,,,50ml
+Inositol,Chemical Room HIJK,25,Acros,,,,"98%, 100g, 180.16g/mol"
+Iron,Chemical Room HIJK,25,MCB,,,,"98%, 500g, 55.85g/mol"
+Janus Green B,Chemical Room stains box,25,Gurr's,,,,25g
+Janus Green B,Chemical Room stains box,25,,,,,"0.1%, 5ml"
+Bacto-lactose,Chemical Room L,25,Difco,,,,500g
+Lithium acetate dihydrate,Chemical Room L,25,US Biological,,,,"1kg, 102g/mol"
+Lithium chloride,Chemical Room L,25,Sigma,,,,"99%, 500g, 42.39g/mol"
+L-leucine,Chemical Room L,25,Sigma,,,,"98%, 25g, 131.18g/mol"
+L-lysine monohydrochloride,Chemical Room L,25,Sigma,,,,"98%, 100g, 182.65g/mol"
+2-mercaptoethanol (?-mercaptoethanol),Chemical Room M,25,Sigma,,,,"98%, 100ml, 78.13g/mol"
+6-methylpurine,Chemical Room M,25,Sigma,,,,"1g, 134.1g/mol"
+6-methylpurine,Chemical Room M,25,Sigma,,,,"99%, 100mg, 134.1g/mol"
+D-(+)-mannose,Chemical Room M,25,MP Biomedicals,,,,"100g, 180.2g/mol"
+D-(+)-melibiose monohydrate,Chemical Room M,25,Acros,,,,"99%, 100g, 360.32g/mol"
+Magnesium acetate,Chemical Room M,25,Sigma,,,,"100g, 214.5g/mol"
+Magnesium acetate,Chemical Room M,25,Fisher,,,,"100%, 500g, 214.46g/mol"
+Magnesium chloride hexahydrate,Chemical Room M,25,Sigma,,,,"99%, 500g, 203.31g/mol"
+Magnesium sulfate,Chemical Room M,25,Sigma,,,,"1kg, 246.5g/mol"
+"Magnesium sulfate, anhydrous",Chemical Room M,25,Acros,,,,"97%, 500g, 120.37g/mol"
+"Magnesium sulfate, anhydrous",Chemical Room M,25,Fisher,,,,"453g, 120.37g/mol"
+Maleic acid (cis-Butanedioic acid) monosodium salt,Chemical Room M,25,Sigma,,,,"99%, 100g, 138.1g/mol"
+Malt extract,Chemical Room M,25,Sigma,,,,100g
+"Maltose, hydrate",Chemical Room M,25,Sigma,,,,"500g, 360.3g/mol"
+Manganese chloride tetrahydrate,Chemical Room M,25,US Biological,,,,"99.9%, 500g, 197.9g/mol"
+Manganese(II) sulfate monohydrate,Chemical Room M,25,Sigma,,,,"98%, 100g, 169.02g/mol"
+MES (2-[N-Morpholino]ethanesulfonic acid),Chemical Room M,25,Sigma,,,,"99.5%, 100g, 195.2g/mol"
+Methyl cellulose (1500),Chemical Room M,25,Sigma,,,,100g
+Methyl cellulose (4000),Chemical Room M,25,Sigma,,,,100g
+Methyl Green,Chemical Room stains box,25,Harleco,,,,"97%, 25g"
+"Methylene Blue, trihydrate",Chemical Room stains box,25,Sigma,,,,"1g, 373.9g/mol"
+Methyl-?-D-glucopyranoside,Chemical Room M,25,Sigma,,,,"99%, 500g, 194.18g/mol"
+Mineral oil,Chemical Room M,25,Sigma,,,,1L
+MOPS,Chemical Room M,25,Sigma,,,,"500g, 209.26g/mol"
+Nickel chloride hexahydrate,Chemical Room NO,25,Sigma,,,,"100g, 237.7g/mol"
+Nicotinic acid (Niacin),Chemical Room NO,25,Sigma,,,,"100g, 123.1g/mol"
+Nonidet P-40,Chemical Room NO,25,Sigma,,,,50ml
+Nonidet P-40,Chemical Room NO,25,Sigma,,,,100ml
+Nonidet P-40,Chemical Room NO,25,Sigma,,,,100ml
+2.5-diphenyloxazole (ppo),Chemical Room P,25,RPI,,,,100g
+p-bis-[2-(5-phenylxazolyl)]-benzene (popop),Chemical Room P,25,RPI,,,,25g
+Penicillin G sodium salt,Chemical Room P,25,Sigma,,,,"25g, 356.4g/mol"
+Permount,Chemical Room P,25,Fisher,,,,100ml
+Phosphotungstic acid,Chemical Room P,25,Mallinckrodt,,,,"28.3g, 2880.2g/mol"
+PIPES,Chemical Room P,25,Sigma,,,,"99%, 25g, 302.4g/mol"
+PIPES free acid,Chemical Room P,25,US Biological,,,,"99.2%, 250g, 302.4g/mol"
+Polyethylene glycol (PEG) 1450,Chemical Room P,25,Sigma,,,,"500g, 1450g/mol"
+Polyethylene glycol (PEG) 2000,Chemical Room P,25,Sigma,,,,"250g, 2000g/mol"
+Polyethylene glycol (PEG) 3350,Chemical Room P,25,Sigma,,,,"1kg, 3350g/mol"
+Polyethylene glycol (PEG) 3350,Chemical Room P,25,Sigma,,,,"500g, 3350g/mol"
+Polyethylene glycol (PEG) 8000,Chemical Room P,25,Fisher,,,,"1kg, 8000g/mol"
+Polyethylenimine,Chemical Room P,25,Sigma,,,,"50%, 50ml"
+Polyoxyethylene 20 cetyl ether (Brij 58),Chemical Room P,25,Sigma,,,,500g
+Polyvinylpyrrolidone,Chemical Room P,25,Sigma,,,,"100g, 360000g/mol"
+Ponceau S sodium salt,Chemical Room P,25,Sigma,,,,"10g, 760.6g/mol"
+Ponceau S solution,Chemical Room P,25,Sigma,,,,"0.1%, 1L"
+Potassium acetate,Chemical Room P,25,Sigma,,,,"99%, 500g, 98.14g/mol"
+Potassium chloride,Chemical Room P,25,Sigma,,,,"99%, 500g, 74.56g/mol"
+Potassium hydroxide,Chemical Room P,25,Sigma,,,,"250g, 56.11g/mol"
+Potassium iodide,Chemical Room P,25,Fisher,,,,"500g, 166.01g/mol"
+Potassium phosphate monobasic,Chemical Room P,25,Fisher,,,,"99.7%, 500g, 136.09g/mol"
+"Potassium phosphate, dibasic anhydrous",Chemical Room P,25,Fisher,,,,"99.9%, 453g, 174.18g/mol"
+D-(+)-raffinose,Chemical Room QR,25,Sigma,,,,"99%, 100g, 594.5g/mol"
+Rubidium chloride,Chemical Room QR,25,Sigma,,,,"99%, 5g, 120.9g/mol"
+di-sodium hydrogen phosphate dihydrate,Chemical Room S,25,Fluka,,,,"99%, 250g, 177.99g/mol"
+D-sorbitol,Chemical Room S,25,Acros,,,,"97%, 1kg, 182.17g/mol"
+D-sorbitol (D-glucitol),Chemical Room S,25,Sigma,,,,"98%, 500g, 182.2g/mol"
+Silver nitrate,Chemical Room S,25,Sigma,,,,"25g, 169.87g/mol"
+Sodium acetate trihydrate,Chemical Room S,25,Sigma,,,,"99%, 2kg, 136.1g/mol"
+Sodium acetate trihydrate,Chemical Room S,25,Sigma,,,,"99%, 2kg, 136.1g/mol"
+Sodium citrate dihydrate,Chemical Room S,25,Fisher,,,,"99%, 1kg, 294.1g/mol"
+Sodium dodecyl sulfate,Chemical Room S,25,Fisher,,,,"99%, 500g, 288.38g/mol"
+Sodium phosphate monobasic,Chemical Room S,25,Sigma,,,,"99%, 1kg, 119.98g/mol"
+Sodium phosphate monobasic,Chemical Room S,25,Fisher,,,,"99.2%, 2.26kg, 137.99g/mol"
+"Sodium phosphate monobasic, anhydrous",Chemical Room S,25,Fisher,,,,"500g, 119.96g/mol"
+"Sodium phosphate, dibasic anhydrous",Chemical Room S,25,Sigma,,,,"99%, 100g, 142g/mol"
+Sucrose,Chemical Room S,25,Sigma,,,,"500g, 342.3g/mol"
+Sucrose,Chemical Room S,25,Sigma,,,,"99.5%, 1kg, 342.3g/mol"
+Sodium iodide,Chemical Room S,25,Sigma,,,,"99%, 100g, 149.89g/mol"
+Sodium nitrite,Chemical Room S,25,J.T. Baker,,,,"500g, 69g/mol"
+Silicon dioxide,Chemical Room S,25,Sigma,,,,"99%, 100g, 60.09g/mol"
+Sodium borate,Chemical Room S,25,Mallinckrodt,,,,"453.6g, 381.37g/mol"
+Sodium carbonate,Chemical Room S,25,MCB,,,,"453.6g, 105.99g/mol"
+Sodium hydrogencitrate sesquihydrate,Chemical Room S,25,Aldrich,,,,"99%, 250g, 263.11g/mol"
+Sodium potassium tartrate tetrahydrate (Rochelle Salt),Chemical Room S,25,Sigma,,,,"500g, 282.2g/mol"
+Sodium thiocyanate,Chemical Room S,25,Sigma,,,,"98%, 250g, 81.07g/mol"
+Sodium sulfate anhydrous,Chemical Room S,25,Fisher,,,,"453g, 142.04g/mol"
+Sodium molybdate(VI) dihydrate,Chemical Room S,25,Acros,,,,"99%, 100g, 241.95g/mol"
+Sulfanilamide (p-Aminobenzenesulfonamide),Chemical Room S,25,Sigma,,,,"99%, 100g, 172.2g/mol"
+Sodium perchlorate,Chemical Room S,25,Fisher,,,,"500g, 140.46g/mol"
+Sodium bicarbonate,Chemical Room S,25,Sigma,,,,"500g, 84.01g/mol"
+Sodium bicarbonate,Chemical Room S,25,Sigma,,,,"100%, 500g, 84.01g/mol"
+Sodium metabisulfate,Chemical Room S,25,Sigma,,,,"98.3%, 100g, 190.1g/mol"
+Sodium bisulfate,Chemical Room S,25,Sigma,,,,"66.5%, 100g"
+Sodium lauryl sulfate (SLS),Chemical Room S,25,Sigma,,,,"95%, 100g, 288.4g/mol"
+Sodium azide,Chemical Room S,25,EH&S x4866,,,,
+Sulforhodamine 101,Chemical Room S,25,Sigma,,,,"100mg, 606.7g/mol"
+Sodium m-periodate,Chemical Room S,25,Sigma,,,,"25g, 213.9g/mol"
+Succinic acid,Chemical Room top shelf,25,Sigma,,,,"99%, 500g, 118.09g/mol, 10 BOTTLES"
+"Tetrasodium pyrophosphate, anhydrous",Chemical Room T,25,Sigma,,,,"500g, 265.9g/mol"
+Trizma hydrochloride (Tris),Chemical Room T,25,Sigma,,,,"1kg, 157.6g/mol"
+"D-(+)-trehalose, dihydrate",Chemical Room T,25,US Biological,,,,"99.6%, 500g, 378.3g/mol"
+Trizma base (Tris),Chemical Room T,25,Sigma,,,,"500g, 121.1g/mol"
+Tween 20 (polyoxyethylenesorbitan monolaurate),Chemical Room T,25,Fisher,,,,"500ml, 1227.54g/mol"
+Tween 20 (polyoxyethylenesorbitan monolaurate),Chemical Room T,25,Sigma,,,,"100ml, 1227.54g/mol"
+Triton X-100,Chemical Room T,25,Fisher,,,,500ml
+"Trizma Pre-set crystals, pH 7.0",Chemical Room T,25,Sigma,,,,"100g, 154.8g/mol"
+"TEMED (N.N.N',N'-tetra-methyl-ethylenediamine",Chemical Room T,25,Bio-Rad,,,,5ml
+Tetramethylene sulfone (solfolane),Chemical Room T,25,Aldrich,,,,"99%, 100g, 120.17g/mol"
+"Trichloroacetic acid, crystalline (TCA)",Chemical Room T,25,Sigma,,,,"500g, 163.4g/mol"
+Trypan Blue,Chemical Room stains box,25,Sigma,,,,"40%, 25g, 960.8g/mol"
+Urea,Chemical Room UVWXYZ,25,Sigma,,,,"500g, 60.06g/mol"
+Uracil,Chemical Room UVWXYZ,25,Sigma,,,,"99%, 25g, 112.09g/mol"
+Vanadyl sulfate,Chemical Room UVWXYZ,25,Fisher,,,,"100g, 163g/mol"
+Vanillin,Chemical Room UVWXYZ,25,Sigma,,,,"100g, 152.15g/mol"
+Xylene Cyanole FF,Chemical Room stains box,25,,,,,
+"Zinc acetate, dihydrate",Chemical Room UVWXYZ,25,Sigma,,,,"99.9%, 500g, 219.5g/mol"
+Zinc chloride,Chemical Room UVWXYZ,25,Fisher,,,,"96.3%, 453g, 136.28g/mol"
+Zinc nitrate,Chemical Room UVWXYZ,25,Sigma,,,,"100g, 189.36g/mol"
+Zinc sulfate,Chemical Room UVWXYZ,25,Fisher,,,,"1kg, 287.54g/mol"
+Zinc sulfate,Chemical Room UVWXYZ,25,Sigma,,,,"500g, 287.5g/mol"
+Deoxyribonuclease I (DNAse I),"-20 A, Lower, Jar 1",-20,,,,,
+Ribonuclease A (RNAse A),"-20 A, Lower, Jar 1",-20,,,,,
+Proteinase K,"-20 A, Lower, Jar 1",-20,,,,,
+Trypsin,"-20 A, Lower, Jar 1",-20,,,,,
+alpha-amylase,"-20 A, Lower, Jar 1",-20,,,,,
+Oligo dT cellulose,"-20 A, Lower, Jar 1",-20,,,,,
+Adenosine 2-3 Monophosphate (AMP),"-20 A, Lower, Jar 2",-20,,,,,
+Cytodine 2-3 Monophosphate (CMP),"-20 A, Lower, Jar 2",-20,,,,,
+Guanosine 2-3 Monophosphoric acid (GMP),"-20 A, Lower, Jar 2",-20,,,,,
+S-Adenosyl-L-Methionine chloride,"-20 A, Lower, Jar 2",-20,,,,,
+Dansyl Chloride,"-20 A, Lower, Jar 2",-20,,,,,
+Spermidine,"-20 A, Lower, Jar 2",-20,,,,,
+o-Nitrophenyl-b-D-galactopyranoside (o-Nitrophenyl-a-D-galactoside),"-20 A, Lower, Jar 2",-20,,,,,
+beta-nicotinamide-adenine-dinucleotide (beta-NAD),"-20 A, Lower, Jar 2",-20,,,,,
+Cytochrome C,"-20 A, Lower, Jar 2",-20,,,,,
+Lyticase,"-20 A, Lower, Jar 2",-20,,,,,
+Tetracycline (3 bottles),"-20 A, Lower, Jar 3",-20,,,,,
+"3-Amino 1,2,4-Triazole","-20 A, Lower, Jar 3",-20,,,,,
+5-Fluorootoic acid (5-FOA),"-20 A, Lower, Jar 3",-20,,,,,
+Isopropyl-beta-D-Thiogalactoside (IPTG),"-20 A, Lower, Jar 4",-20,,,,,
+"0.6 micron gold, 6 mg/ml","-20 A, Lower, Jar 4",-20,,,,,
+Dithiothreitol (DTT),"-20 A, Lower, Jar 4",-20,,,,,
+Lysozyme,"-20 A, Lower, Jar 4",-20,,,,,
+"5'-PO4, Na+ Salt (pd(N)6)","-20 A, Lower, Jar 5",-20,,,,,
+polyuridylic acid (poly(U)),"-20 A, Lower, Jar 5",-20,,,,,
+poly-L-lysine hydrobromide (poly-L),"-20 A, Lower, Jar 5",-20,,,,,
+"5-(and-6)-carboxyfluorescein diacetate succinimidyl ester (5(6)-CFDA, SE; CFSE)","-20 A, Lower, Jar 5",-20,,,,,
+bisBenzimide,"-20 A, Lower, Jar 5",-20,,,,,
+"Ribonucleic acid, transfer (tRNA)","-20 A, Lower, Jar 5",-20,,,,,
+Glutaraldehyde,"-20 A, Lower, Jar 5",-20,,,,,
+"5'-bromo-2'-deoxyuridine (bromodeoxyuridine, BrdU)","-20 A, Lower, Jar 5",-20,,,,,
+monoclonal anti-BrdU Clone BU-33,"-20 A, Lower, Jar 5",-20,,,,,
+Methotrexate (MTX),"-20 A, Lower, Jar 6",-20,,,,,
+Blasticidine S hydrochloride (Blasticidin HCl),"-20 A, Lower, Jar 7",-20,,,,,
+"Fibrinogen, bovine plasma","-20 A, Lower, Jar 7",-20,,,,,
+"Nuclease, Micrococcal","-20 A, Lower, Jar 7",-20,,,,,
+Chymostatin,"-20 A, Lower, Jar 7",-20,,,,,
+To-Pro-3 (ToPro),"-20 A, Lower, Jar 8",-20,,,,,
+Po-Pro-1 (PoPro),"-20 A, Lower, Jar 9",-20,,,,,
+2-NBDG,"-20 A, Lower, Jar 9",-20,,,,,
+"4,6 Diamidino 2-Phenylindole (DAPI)","-20 A, Lower, Jar 9",-20,,,,,
+Carbenicillin (Carbenicillin),"-20 A, Lower, Jar 10",-20,,,,,
+Geneticin (G418),"-20 A, Lower, Jar 10",-20,,,,,
+"SYTOX Red, dead cell stain","-20 A, Lower, Jar 11",-20,,,,,
+"SYBR Green I, nucleic acid gel stain","-20 A, Lower, Jar 11",-20,,,,,
+"4,6 Diamidino 2-Phenylindole (5mg/ml) (DAPI)","-20 A, Lower, Jar 11",-20,,,,,
+Yeast Mitochondrial stain sampler kit,"-20 A, Lower, Jar 11",-20,,,,,
+Deoxyribonucleic acid methyl green (DNA methyl green),"-20 A, Lower, Jar 11",-20,,,,,
+Putrescine,"-20 A, Lower, Jar 12",-20,,,,,
+Spermine tetrahydrochloride,"-20 A, Lower, Jar 12",-20,,,,,
+Pyridoxamine diHCl,"-20 A, Lower, Jar 12",-20,,,,,
+Pyridoxal HCl,"-20 A, Lower, Jar 12",-20,,,,,
+adenosine 5'-triphosphate (ATP),"-20 A, Lower, Jar 12",-20,,,,,
+uridine 5'-triphosphate (UTP),"-20 A, Lower, Jar 12",-20,,,,,
+cytidine 5'-triphosphate (CTP),"-20 A, Lower, Jar 12",-20,,,,,
+guanosine 5'-triphosphate (GTP),"-20 A, Lower, Jar 12",-20,,,,,
+RNase A (100mg/ml),"-20 A, , ""Sequencing"" Box",-20,,,,,
+Zymolyase 20T (45mg/ml),"-20 A, , ""Sequencing"" Box",-20,,,,,
+Proteinase K (20mg/ml),"-20 A, , ""Sequencing"" Box",-20,,,,,
+Makroglobulin,"4C bench 5a, Mid, Jar 13",4,,,,,
+Immobilized heparin,"4C bench 5a, Mid, Jar 13",4,,,,,
+Heparin,"4C bench 5a, Mid, Jar 13",4,,,,,
+Eco R1 Rse Stopper 10x ,"4C bench 5a, Mid, Jar 13",4,,,,,
+Streptomycin sulfate salt,"4C bench 5a, Mid, Jar 13",4,,,,,
+propidium iodide (prop-io),"4C bench 5a, Top, Jar 14",4,,,,,
+nalidixic acid,"4C bench 5a, Top, Jar 14",4,,,,,
+fluorescein isothicyanate-dextran (FITC-dextran),"4C bench 5a, Top, Jar 14",4,,,,,
+glycogen type VII,"4C bench 5a, Top, Jar 14",4,,,,,
+folic acid,"4C bench 5a, Top, Jar 14",4,,,,,
+6-methylpurine,"4C bench 5a, Top, Jar 14",4,,,,,
+D-pantothenic acid,"4C bench 5a, Top, Jar 14",4,,,,,
+pyridoxine monohydrochloride,"4C bench 5a, Top, Jar 15",4,,,,,
+podophyllotoxin (PPT),"4C bench 5a, Top, Jar 15",4,,,,,
+thymidine,"4C bench 5a, Top, Jar 15",4,,,,,
+riboflavin,"4C bench 5a, Top, Jar 15",4,,,,,
+"DL-6,8-thioctic acid (DL-alpha-lipoic acid)","4C bench 5a, Top, Jar 15",4,,,,,
+Chloramphenicol (Chloromycetin),"4C bench 5a, Top, Jar 16",4,,,,,
+Zymolyase 20T,"4C bench 5a, Top, Jar 16",4,,,,,
+paclitaxel,"4C bench 5a, Top, Jar 16",4,,,,,
+cycloheximide,"4C bench 5a, Top, Jar 17",4,,,,,
+nourseothricin (ClonNAT),"4C bench 5a, Top, Jar 18",4,,,,,
+Hygromycin B ,"4C bench 5a, Top, Jar 18",4,,,,,
+actinomycin D,"4C bench 5a, Top, Jar 18",4,,,,,
+"adenosine 5'-triphosphate, disodium (ATP)","4C bench 5a, Top, Jar 19",4,,,,,
+2'-deoxyadenosine 5'-triphosphate disodium (dATP),"4C bench 5a, Top, Jar 19",4,,,,,
+2'-deoxycytidine 5'-triphosphate sodium (dCTP),"4C bench 5a, Top, Jar 19",4,,,,,
+2'-deoxyguanosine 5'-triphosphate sodium (dGTP),"4C bench 5a, Top, Jar 19",4,,,,,
+"2,4-dihydroxypyrimidine (Uracil)","4C bench 5a, Top, Jar 19",4,,,,,
+5% DL-alpha-aminoadipic acid,"4C bench 2a, Top, ",4,,,,,
+deoxyribonucleic acid (salmon sperm DNA solid),"4C bench 5a, Top, Jar 20",4,,,,,
+deoxyribonucleic acid (E. coli DNA solid),"4C bench 5a, Top, Jar 20",4,,,,,
+benzamidine hydrochloride,"4C bench 5a, Top, Jar 20",4,,,,,
+aprotinin,"4C bench 5a, Top, Jar 20",4,,,,,
+"DL-2,6-diaminoheptanedioic acid (diaminopimelic acid)","4C bench 5a, Top, Jar 20",4,,,,,
+p-aminobenzoic acid,"4C bench 5a, Top, Jar 20",4,,,,,
+d-biotin,"4C bench 5a, Top, Jar 20",4,,,,,
+Pronase,"4C bench 5a, Top, Jar 21",4,,,,,
+Vinblastine sulfate salt,"4C bench 5a, Top, Jar 21",4,,,,,
+alkaline phosphatase,"4C bench 5a, Top, Jar 21",4,,,,,
+amphidicolin,"4C bench 5a, Top, Jar 21",4,,,,,
+"1,4-diazabicyclo[2.2.2]octane (DABCO; triethylenediamine)","4C bench 5a, Mid, Jar 22",4,,,,,
+dibucaine,"4C bench 5a, Mid, Jar 22",4,,,,,
+Guanyloribonuclease (ribonuclease TI),"4C bench 5a, Mid, Jar 22",4,,,,,
+pyruvate kinase,"4C bench 5a, Mid, Jar 22",4,,,,,
+Anti-rabbit IgG,"4C bench 5a, Mid, Jar 22",4,,,,,
+Anti-mouse IgG,"4C bench 5a, Mid, Jar 22",4,,,,,
+Paromomycin sulfate (Humatin),"4C bench 5a, Mid, Jar 22",4,,,,,
+Faststart Taq DNA Polymerase GC-Rich buffer (GC-Rich Taq buffer),"-20 B, Drawer A, Box 1",-20,,,,,
+Magnesium sulfate (50mM) (MgSO4 (50mM)),"-20 B, Drawer A, Box 1",-20,,,,,
+Magnesium chloride (25mM) (MgCl2 (25mM)),"-20 B, Drawer A, Box 1",-20,,,,,
+Magnesium chloride (50mM) (MgCl2 (50mM)),"-20 B, Drawer A, Box 1",-20,,,,,
+Faststart 10X buffer (with Mg),"-20 B, Drawer A, Box 1",-20,,,,,
+Faststart 10X buffer (without Mg),"-20 B, Drawer A, Box 1",-20,,,,,
+Herculase polymerase buffer (Herc. buffer),"-20 B, Drawer A, Box 1",-20,,,,,
+2'-deoxyadenosine 5'-triphosphate (100mM) (dATP (100mM)),"-20 B, Drawer A, Box 1",-20,,,,,
+2'-deoxycytidine 5'-triphosphate (100mM) (dCTP (100mM)),"-20 B, Drawer A, Box 1",-20,,,,,
+2'-deoxyguanosine 5'-triphosphate (100mM) (dGTP (100mM)),"-20 B, Drawer A, Box 1",-20,,,,,
+2'-deoxyuridine 5'-triphosphate (100mM) (dUTP (100mM)),"-20 B, Drawer A, Box 1",-20,,,,,
+2'-deoxythymidine 5'-triphosphate (100mM) (dTTP (100mM)),"-20 B, Drawer A, Box 1",-20,,,,,
+Standard Taq buffer (10X),"-20 B, Drawer A, Box 1",-20,,,,,
+Buffer for Taq I,"-20 B, Drawer A, Box 1",-20,,,,,
+Elongase buffer A,"-20 B, Drawer A, Box 1",-20,,,,,
+Elongase buffer B,"-20 B, Drawer A, Box 1",-20,,,,,
+PFU buffer 1,"-20 B, Drawer A, Box 1",-20,,,,,
+PFU buffer 2,"-20 B, Drawer A, Box 1",-20,,,,,
+Cloned PFU buffer,"-20 B, Drawer A, Box 1",-20,,,,,
+Thermo polymerase buffer,"-20 B, Drawer A, Box 1",-20,,,,,
+PCR x enhancer (10X),"-20 B, Drawer A, Box 1",-20,,,,,
+Q-solution (Qiagen) (5X),"-20 B, Drawer A, Box 1",-20,,,,,
+Bovine serum albumin (BSA),"-20 B, Drawer A, Box 2",-20,,,,,
+Acetylated bovine serum albumin (Acetylated BSA),"-20 B, Drawer A, Box 2",-20,,,,,
+SDS-PAGE standard (Broad range),"-20 B, Drawer A, Box 2",-20,,,,,
+SDS-PAGE standard (Low range),"-20 B, Drawer A, Box 2",-20,,,,,
+RNase A (5mg/ml),"-20 B, Drawer A, Box 2",-20,,,,,
+RNase Cocktail (1mg/ml),"-20 B, Drawer A, Box 2",-20,,,,,
+Dithiothreitol (1M) (DTT (1M)),"-20 B, Drawer A, Box 2",-20,,,,,
+Mung Bean nuclease (8/03),"-20 B, Drawer A, Box 3",-20,,,,,
+Mung Bean nuclease buffer (10x),"-20 B, Drawer A, Box 3",-20,,,,,
+T4 DNA ligase (5/05),"-20 B, Drawer A, Box 3",-20,,,,,
+"T4 ligase buffer, 6 aliquots","-20 B, Drawer A, Box 3",-20,,,,,
+T4 ligase buffer (10x),"-20 B, Drawer A, Box 3",-20,,,,,
+Shrimp Phosphatase Buffer (10x),"-20 B, Drawer A, Box 3",-20,,,,,
+Alkaline Phosphatase dilution buffer,"-20 B, Drawer A, Box 3",-20,,,,,
+glycogen (20mg/ml),"-20 B, Drawer A, Box 3",-20,,,,,
+DNA Polymerase I/Klenow NEBuffer,"-20 B, Drawer A, Box 3",-20,,,,,
+PNK buffer,"-20 B, Drawer A, Box 3",-20,,,,,
+S1 (1u/ml),"-20 B, Drawer A, Box 3",-20,,,,,
+S1 Buffer,"-20 B, Drawer A, Box 3",-20,,,,,
+TdT buffer (5x),"-20 B, Drawer A, Box 3",-20,,,,,
+Quick ligase buffer (NEB),"-20 B, Drawer A, Box 3",-20,,,,,
+NEBuffer 1,"-20 B, Drawer A, Box 4",-20,,,,,
+NEBuffer 2,"-20 B, Drawer A, Box 4",-20,,,,,
+NEBuffer 3,"-20 B, Drawer A, Box 4",-20,,,,,
+NEBuffer 4,"-20 B, Drawer A, Box 4",-20,,,,,
+NEBuffer Y,"-20 B, Drawer A, Box 4",-20,,,,,
+BssHII Buffer,"-20 B, Drawer A, Box 4",-20,,,,,
+BstAPI Buffer,"-20 B, Drawer A, Box 4",-20,,,,,
+DpnII Buffer,"-20 B, Drawer A, Box 4",-20,,,,,
+EcoRI Buffer,"-20 B, Drawer A, Box 4",-20,,,,,
+NruI Buffer,"-20 B, Drawer A, Box 4",-20,,,,,
+NsiI Buffer,"-20 B, Drawer A, Box 4",-20,,,,,
+Sau3AI Buffer,"-20 B, Drawer A, Box 4",-20,,,,,
+ScaI Buffer,"-20 B, Drawer A, Box 4",-20,,,,,
+SspI Buffer,"-20 B, Drawer A, Box 4",-20,,,,,
+Bovine serum albumin (BSA),"-20 B, Drawer A, Box 4",-20,,,,,
+Hyperladder I,"-20 B, Drawer A, Box 5",-20,,,,,
+Hyperladder II,"-20 B, Drawer A, Box 5",-20,,,,,
+Hyperladder III,"-20 B, Drawer A, Box 5",-20,,,,,
+Hyperladder V,"-20 B, Drawer A, Box 5",-20,,,,,
+6x loading dye (Orange),"-20 B, Drawer A, Box 5",-20,,,,,
+10 bp ladder (Invitrogen),"-20 B, Drawer A, Box 5",-20,,,,,
+Low mass ladder (Invitrogen),"-20 B, Drawer A, Box 5",-20,,,,,
+2-log ladder (NEB),"-20 B, Drawer A, Box 5",-20,,,,,
+glycogen (20mg/ml),"-20 B, Drawer A, Box 5",-20,,,,,
+lamda DNA,"-20 B, Drawer A, Box 5",-20,,,,,
+100bp ladder (NEB),"-20 B, Drawer A, Box 5",-20,,,,,
+"100bp ladder (Fermentas, O'Gene Ruler)","-20 B, Drawer A, Box 5",-20,,,,,
+200bp step ladder (Promega),"-20 B, Drawer A, Box 5",-20,,,,,
+1kb ladder (1:10) (unknown source),"-20 B, Drawer A, Box 5",-20,,,,,
+1kb ladder (NEB),"-20 B, Drawer A, Box 5",-20,,,,,
+2.5kb ladder (Bio-Rad),"-20 B, Drawer A, Box 5",-20,,,,,
+Gibson Master Mix,-20 A,-20,,,,,

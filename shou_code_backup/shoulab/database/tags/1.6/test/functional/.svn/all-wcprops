@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/test/functional
+END
+oligos_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/test/functional/oligos_controller_test.rb
+END
+equipment_and_supplies_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/test/functional/equipment_and_supplies_controller_test.rb
+END
+shoulab_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/test/functional/shoulab_controller_test.rb
+END
+users_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/test/functional/users_controller_test.rb
+END
+bacterial_plasmids_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/test/functional/bacterial_plasmids_controller_test.rb
+END
+equipment_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/test/functional/equipment_controller_test.rb
+END
+admin_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/test/functional/admin_controller_test.rb
+END
+yeast_strains_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/test/functional/yeast_strains_controller_test.rb
+END

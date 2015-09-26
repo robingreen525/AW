@@ -1,0 +1,15 @@
+package org.fhcrc.honeycomb.metapop.lookuptable;
+
+/** 
+ * Defines a lookup table for storing results of the ode.
+ *
+ * Created on 05 Aug, 2013
+ * @author Adam Waite
+ * @version $Rev$, $Date$, $Author$
+ *
+ */
+public interface LookupTable {
+    void setValue(double val, double ... keys);
+    double getValue(double ... keys);
+    void print();
+}

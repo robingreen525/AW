@@ -1,0 +1,37 @@
+1	TATAACAATCAAGAAAAACAAGAAAATCGGACAAAACAATCAAGTCGTACGCTGCAGGTCGAC	45bp upstream of ADE2 start, underline: WSB20-26	N= 63, G-C=12/18, Tm=61C100 nmole
+2	TTATAATTATTTGCTGTACAAGTATATCAATAAACTTATATATTACATCGATGAATTCGAGCTCG	45bp dnstrm (incl) ADE2 stop, underline: WSB20-26	N= 65, G-C=10/20, Tm=57C100 nmole
+3	tggtgaaccatctaaccg	Nt.8-25 of HIS1 ORF	N=18, G-C=9/18, Tm= 54C
+4	CCCTCATTGTCTCACCAC	reverse primer against Nt. 538-521 of HIS1 ORF	N=18, G-C=10/18, Tm= 56C
+5	CGGGATCCAGTAAAGGAGAAGAACTTTTCACTG	BamHI, against codon 2 and on in Venus, CFP, YFP	N=25, G-C=9/25, Tm= 56C
+6	GCTCTAGAtttgtatagttcatccatgccatg	XbaI, against last coding codon and upst in Venus, CFP, YFP	N=24, G-C=9/24, Tm= 56C
+7	GCTCTAGAAGTAAAGGAGAAGAACTTTTCACTG	XbaI, against codon 2 and on in Venus, CFP, YFP	N=25, G-C=9/25, Tm= 56C
+8	AACCGCTCGAGtttgtatagttcatccatgccatg	XhoI, against last coding codon and upst in Venus, CFP, YFP	N=24, G-C=9/24, Tm= 56C
+9	CGGGATCCgcctcctccgaggacgtcat	BamHI, against codon 2 and on in dsRed	N=20, G-C=13/20, Tm= 63C
+10	CATGCCATGGcaggaacaggtggtggcgg	NcoI, against last coding codon and upstream in dsRed	N=19, G-C=13/19, Tm= 63C
+11	CATGCCATGGgcctcctccgaggacgtcat	NcoI, against codon 2 and on in dsRed	N=20, G-C=13/20, Tm= 63C
+12	AACCGCTCGAGcaggaacaggtggtggcgg	XhoI, against last coding codon and upstream in dsRed	N=19, G-C=13/19, Tm= 63C
+13	ATTCCCAAGCTTATGAGTAAAGGAGAAGAACTTTTCACTG	HindIII, against codon 1 and on in Venus, CFP, YFP	N=25, G-C=9/25, Tm= 56C
+14	ATTCCCAAGCTTATGgcctcctccgaggacgt	HindIII, against codon 1 and on in dsRed	N=20, G-C=13/20, Tm= 63C
+15	AACCGCTCGAGctatttgtatagttcatccatgcc	XhoI, against stop codon and upst in Venus, CFP, YFP	N=24, G-C=9/24, Tm= 56C
+16	AACCGCTCGAGctacaggaacaggtggtggc	XhoI, against stop codon and upst in deRed(T1.N1 or T4)	N=20, G-C=12/20, Tm= 61C
+17	ATTCCCAAGCTTatgtctaaaggtgaagaattattcactgg	HindIII, against codon 1 and on in yEGFP	N=26, G-C=9/26, Tm= 56C
+18	AACCGCTCGAGctatttgtacaattcatccataccatgg	XhoI, against stop codon and upst in yEGFP	N=25, G-C=9/25, Tm= 56C
+19	gcgcgcaattaaccctcac	resides in pRS40x.  Can be used to sequence toward SacI site etc. in the polylinker. 	N=19, G-C=11/19, Tm= 59C
+20	ATTCCCAAGCTTATGcaccaccaccaccaccacgcctcctccgaggacgtCAT  	HindIII, ATG,6xHis, and codon2+ in dsRedT1.N1.	N=20, G-C=13/20, Tm= 63C(~WSO14). 
+21	ATTCCCAAGCTTatgagaggatctcaccatcacc	HindIII, against codon 1 and on in pQE80L,81L, 82L	N=22, G-C=11/22, Tm= 59C
+22	AAGTTTAGCAAAGAAAGAGGTACAGCAAACAGCAGAATAGAAAAAaatgtggctgtggtttcagg	The first 45 is against  45Nts immediately upstream of ADE4.  The last 20 is against URA3 promoter (starting 250Nt upstream of Start)	N=20, G-C=10/20, Tm=57C
+23	GAAACTATTTTACATACAACTGAACAAGTTCGGAACAATCTATCAgagattcccgggtaataactg	The first 45 is against 45Nts immediately downstream of ADE4.  The last 21 is against URA3 terminator (up to 90Nts downstream of the last codon)	N=21, G-C=10/21, Tm=57.1C
+24	TAAAAGTGCAACGACAACCCAAGTAATTGTATACTTTAACAAACCaatgtggctgtggtttcagg	The first 45 is against 45Nts immediately upstream of LYS21.  The last 21 is against URA3 promoter (starting 250Nt upstream of Start)	N=20, G-C=10/20, Tm=57C
+25	TATGTGTATGTTTGAAATATGTGTACTATATATATAATGAAACTAgagattcccgggtaataactg 	The first 45 is against 45Nts immediately downstream of LYS21.  The last 21 is against URA3 terminator (up to 90Nts downstream of the last codon)	N=21, G-C=10/21, Tm=57.1C
+26	gttgcgaagacatcgtcttg	Last base is 68 basepairs upstream of Ade4 start 	N=20, G-C=10/20, Tm=56.9C
+27	gtataaatgggcgcatttgg	First base is 41 basepairs downstream of Ade4 end	N=20, G-C=9/20, Tm=54.9C
+28	cttcttgttgcgtttaggcc	Last base is 62 basepairs upstream of Lys21 start	N=20, G-C=10/20, Tm=57.1C
+29	taaacacctaataacgcccag	First base is 42 basepairs downstream of Lys21 end	N=21, G-C=9/21, Tm=55.2C
+30	cttaactgtgccctccatg	The first base is complementary to the 225th Nt from the start of URA3.  Reverse primer with respect to start. 	N=19,G-C=10/19, Tm=56.6C
+31	aaaacctgcaggaaacgaag	The first base is 27 bp upstream of URA3	N=20, G-C=9/20, Tm=54.9C
+32	cgtgggttactttgctagg	The first base is 500 bp upstream of the start of Lys20.	N=19,G-C=10/19, Tm=56.6C
+33	CAATGGACCAGAACTACCTG	revese primer targeted against TRP1 Nt 39-> 20	N=20, G-C=10/20, Tm=57.1C
+34	ggtgtggagacaaatggtg	forward primer targeted against TRP1 Nt 606-> 624 (~50 Nts upstream of stop)	N=19,G-C=10/19, Tm=56.6C
+35	gcttgagaagagatcaggc	The first base is 398 bp upstream of the start of Lys21.	N=19,G-C=10/19, Tm=56.6C
+36	CTGGCAAAACGACGATCTTC	revese primer targeted against LEU2 Nt 34-> 15	N=20, G-C=10/20, Tm=57.1C
+37	gatgctgtcgccgaagaag	forward primer targeted against LEU2 end (1st Nt 36 Nts upstream of stop)	N=19, G-C=11/19, Tm=59C

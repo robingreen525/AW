@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/config
+END
+routes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/config/routes.rb
+END
+database.yml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/config/database.yml
+END
+boot.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/config/boot.rb
+END
+environment.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/config/environment.rb
+END

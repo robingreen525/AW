@@ -1,0 +1,211 @@
+// vim: set filetype=java tabstop=2 shiftwidth=2 expandtab :
+
+import ij.*;
+import ij.measure.*;
+import ij.process.*;
+import ij.io.Opener;
+import ij.plugin.*;
+import ij.plugin.frame.RoiManager;
+import ij.plugin.filter.*;
+import ij.gui.*;
+
+import java.io.File;
+import java.util.*;
+
+import org.fhcrc.honeycomb.*;
+import org.fhcrc.honeycomb.hcimage.*;
+import org.fhcrc.honeycomb.hcexperiment.*;
+
+/**
+ * Rainman is an image analysis program developed to count and quantify the 
+ * fluorescence intensity of cells in an image obtained via microscopy.
+ * @author Adam Waite
+ * @since $Date$
+ */
+public class Rainman_ implements PlugIn {
+  // Default parameters for brightfield manipulation.
+  private String size = "1-200";
+  private String circ = "0.50-1.0";
+  private int rb_radius = 100; // Radius for rolling ball algorithm.
+  private int find_max_tol = 10;
+  private int area_thresh = 4;
+  private int sd_area_thresh = 152; // Defines cutoff for SD/Area ratio.
+  private int sd_above_bg = 4;
+  // Qantitative data
+  private int[] count_array;
+  private int[] ind_count_array;
+  private int final_bf_counts = 0;
+
+  private String project_name;
+
+  // Directories 
+  private File project_path;
+  private File results_path;
+  private File compiled_data_path;
+
+  // Files
+  private File path_to_counts;
+  private File path_to_drawing_list; 
+  private File path_to_stack_list;
+  private File path_to_skip_list;
+
+  // Selections.
+  private class SelectionPaths {
+    public final File background; 
+    public final File initial_cell;
+    public final File final_cell;
+    public final File voronoi;
+    public final File adjusted;
+    public final File independent;
+
+    public SelectionPaths(File path, String name) {
+      background   = new File(path,name+"_bg_selection.zip"); 
+      initial_cell = new File(path,name+"_initial_selections.zip");
+      final_cell   = new File(path,name+"+_final_selections.zip");
+      voronoi      = new File(path,name+"_voronoi_selections.zip");
+      adjusted     = new File(path,name+"_adjusted_selections.zip");
+      independent  = new File(path,name+"_independent_selections.zip");
+    }
+  }
+  
+  private class ImagePaths {
+    public final File flat;    
+    public final File background_subtracted;
+    public final File background_mask;
+    public final File selection_drawing;
+
+    public ImagePaths(File path, String position) {
+      flat                   = new File(path,position+"_flat");
+      background_subtracted  = new File(path,position+"_bg_sub");
+      background_mask        = new File(path,position+"_bg_mask");
+      selection_drawing      = new File(path,position+"_selections");
+
+      flat.mkdir();
+      background_subtracted.mkdir();
+      background_mask.mkdir();
+      selection_drawing.mkdir();
+    }
+  }
+
+  // ImageJ objects used by methods
+  private Calibration  calib = new Calibration();
+  private GaussianBlur gb    = new GaussianBlur();
+  private Opener opener      = new Opener();
+  private BackgroundSubtracter bs = new BackgroundSubtracter();
+  private RankFilters rf = new RankFilters();
+  private Thresholder th = new Thresholder();
+
+  public Rainman_() {
+    IJ.run("Options...", "iterations=1 black edm=Overwrite count=1");
+    calib.setUnit("pixel");
+  }
+
+  public void run(String arg) {
+    if (arg.equals("")) {
+      project_path = new File(IJ.getDirectory("Choose a directory."));
+      showDialog();
+    } else {
+      project_path = new File(arg);
+    }
+
+    // Generate project
+    HCExperiment rainman = new HCExperiment(project_path);
+    IJ.log("Generating project" + project_path + "...");
+    project_name = rainman.getProjectName();
+
+    setupPaths();
+    setupFilenames();
+    analyze(rainman);
+  }
+
+  private void analyze(HCExperiment hce) {
+
+    for (String pos : hce.getPositions()) {
+      IJ.log("Processing position " + pos + "...");
+
+      File position_data_path = 
+        new File(results_path, pos + "_data");
+      position_data_path.mkdir();
+
+      SelectionPaths selection_paths = 
+        new SelectionPaths(position_data_path,pos);
+
+      double blur_radius = 10, rb_radius = 50;
+      ImagePaths image_paths = new ImagePaths(position_data_path, pos);
+      List<HCImage> bfimages = hce.getTimepoints(pos,"WL0");
+      for (HCImage bfi : bfimages) {
+        HCImage flat = null;
+        try {
+          flat = bfi.open().flatten(blur_radius, rb_radius);
+        } catch (UnopenableImageException uie) {
+          System.out.println(
+              "Cannot open image '" + bfi.getName() + "', skipping...");
+          continue;
+        }
+        bfi.flush();
+        IJ.saveAs(flat,"tif",image_paths.flat+"/"+bfi.getName());
+      }
+    }
+  }
+
+  /** 
+   * Generates and displays parameter dialog box, and collects parameters.
+   */
+  private void showDialog() {
+    int DUNITS = 0;
+    int OUNITS = 0;
+    GenericDialog gd = new GenericDialog("Set Parameters");
+    gd.addMessage("Brightfield Parameters");
+    gd.addStringField("  Size (pixels^2):", size, 10);
+    gd.addStringField("  Circularity:", circ, 10);
+    gd.addNumericField("  Rolling ball radius:", rb_radius,DUNITS);
+    gd.addNumericField("  Find Maxima Tolerance:", find_max_tol,DUNITS);
+
+    gd.addMessage("Determines which selections are false positives");
+    gd.addNumericField("  Area Threshold (pixels^2):",area_thresh,DUNITS);
+    gd.addNumericField("  SD/Area Threshold:",sd_area_thresh,DUNITS);
+
+    gd.addMessage("To determine cell counts in each channel");
+    gd.addNumericField("Standard deviations above background:",
+        sd_above_bg,DUNITS);
+
+    gd.showDialog();
+
+    // Brightfield
+    size         = gd.getNextString();
+    circ         = gd.getNextString();
+    rb_radius    = (int) gd.getNextNumber();
+    find_max_tol = (int) gd.getNextNumber();
+
+    // Threshold
+    area_thresh   = (int) gd.getNextNumber();
+    sd_area_thresh = (int) gd.getNextNumber();
+  }
+
+  private void setupPaths() {
+    // Set up paths
+    results_path        = new File(project_path,"rainman_results");
+    compiled_data_path  = new File(results_path,"compiled");
+    path_to_stack_list  = new File(project_path,project_name+"_stacks");
+    results_path.mkdir();
+    path_to_stack_list.mkdir();
+  }
+
+  private void setupFilenames() {
+    path_to_counts = new File(results_path,project_name+"_counts.txt");
+    path_to_drawing_list = 
+      new File(path_to_stack_list,"drawn_selections.txt");
+    path_to_skip_list = new File(path_to_skip_list,"skip.txt");
+  }
+
+  public static class Test {
+    public static void main(String[] args) {
+      Rainman_ rainman = new Rainman_();
+      if (args.length==0) {
+        rainman.run("");
+      } else {
+        rainman.run(args[0]);
+      }
+    }
+  }
+}

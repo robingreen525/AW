@@ -1,0 +1,292 @@
+// vim: set filetype=java tabstop=2 shiftwidth=2 expandtab :
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.measure.Measurements;
+import ij.process.ImageProcessor;
+import ij.process.ByteProcessor;
+import ij.process.FloatBlitter;
+import ij.process.FloatProcessor;
+import ij.process.AutoThresholder;
+import ij.process.ImageStatistics;
+import ij.io.Opener;
+import ij.plugin.PlugIn;
+import ij.plugin.Thresholder;
+import ij.plugin.frame.RoiManager;
+import ij.plugin.filter.BackgroundSubtracter;
+import ij.plugin.filter.GaussianBlur;
+import ij.plugin.filter.RankFilters;
+import ij.measure.Calibration;
+import ij.gui.GenericDialog;
+import ij.gui.Roi;
+
+import java.io.File;
+
+import org.fhcrc.honeycomb.mc.MCSperiment;
+import org.fhcrc.honeycomb.mc.MCImage;
+import org.fhcrc.honeycomb.ijutils.MaskInfo;
+import org.fhcrc.honeycomb.ijutils.IJutils;
+/**
+ * Rainman is an image analysis program developed to count and quantify the 
+ * fluorescence intensity of cells in an image obtained via microscopy.
+ * @author Adam Waite
+ * @since $Date$
+ */
+public class Rainman implements PlugIn {
+  // Default parameters for brightfield manipulation.
+  private String size = "1-200";
+  private String circ = "0.50-1.0";
+  private int rb_radius = 100; // Radius for rolling ball algorithm.
+  private int find_max_tol = 10;
+  private int area_thresh = 4;
+  private int sd_area_thresh = 152; // Defines cutoff for SD/Area ratio.
+  private int sd_above_bg = 4;
+  // Qantitative data
+  private int[] count_array;
+  private int[] ind_count_array;
+  private int final_bf_counts = 0;
+
+  private String project_name;
+
+  // Directories 
+  private File project_path;
+  private File results_path;
+  private File compiled_data_path;
+
+  // Files
+  private File path_to_counts;
+  private File path_to_drawing_list; 
+  private File path_to_stack_list;
+  private File path_to_skip_list;
+
+  // Selections.
+  class SelectionPaths {
+    public final File background; 
+    public final File initial_cell;
+    public final File final_cell;
+    public final File voronoi;
+    public final File adjusted;
+    public final File independent;
+
+    public SelectionPaths(File path, String name) {
+      background   = new File(path,name+"_bg_selection.zip"); 
+      initial_cell = new File(path,name+"_initial_selections.zip");
+      final_cell   = new File(path,name+"+_final_selections.zip");
+      voronoi      = new File(path,name+"_voronoi_selections.zip");
+      adjusted     = new File(path,name+"_adjusted_selections.zip");
+      independent  = new File(path,name+"_independent_selections.zip");
+    }
+  }
+  
+  class ImagePaths {
+    public final File flat;    
+    public final File background_subtracted;
+    public final File background_mask;
+    public final File selection_drawing;
+
+    public ImagePaths(File path, String position) {
+      flat                   = new File(path,position+"_flat.tif");
+      background_subtracted  = new File(path,position+"_bg_sub.png");
+      background_mask        = new File(path,position+"_bg_mask.png");
+      selection_drawing      = new File(path,position+"_selections.png");
+    }
+  }
+
+  // ImageJ objects used by methods
+  private Calibration  calib = new Calibration();
+  private GaussianBlur gb    = new GaussianBlur();
+  private Opener opener      = new Opener();
+  private BackgroundSubtracter bs = new BackgroundSubtracter();
+  private RankFilters rf = new RankFilters();
+  private Thresholder th = new Thresholder();
+
+  public Rainman() {
+    IJ.run("Options...", "iterations=1 black edm=Overwrite count=1");
+    calib.setUnit("pixel");
+  }
+
+  public void run(String arg) {
+    if (arg.equals("")) {
+      project_path = new File(IJ.getDirectory("Choose a directory."));
+      showDialog();
+    } else {
+      project_path = new File(arg);
+    }
+
+    // Generate project
+    MCSperiment rainman = new MCSperiment(project_path);
+    IJ.log("Generating project" + project_path + "...");
+    project_name = rainman.getProjectName();
+
+    setupPaths();
+    setupFilenames();
+    analyze(rainman);
+  }
+
+
+  private void analyze(MCSperiment mcsperiment) {
+
+    String position_name = mcsperiment.getCurrentPosition();
+    while(position_name != null) {
+      IJ.log("Processing " + position_name + "...");
+
+      File position_data_path = 
+        new File(results_path, position_name + "_data");
+      position_data_path.mkdir();
+
+      SelectionPaths selection_paths = 
+        new SelectionPaths(position_data_path,position_name);
+
+      MCImage[] timepoint = mcsperiment.getNextTimepointSet();
+      while(timepoint != null) {
+        if (MCImage.hasFluorescentImages(timepoint)) 
+          compiled_data_path.mkdir();
+
+        // Work on brightfieled image
+        MCImage brightfield = MCImage.findByFilterName(timepoint,"BF");
+        ImagePlus bf = 
+          opener.openImage(brightfield.getImagePath().toString());
+        processBrightfield(bf,position_data_path, 
+                           position_name, selection_paths);
+        System.exit(0);
+      }
+    }
+  }
+
+  private void 
+  processBrightfield(ImagePlus bf,File data_path, String position,
+                     SelectionPaths sel_paths) 
+  {
+    ImagePaths image_paths = new ImagePaths(data_path,position);
+
+    // Flatten image and save.
+    System.out.print("Flattening...");
+    ImagePlus flat = IJutils.flatten(bf,rb_radius);
+    System.out.println("done.");
+    IJ.run(flat,"Enhance Contrast", "saturated=0.0 normalize");
+    IJ.run(flat,"16-bit","");
+    IJ.save(flat,image_paths.flat.toString());
+
+    System.out.print("Making background mask...");
+    ImagePlus bg_mask = makeBgMask(flat);
+    System.out.println("done.");
+    IJ.save(bg_mask,image_paths.background_mask.toString());
+
+    MaskInfo mi = new MaskInfo(flat,bg_mask);
+
+    RoiManager rm = new RoiManager(false);
+    rm.addRoi(mi.getBackgroundRoi());
+    rm.runCommand("Save",sel_paths.background.toString());
+    rm.close();
+
+    System.out.print("Removing background...");
+    ImagePlus bgsub = removeBackground(flat,mi);
+    System.out.println("done.");
+    IJ.save(bgsub,image_paths.background_subtracted.toString());
+  }
+
+  private ImagePlus removeBackground(ImagePlus img, MaskInfo mi) {
+    ImageProcessor sub = img.getProcessor().duplicate().convertToByte(true);
+    sub.setRoi(mi.getBackgroundRoi());
+    //IJutils.shower(sub,2000);
+
+    long bgmean = Math.round(mi.getBackgroundStats().mean/256.0);
+    sub.setValue(bgmean);
+    sub.fill(sub.getMask());
+    sub.setMinAndMax(0,bgmean);
+    gb.blurGaussian(sub,0.5,0.5,0.02);
+    return new ImagePlus("bg_sub",sub);
+  }
+
+  private ImagePlus makeBgMask(final ImagePlus img) {
+    ImagePlus max_entropy_mask = 
+      new ImagePlus("max_entropy",img.getProcessor().duplicate());
+    IJ.run(max_entropy_mask,"8-bit","");
+
+    gb.blurGaussian(max_entropy_mask.getProcessor(),1,1,0.02);
+
+    double variance_radius = 3;
+    rf.rank(max_entropy_mask.getProcessor(),
+            variance_radius,RankFilters.VARIANCE);
+
+    ImagePlus renyi_entropy_mask = 
+      new ImagePlus("renyi entropy", 
+                    max_entropy_mask.getProcessor().duplicate());
+
+    makeMask(max_entropy_mask,"MaxEntropy");
+    IJ.run(max_entropy_mask,"Create Selection","");
+    ImageStatistics me = max_entropy_mask.getStatistics();
+    IJ.run(max_entropy_mask,"Select None","");
+
+    makeMask(renyi_entropy_mask,"RenyiEntropy");
+    IJ.run(renyi_entropy_mask,"Create Selection","");
+    ImageStatistics re = max_entropy_mask.getStatistics();
+    IJ.run(renyi_entropy_mask,"Select None","");
+
+    if (me.area < re.area) {
+      return max_entropy_mask;
+    } else {
+      return renyi_entropy_mask;
+    }
+  }
+
+  private void makeMask(ImagePlus img, String method) {
+    ImageProcessor ip = img.getProcessor();
+    boolean darkBackground = true;
+    ip.setAutoThreshold(method, darkBackground,ip.RED_LUT);
+    IJ.run(img,"Convert to Mask","");
+    IJ.run(img,"Fill Holes","");
+    for (int i=0; i<3; i++) IJ.run(img,"Dilate","");
+  }
+
+  /** 
+   * Generates and displays parameter dialog box, and collects parameters.
+   */
+  private void showDialog() {
+    int DUNITS = 0;
+    int OUNITS = 0;
+    GenericDialog gd = new GenericDialog("Set Parameters");
+    gd.addMessage("Brightfield Parameters");
+    gd.addStringField("  Size (pixels^2):", size, 10);
+    gd.addStringField("  Circularity:", circ, 10);
+    gd.addNumericField("  Rolling ball radius:", rb_radius,DUNITS);
+    gd.addNumericField("  Find Maxima Tolerance:", find_max_tol,DUNITS);
+
+    gd.addMessage("Determines which selections are false positives");
+    gd.addNumericField("  Area Threshold (pixels^2):",area_thresh,DUNITS);
+    gd.addNumericField("  SD/Area Threshold:",sd_area_thresh,DUNITS);
+
+    gd.addMessage("To determine cell counts in each channel");
+    gd.addNumericField("Standard deviations above background:",
+        sd_above_bg,DUNITS);
+
+    gd.showDialog();
+
+    // Brightfield
+    size         = gd.getNextString();
+    circ         = gd.getNextString();
+    rb_radius    = (int) gd.getNextNumber();
+    find_max_tol = (int) gd.getNextNumber();
+
+    // Threshold
+    area_thresh   = (int) gd.getNextNumber();
+    sd_area_thresh = (int) gd.getNextNumber();
+  }
+
+  private void setupPaths() {
+    // Set up paths
+    results_path        = new File(project_path,"rainman_results");
+    compiled_data_path  = new File(results_path,"compiled");
+    path_to_stack_list  = new File(project_path,project_name+"_stacks");
+    results_path.mkdir();
+    path_to_stack_list.mkdir();
+  }
+
+  private void setupFilenames() {
+    path_to_counts = new File(results_path,project_name+"_counts.txt");
+    path_to_drawing_list = 
+      new File(path_to_stack_list,"drawn_selections.txt");
+    path_to_skip_list = new File(path_to_skip_list,"skip.txt");
+  }
+}

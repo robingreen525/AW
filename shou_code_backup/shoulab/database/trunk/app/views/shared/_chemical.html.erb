@@ -1,0 +1,55 @@
+<h1>Listing Chemicals</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Storage Temp</th>
+    <th>Company</th>
+    <th>Catalog &#35;</th>
+    <th>Price</th>
+    <th>Unit</th>
+    <th>Notes</th>
+  </tr>
+
+  <% form_tag :controller => 'shoulab', :action => 'search', :table => 'chemicals' do %>
+  <tr class="search">
+    <td class="search"><%= text_field_tag( :name, params[:name], :size => 30 ) %></td>
+    <td class="search"><%= text_field_tag( :storage_loc, params[:storage_loc], :size => 20 ) %></td>
+    <td class="search"><%= text_field_tag( :storage_temp, params[:storage_temp], :size => 1 ) %></td>
+    <td class="search"><%= text_field_tag( :company    , params[:company]    , :size => 10 ) %></td>
+    <td class="search"><%= text_field_tag( :cat_num    , params[:cat_num]    , :size => 10 ) %></td>
+    <td class="search"><%= text_field_tag( :price      , params[:price]      , :size => 5 ) %></td>
+    <td class="search"><%= text_field_tag( :unit       , params[:unit]       , :size => 7 ) %></td>
+    <td class="search"><%= text_field_tag( :notes      , params[:notes]      , :size => 20 ) %></td>
+  </tr>
+  <tr>
+    <td><%= submit_tag "Search" %></td>
+  </tr>
+  <% end %>
+
+<% for chemical in @chemicals %>
+  <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td><%=h chemical.name %></td>
+    <td><%=h chemical.storage_loc %></td>
+    <td class="cen"><%=h chemical.storage_temp %></td>
+    <td><%=h chemical.company %></td>
+    <td class="cen"><%=h chemical.cat_num %></td>
+    <td class="cen"><%=h number_to_currency(chemical.price) %></td>
+    <td class="cen"><%=h chemical.unit %></td>
+    <td><%=h chemical.notes %></td>
+  <% if session[:user_id] %>
+    <td><%= link_to 'Edit', edit_chemical_path(chemical) %></td>
+    <td><%= link_to 'Copy', url_for(:action=>'copy', :id=>chemical.id) %></td>
+    <td><%= link_to 'Destroy', chemical, :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+
+
+  <% if session[:user_id] %>
+    <br />
+    <%= link_to 'Add New Chemical', new_chemical_path %>
+  <% end %>
+

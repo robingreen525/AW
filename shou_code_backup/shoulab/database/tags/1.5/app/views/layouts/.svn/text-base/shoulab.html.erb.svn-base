@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Shou Lab <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'shoulab' %>
+</head>
+<body>
+
+<div id="banner">
+  <%= @page_title || 'Shou Lab Database' %>
+</div>
+<div id="columns">
+  <div id="side">
+
+    <p><%= link_to 'Yeast strains', :controller => :shoulab, :action => :yeast %></p>
+    <p><%= link_to 'Bacterial Plasmids', :controller => :shoulab, :action => :bacteria %></p>
+    <p><%= link_to 'Oligos', :controller => :shoulab, :action => :oligos %></p>
+    <br />
+
+    <% if session[:user_id] %>
+      <p><%= link_to 'Edit Yeast', :controller => :yeast_strains %></p>
+      <p><%= link_to 'Edit Bacteria', :controller => :bacterial_plasmids %></p>
+      <p><%= link_to 'Edit Oligos', :controller => :oligos %></p>
+      <p><%= link_to 'Edit Users', :controller => :users %></p>
+      <p><%= link_to 'Sign out', :controller => :admin, :action => :logout %> </p>
+    <% else %>
+      <p><%= link_to 'Sign in', :controller => :admin, :action => :login %></p>
+    <% end %>
+
+  </div>
+</div>
+<div id="main">
+  <% if flash[:notice] -%>
+    <div id="notice"><%= flash[:notice] %></div>
+  <% end -%>
+
+  <%= yield  %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+package org.fhcrc.honeycomb.metapop.dilutionrule;
+
+import org.fhcrc.honeycomb.metapop.Location;
+import org.fhcrc.honeycomb.metapop.Population;
+import org.fhcrc.honeycomb.metapop.World;
+
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+
+/** Dilution occurs every set number of timesteps.
+ *
+ * Created on 20 Mar, 2013
+ * @author Adam Waite
+ * @version $Rev$, $Date$
+ *
+ */
+public class PeriodicDilution extends DilutionRule {
+    private int dilute_every;
+
+    public PeriodicDilution(double dilution_fraction, int dilute_every)
+    {
+        super(dilution_fraction);
+        this.dilute_every = dilute_every;
+    }
+
+    @Override
+    public Map<Location, Boolean> generate() {
+        checkWorld();
+
+        List<Location> ols = world.getOccupiedLocations();
+
+        Map<Location, Boolean> dilution_map = 
+            new HashMap<Location, Boolean>(ols.size());
+
+        if (world.getStep() > 0 && world.getStep() % dilute_every == 0) {
+            for (Location ol:ols) {
+                dilution_map.put(ol, true);
+            }
+        } else {
+            for (Location ol:ols) {
+                dilution_map.put(ol, false);
+            }
+        }
+        return dilution_map;
+    }
+
+    @Override
+    public String toString() {
+        return new String("PeriodicDilution");
+    }
+}

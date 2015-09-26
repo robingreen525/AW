@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+<form action="{{url_for('process_form')}}" method= post>
+    <div> 
+        <div class="path">
+            <fieldset class="path">
+                <legend><b>Paths</b></legend>
+                {{render_field(form.project_path)}}
+                {{render_field(form.anc_path)}}
+                {{render_field(form.ref_path)}}
+            </fieldset>
+        </div>
+
+        <div class="command">
+            <fieldset class="command">
+                <legend><b>Commands</b></legend>
+                <p>All commands can be run independently.  However, each
+                command requires output produced by the command(s) above it.
+                </p>
+                <dl>
+                    <dt>{{form.align}} align ({{form.trim}} pre-trim)</dt>
+                    <dd>Aligns all samples to reference sequence.  Sorts and
+                    indexes resulting BAM file.</dd>
+                    <dt>{{form.find}} find</dt>
+                    <dd>- Find SNPs relative to <em>reference</em> sequence.</dd>
+                    <dd>- Find CNV between sample sequences and ancestor.
+                    </dd>
+                    <dt>{{form.plot}} plot</dt>
+                    <dd>- Plot coverage data and results of <b>find</b>.</dd>
+                    <dd>- Produces locations of CNVs and missing
+                          (perhaps deleted) positions</dd>
+                    <dt>{{form.compare}} compare</dt>
+                    <dd>Compare SNPs in sample sequences to SNPs in 
+                    ancestor.</dd>
+                </dl>
+            </fieldset>
+        </div>
+        <p class="submit"><input type="submit" name="submit" value="submit">
+            <input type="submit" name="submit" value="clear">
+        </p>
+    </div>
+</form>
+{% endblock %}
+

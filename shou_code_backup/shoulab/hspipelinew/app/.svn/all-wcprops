@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/repos/shoulab/!svn/ver/2318/hspipelinew/app
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/shoulab/!svn/ver/2307/hspipelinew/app/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/repos/shoulab/!svn/ver/2307/hspipelinew/app/__init__.py
+END
+paths.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/shoulab/!svn/ver/2318/hspipelinew/app/paths.py
+END
+form.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/repos/shoulab/!svn/ver/2316/hspipelinew/app/form.py
+END
+hsprunner.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/shoulab/!svn/ver/2316/hspipelinew/app/hsprunner.py
+END

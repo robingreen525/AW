@@ -1,0 +1,41 @@
+<h1>Listing oligos</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Sequence</th>
+    <th>Length</th>
+    <th>&#37;GC</th>
+    <th>Tm</th>
+    <th>Direction</th>
+    <th>Target</th>
+    <th>Plasmid</th>
+    <th>Notes</th>
+    <th>Initials</th>
+  </tr>
+
+<% for oligo in @oligos %>
+  <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td class="cen"><%=h oligo.number %></td>
+    <td class="lef oligo"><%=h oligo.sequence %></td>
+    <td class="cen"><%=h oligo.length %></td>
+    <td class="cen" style="width:5em"><%=h oligo.gc %></td>
+    <td class="cen" style="width:5em"><%=h oligo.tm %></td>
+    <td class="cen"><%=h oligo.direction %></td>
+    <td class="lef"><%=h oligo.target %></td>
+    <td class="cen"><%=h oligo.plasmid %></td>
+    <td class="cen"><%=h oligo.notes %></td>
+    <td class="cen"><%=h oligo.initials %></td>
+  <% if session[:user_id] %>
+    <td><%= link_to 'Edit', edit_oligo_path(oligo) %></td>
+    <td><%= link_to 'Copy', url_for(:action=>'copy', :id=>oligo.id) %></td>
+    <td><%= link_to 'Destroy', oligo, :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
+    </tr>
+<% end %>
+  </table>
+
+<% if session[:user_id] %>
+  <br />
+  <%= link_to 'Add new oligo', new_oligo_path %>
+<% end %>

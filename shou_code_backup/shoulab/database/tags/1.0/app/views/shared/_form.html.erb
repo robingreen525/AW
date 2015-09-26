@@ -1,0 +1,7 @@
+<div class="form">
+  <%= error_messages_for :user %>
+  <fieldset>
+    <legend><%= "#{action} #{caller}" %></legend>
+    <%= yield %>
+  </fieldset>
+</div>

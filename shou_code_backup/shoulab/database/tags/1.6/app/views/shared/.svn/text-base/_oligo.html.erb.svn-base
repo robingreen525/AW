@@ -1,0 +1,36 @@
+<h1>Listing oligos</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Sequence</th>
+    <th>Length</th>
+    <th>&#37;GC</th>
+    <th>Tm</th>
+    <th>Direction</th>
+    <th>Target</th>
+    <th>Plasmid</th>
+  </tr>
+
+<% for oligo in @oligos %>
+  <tr>
+    <td><%=h oligo.number %></td>
+    <td><%=h oligo.sequence %></td>
+    <td><%=h oligo.length %></td>
+    <td><%=h oligo.GC %></td>
+    <td><%=h oligo.Tm %></td>
+    <td><%=h oligo.direction %></td>
+    <td><%=h oligo.target %></td>
+    <td><%=h oligo.plasmid %></td>
+  <% if session[:user_id] %>
+    <td><%= link_to 'Edit', edit_oligo_path(oligo) %></td>
+    <td><%= link_to 'Destroy', oligo, :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
+    </tr>
+<% end %>
+  </table>
+
+<% if session[:user_id] %>
+  <br />
+  <%= link_to 'Add new oligo', new_oligo_path %>
+<% end %>

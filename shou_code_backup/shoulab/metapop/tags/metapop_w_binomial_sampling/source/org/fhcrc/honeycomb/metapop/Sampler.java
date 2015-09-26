@@ -1,0 +1,98 @@
+// vim: set filetype=java tabstop=2 shiftwidth=2 expandtab :
+package org.fhcrc.honeycomb.metapop;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
+import org.apache.commons.math.distribution.BinomialDistributionImpl;
+import org.apache.commons.math.random.RandomDataImpl;
+import org.apache.commons.math.random.MersenneTwister;
+
+/** A <code>Sampler</code> chooses members from a population.
+ * By default, each <code>Sampler</code> initializes its random number 
+ * generator with the current time in milliseconds.
+ * Created on 30 Jan, 2012
+ *
+@author Adam Waite
+@version $Rev: 1220 $, $Date: 2012-02-06 18:11:01 -0800 (Mon, 06 Feb 2012) $
+ */
+public class Sampler {
+  private static final long DEFAULT_SEED = System.nanoTime();
+  private final long seed;
+  private final RandomDataImpl rng;
+  private final double alpha;
+
+  /** Fully-specified class constructor. 
+   *
+  @param seed  the seed to initialize the random number generator.  
+  @param alpha the maximum coefficient of variation allowed for 
+   * approximating a distribution with its mean.
+   */
+  Sampler(double alpha, long seed) {
+    this.seed = seed;
+    this.alpha = alpha;
+    rng = new RandomDataImpl(new MersenneTwister(seed));
+  }
+
+  Sampler(double alpha) {
+    this(alpha, DEFAULT_SEED);
+  }
+
+  public long getSeed() { return seed; }
+
+  /** samples from a binomial distribution, based on the population size
+   * and the requested amount.  Since <code>nextBinomial</code> can only 
+   * take <code>int</code>s, the maximum population size that can be
+   * sampled exactly is limited to the maximum number an <code>int</code>
+   * can represent.
+   *
+  @param pops the populations to sample.
+  @param amount the fraction of each population to be sampled.
+   */
+  public HashMap<String, List<Double>> sampleBinomial(List<Double> pops, 
+                                                      double amount)
+  {
+    BinomialDistributionImpl binom;
+    List<Double> sampled   = new ArrayList<Double>(pops.size());
+    List<Double> remaining = new ArrayList<Double>(pops.size());
+    HashMap<String, List<Double>> result = 
+      new HashMap<String, List<Double>>(2);
+
+    for (double size:pops) {
+      if (amount == 0.0) {
+        remaining.add(size);
+        sampled.add(0.0);
+        continue;
+      }
+
+      double binom_cv = StrictMath.sqrt((1-amount)/(size*amount));
+      double nDiluted = 0;
+      if (binom_cv > alpha) {
+        if (size > Integer.MAX_VALUE)
+          throw new IllegalArgumentException("Population size > max int");
+        try {
+          // StrictMath.rint returns even integer if arg is equidistant
+          // between two ints.
+          nDiluted = rng.nextBinomial((int) StrictMath.rint(size), amount);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      } else {
+        nDiluted = size*amount;
+      }
+      if (size-nDiluted < 0) {
+        System.out.println("size " + size);
+        System.out.println("nDiluted " + nDiluted);
+        throw new RuntimeException("size - nDiluted < 0");
+      }
+      remaining.add(size - nDiluted);
+      sampled.add(nDiluted);
+    }
+    result.put("sampled", sampled);
+    result.put("remaining", remaining);
+    return result;
+  }
+}

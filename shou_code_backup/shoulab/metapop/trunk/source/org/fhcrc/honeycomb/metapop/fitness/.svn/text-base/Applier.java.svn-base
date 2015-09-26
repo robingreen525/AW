@@ -1,0 +1,12 @@
+package org.fhcrc.honeycomb.metapop.fitness.fitnesscalculator;
+
+/**
+ * Applies a {@link Calculator} to a population.
+ *
+ * Created on 22 Apr, 2013
+ * @author Adam Waite
+ * @version $Id$
+ */
+public interface Applier {
+    abstract public List<Double> calculate(Population pop, int type);
+}

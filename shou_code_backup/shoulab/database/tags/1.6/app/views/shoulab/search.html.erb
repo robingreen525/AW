@@ -1,0 +1,5 @@
+<% if params[:table] == 'yeast_strains' %>
+  <%= render :partial => 'shared/yeast' %>
+<% elsif params[:table] == 'equipment' %>
+  <%= render :partial => 'shared/equipment' %>
+<% end %>

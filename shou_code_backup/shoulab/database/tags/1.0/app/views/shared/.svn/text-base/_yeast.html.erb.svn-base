@@ -1,0 +1,35 @@
+<h1>Listing Yeast Strains</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Alias</th>
+    <th>Background</th>
+    <th>Mating type</th>
+    <th>Genotype</th>
+    <th>Freeze date</th>
+    <th>Notes</th>
+  </tr>
+
+<% for yeast_strain in @yeast_strains %>
+  <tr>
+    <td class="cen"><%=h yeast_strain.number %></td>
+    <td class="cen"><%=h yeast_strain.alias %></td>
+    <td class="cen"><%=h yeast_strain.background %></td>
+    <td class="cen"><%=h yeast_strain.mating_type %></td>
+    <td class="lef"><%=h yeast_strain.genotype %></td>
+    <td class="cen"><%=h yeast_strain.freeze_date %></td>
+    <td class="lef"><%=h yeast_strain.notes %></td>
+  <% if session[:user_id] %>
+    <td><%= link_to 'Edit', edit_yeast_strain_path(yeast_strain) %></td>
+    <td><%= link_to 'Destroy', yeast_strain,
+            :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+
+<% if session[:user_id] %>
+  <br />
+  <%= link_to 'Add new yeast strain', new_yeast_strain_path %>
+<% end %>

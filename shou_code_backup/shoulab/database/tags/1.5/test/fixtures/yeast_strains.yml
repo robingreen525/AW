@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  number: 1
+  alias: MyString
+  mating_type: MyString
+  genotype: MyString
+  notes: MyString
+  freeze_date: 2008-07-05
+  background: MyString
+
+two:
+  number: 1
+  alias: MyString
+  mating_type: MyString
+  genotype: MyString
+  notes: MyString
+  freeze_date: 2008-07-05
+  background: MyString

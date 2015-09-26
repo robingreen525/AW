@@ -1,0 +1,33 @@
+<p>
+  <b>Number:</b>
+  <%=h @bacterial_plasmid.number %>
+</p>
+
+<p>
+  <b>Background:</b>
+  <%=h @bacterial_plasmid.background %>
+</p>
+
+<p>
+  <b>Plasmid name:</b>
+  <%=h @bacterial_plasmid.plasmid_name %>
+</p>
+
+<p>
+  <b>Plasmid sequence:</b>
+  <%=h @bacterial_plasmid.plasmid_sequence %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @bacterial_plasmid.notes %>
+</p>
+
+<p>
+  <b>Freeze date:</b>
+  <%=h @bacterial_plasmid.freeze_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_bacterial_plasmid_path(@bacterial_plasmid) %> |
+<%= link_to 'Back', bacterial_plasmids_path %>

@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop
+END
+DilutionRuleTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/DilutionRuleTest.java
+END
+TypesTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/TypesTest.java
+END
+CheaterLoadCalculatorTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/CheaterLoadCalculatorTest.java
+END
+CoordinatePickerTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/CoordinatePickerTest.java
+END
+FitnessCalculatorTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/FitnessCalculatorTest.java
+END
+CoordinateTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/CoordinateTest.java
+END
+WorldTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/WorldTest.java
+END
+LocationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/LocationTest.java
+END
+RandomNumberUserTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/RandomNumberUserTest.java
+END
+PopulationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/PopulationTest.java
+END
+Estimate.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/Estimate.java
+END
+EnvironmentChangerTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/repos/shoulab/!svn/ver/2333/metapop/trunk/test/org/fhcrc/honeycomb/metapop/EnvironmentChangerTest.java
+END

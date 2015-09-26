@@ -1,0 +1,25 @@
+#!/usr/bin/perl
+use strict; use warnings;
+use Data::Dumper;
+use Hspipeline;
+
+$| = 1;
+&main();
+exit;
+
+sub main() {
+  print "depthstats <infile.pileup> <outfile>\n" and exit unless scalar @ARGV == 2;
+  my $aves = scan_genome($ARGV[0]);
+
+  open my $dh, "> $ARGV[1]";
+  print $dh "# File '$ARGV[0]'\n";
+  print $dh "chromosome\tlength\tmean\tsd\n";
+  for my $chrom (keys %$aves) {
+    printf $dh "$chrom\t%d\t%.2f\t%.2f\n", 
+                $aves->{$chrom}{len}, 
+                $aves->{$chrom}{ave},
+                $aves->{$chrom}{sd};
+  }
+  print $dh "\n";
+  close $dh;
+}

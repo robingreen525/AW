@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <h1>Finished!</h1>
+    <a href="{{url_for('process_form')}}">Start over</a>
+    <pre>{{outlog}}</pre>
+</div>
+{% endblock %}

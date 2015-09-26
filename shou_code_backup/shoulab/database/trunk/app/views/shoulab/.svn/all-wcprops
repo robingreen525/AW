@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shoulab
+END
+search.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shoulab/search.html.erb
+END
+yeast.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shoulab/yeast.html.erb
+END
+equipment.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shoulab/equipment.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shoulab/index.html.erb
+END
+chemicals.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shoulab/chemicals.html.erb
+END
+oligos.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shoulab/oligos.html.erb
+END
+plasmids.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/shoulab/plasmids.html.erb
+END

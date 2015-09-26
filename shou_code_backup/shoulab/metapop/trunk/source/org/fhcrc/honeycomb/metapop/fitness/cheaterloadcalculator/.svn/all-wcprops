@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/fitness/cheaterloadcalculator
+END
+RelativeLinearCheaterLoad.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/fitness/cheaterloadcalculator/RelativeLinearCheaterLoad.java
+END
+CheaterLoadCalculator.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/fitness/cheaterloadcalculator/CheaterLoadCalculator.java
+END
+LinearCheaterLoad.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/fitness/cheaterloadcalculator/LinearCheaterLoad.java
+END
+NoCheaterLoad.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/fitness/cheaterloadcalculator/NoCheaterLoad.java
+END

@@ -1,0 +1,180 @@
+#!/usr/bin/perl
+use strict; use warnings;
+use Data::Dumper;
+use Hspipeline; 
+
+$| = 1;
+&main();
+exit;
+
+sub main {
+    print STDERR 
+          "cnvfind <R_path> <ancestor_path> <ancestor.pileup> <evolved.pileup 1>...<evolved.pileup n>" and die unless @ARGV > 3;
+
+    my $R_path     = $ARGV[0];
+    my $anc_path   = $ARGV[1];
+    my $anc_pileup = $ARGV[2];
+    my $evo_start_idx  = 3;
+
+    my @evo_paths = map{get_parent($_)} @ARGV[$evo_start_idx..$#ARGV];
+
+    my $anc_name = get_name($anc_path);
+
+    print STDERR "[cnvfind] Getting depth stats for $anc_pileup...\n";
+    my $anc_cov = scan_genome({file=>$anc_pileup,
+                               max_depth=>1000, print=>1});
+    print STDERR "\n";
+
+    my $chunks;
+    print STDERR "Getting unique chunks in $anc_name...";
+    $chunks = get_unique_chunks($chunks, $anc_cov);
+    print STDERR "done!\n\n";
+
+    my $cnv_ext = "_cnvfind.txt";
+    for (my $i=$evo_start_idx; $i<@ARGV; $i++) {
+        my $evo_pileup = $ARGV[$i];
+        my $evo_path   = get_parent($evo_pileup);
+        my $evo_name   = get_name($evo_path);
+
+        print STDERR "[cnvfind] Getting depth stats for $evo_pileup...\n";
+        my $evo_cov = scan_genome({file=>$evo_pileup, 
+                                   max_depth=>1000,
+                                   print=>1});
+        print STDERR "\n";
+
+        print STDERR "[cnvfind]Getting unique chunks in $evo_name...";
+        $chunks = get_unique_chunks($chunks,$evo_cov);
+        print STDERR "done!\n\n\n";
+
+        print STDERR "[cnvfind] Finding CNV in $evo_name...";
+        my $cnv_file_path = $evo_path.'/'.$evo_name.$cnv_ext;
+        print_coverage_data($cnv_file_path,
+                            $chunks, $anc_cov, $evo_cov, $evo_path);
+        print STDERR "done!\n\n";
+
+    }
+
+}
+
+sub print_coverage_data {
+    my $output_path = shift;
+    my $chunks   = shift;
+    my $anc_cov  = shift;
+    my $evo_cov  = shift;
+    my $evo_path = shift;
+    my $evo_name = get_name($evo_path);
+
+    open my $out, "> $output_path" 
+        or die "Couldn't open cnvfind.txt for writing: $!";
+
+    print STDERR "[coverage_ratio] Comparing coverage to ancestor...\n";
+
+    print $out "chrom\tpos\tanc.cov\tevo.cov\tratio\tlog2.ratio\n";
+    for my $chunk (@$chunks) {
+        compare_depth($out, $chunk, $anc_cov, $evo_cov);
+        print STDERR "[coverage_ratio] Done with $chunk!\n\n";
+    }
+    close $out;
+}
+
+sub compare_depth {
+  my $fh    = shift;
+  my $chunk = shift;
+  my $anc   = shift;
+  my $evo   = shift;
+
+  print $chunk,"\n";
+  for my $pos (1..$anc->{$chunk}{last_pos}) {
+    my $adepth = $anc->{$chunk}{depth}{$pos};
+    my $edepth = $evo->{$chunk}{depth}{$pos};
+
+    my $ratio; my $log2_ratio;
+
+    # Both have depth > 0
+    if (defined $adepth && defined $edepth) {
+        my $anc_normalized = $adepth/$anc->{$chunk}{ave};
+        my $evo_normalized = $edepth/$evo->{$chunk}{ave};
+
+        $ratio      = $evo_normalized/$anc_normalized;
+        $log2_ratio = log($ratio)/log(2);
+
+    # Evolved has no reads at this position:
+    # deletion or change in evoved
+    } elsif (defined $adepth && !defined $edepth) {
+        $edepth = 0;
+        $ratio  = 0;
+        $log2_ratio = -999;
+
+    # Ancestor has no reads at this position:
+    # addition in evoved
+    } elsif (!defined $adepth && defined $edepth) {
+        $adepth = 0;
+        $ratio  = 'Inf';
+        $log2_ratio = 999;
+
+    # Neither strain has reads at this position:
+    # missing in both
+    } elsif (!defined $adepth && !defined $edepth) {
+        $adepth = $edepth = 0;
+        $ratio = 'NA';
+        $log2_ratio = 'NA';
+    }
+
+    print $fh "$chunk\t$pos\t$adepth\t$edepth\t$ratio\t$log2_ratio\n";
+  }
+}
+
+
+sub get_depth {
+  my $chunk = shift;
+  my $pileup = shift;
+
+  my %res = ();
+  my $delta = 0;
+  my $mean  = 0;
+  my $M2    = 0;
+  my $n     = 0;
+
+  open my $f, "< $pileup";
+  while (<$f>) {
+    # Line is chrom pos ref depth seq qual
+    my @line = split;
+    my $chrom  = $line[0];
+    my $pos   = $line[1];
+    my $depth = $line[3];
+
+    next unless $chrom eq $chunk;
+
+    # Calculate running mean and sd, according to Knuth (1998).
+    $n++;
+    $delta = $depth - $mean;
+    $mean += $delta/$n;
+    $M2    = $M2 + $delta*($depth-$mean);
+
+    $res{$pos} = $depth;
+  }
+  close $f;
+
+  $res{ave} = $mean;
+
+  return \%res;
+}
+
+sub get_unique_chunks {
+    my $chunks = shift;
+    my $cov    = shift;
+
+    my %unique = ();
+    for my $chunk (@$chunks) {
+        $unique{$chunk}=1;
+    }
+
+    for my $chunk (keys %$cov) {
+        next if $unique{$chunk};
+        $unique{$chunk} = 1;
+    }
+
+    my @un = keys %unique;
+    return \@un;
+}
+

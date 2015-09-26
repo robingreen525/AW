@@ -1,0 +1,3 @@
+<%= render(:partial => "yeast_strain", 
+                   :layout => 'shared/form',
+                   :locals => {:caller => 'Yeast Strain', :action => 'Update'} ) %>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/views/yeast_strains
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/views/yeast_strains/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/views/yeast_strains/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/views/yeast_strains/new.html.erb
+END
+_yeast_strain.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/repos/shoulab/!svn/ver/2324/database/tags/1.0/app/views/yeast_strains/_yeast_strain.html.erb
+END

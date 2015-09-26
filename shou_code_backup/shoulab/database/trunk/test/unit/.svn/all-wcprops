@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/shoulab/!svn/ver/2324/database/trunk/test/unit
+END
+user_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/shoulab/!svn/ver/2324/database/trunk/test/unit/user_test.rb
+END
+bacterial_plasmid_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/shoulab/!svn/ver/2324/database/trunk/test/unit/bacterial_plasmid_test.rb
+END
+chemical_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/shoulab/!svn/ver/2324/database/trunk/test/unit/chemical_test.rb
+END
+equipment_and_supply_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/shoulab/!svn/ver/2324/database/trunk/test/unit/equipment_and_supply_test.rb
+END
+yeast_strain_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/shoulab/!svn/ver/2324/database/trunk/test/unit/yeast_strain_test.rb
+END
+oligo_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/shoulab/!svn/ver/2324/database/trunk/test/unit/oligo_test.rb
+END

@@ -1,0 +1,60 @@
+body {
+    background-color: #FFD9FE;
+}
+
+p,h1,ul,ol,legend,dd,dt {
+    font-family: verdana,sans-serif;
+    font-size:14px;
+}
+h1 {
+    font-size:30px;
+}
+legend {
+    font-size:20px;
+}
+
+.cen {
+    text-align: center;
+}
+.lef {
+    text-align: left;
+}
+fieldset {
+    float:center;
+}
+fieldset fieldset {
+    margin:0.5em;
+}
+
+div.path {
+    float:left;
+/*    border:1px solid black; */
+    width:400px;
+}
+
+div.command {
+    float:left;
+/*    border:1px solid black; */
+    width:350px;
+}
+
+p.submit {
+    clear:both
+}
+
+label {
+    font-size:14px;
+}
+
+.error {
+    font-size:14px;
+    color:red;
+}
+
+dt {
+    font-weight:bold;
+}
+
+dd {
+    font-size:14px;
+}

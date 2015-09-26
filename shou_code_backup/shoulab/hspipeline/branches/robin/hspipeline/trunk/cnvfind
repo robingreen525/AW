@@ -1,0 +1,158 @@
+#!/usr/bin/perl
+use strict; use warnings;
+use Data::Dumper;
+use Hspipeline; 
+
+$| = 1;
+&main();
+exit;
+
+sub main {
+    print "cnvfind <R_path> <ancestor_path> <ancestor.pileup> <evolved.pileup 1>...<evolved.pileup n>" and die unless @ARGV > 3;
+
+    my $R_path     = $ARGV[0];
+    my $anc_path   = $ARGV[1];
+    my $anc_pileup = $ARGV[2];
+    my $evo_start_idx  = 3;
+
+    my @evo_paths = map{get_parent($_)} @ARGV[$evo_start_idx..$#ARGV];
+
+    my $anc_name = get_name($anc_path);
+
+    print "[cnvfind] Getting depth stats for $anc_pileup...\n";
+    my $anc_cov = scan_genome({file=>$anc_pileup,
+                               max_depth=>1000, print=>1});
+    print "\n";
+
+    my $chunks;
+    print "Getting unique chunks in $anc_name...";
+    $chunks = get_unique_chunks($chunks, $anc_cov);
+    print "done!\n\n";
+
+    my $cnv_ext = "_cnvfind.txt";
+    for (my $i=$evo_start_idx; $i<@ARGV; $i++) {
+        my $evo_pileup = $ARGV[$i];
+        my $evo_path   = get_parent($evo_pileup);
+        my $evo_name   = get_name($evo_path);
+
+        print "[cnvfind] Getting depth stats for $evo_pileup...\n";
+        my $evo_cov = scan_genome({file=>$evo_pileup, 
+                                   max_depth=>1000,
+                                   print=>1});
+        print "\n";
+
+        print "[cnvfind]Getting unique chunks in $evo_name...";
+        $chunks = get_unique_chunks($chunks,$evo_cov);
+        print "done!\n\n\n";
+
+        print "[cnvfind] Finding CNV in $evo_name...\n";
+        my $cnv_file_path = $evo_path.'/'.$evo_name.$cnv_ext;
+        print_coverage_data($cnv_file_path,
+                            $chunks, $anc_cov, $evo_cov, $evo_path);
+    }
+}
+
+sub print_coverage_data {
+    my $output_path = shift;
+    my $chunks   = shift;
+    my $anc_cov  = shift;
+    my $evo_cov  = shift;
+    my $evo_path = shift;
+    my $evo_name = get_name($evo_path);
+
+    open my $out, "> $output_path" 
+        or die "Couldn't open cnvfind.txt for writing: $!";
+
+    print "[coverage_ratio] Comparing coverage to ancestor...\n";
+
+    print $out join("\t", qw/chrom pos anc.cov evo.cov chrom.ratio
+                             log2.chrom.ratio genome.ratio 
+                             log2.genome.ratio/),"\n";
+    for my $chunk (@$chunks) {
+        compare_depth($out, $chunk, $anc_cov, $evo_cov);
+        print "[coverage_ratio] Done with $chunk!\n";
+    }
+    close $out;
+}
+
+sub compare_depth {
+    my $fh    = shift;
+    my $chunk = shift;
+    my $anc   = shift;
+    my $evo   = shift;
+
+    for my $pos (1..$anc->{chrom_data}{$chunk}{last_pos}) {
+        my $adepth = $anc->{chrom_data}{$chunk}{depth}{$pos};
+        my $edepth = $evo->{chrom_data}{$chunk}{depth}{$pos};
+
+        my $chrom_ratio; 
+        my $chrom_log2_ratio;
+        my $genome_ratio; 
+        my $genome_log2_ratio;
+
+        # Both have depth > 0
+        if (defined $adepth && defined $edepth) {
+            $chrom_ratio = 
+                normalized_ratio($edepth,$adepth,
+                                 $evo->{chrom_data}{$chunk}{ave},
+                                 $anc->{chrom_data}{$chunk}{ave});
+
+            $chrom_log2_ratio = log($chrom_ratio)/log(2);
+
+            $genome_ratio = normalized_ratio($edepth,$adepth,
+                                             $evo->{genome_ave},
+                                             $anc->{genome_ave});
+
+            $genome_log2_ratio = log($genome_ratio)/log(2);
+
+        # Evolved has no reads at this position:
+        # deletion or change in evolved
+        } elsif (defined $adepth && !defined $edepth) {
+            $edepth = 0;
+            $chrom_ratio = $genome_ratio = 0;
+            $chrom_log2_ratio = $genome_log2_ratio = -999;
+
+        # Ancestor has no reads at this position:
+        # addition in evoved
+        } elsif (!defined $adepth && defined $edepth) {
+            $adepth = 0;
+            $chrom_ratio = $genome_ratio = 'Inf';
+            $chrom_log2_ratio = $genome_log2_ratio = 999;
+
+        # Neither strain has reads at this position:
+        # missing in both
+        } elsif (!defined $adepth && !defined $edepth) {
+            $adepth = $edepth = 0;
+            $chrom_ratio = $genome_ratio = 'NA';
+            $chrom_log2_ratio = $genome_log2_ratio = 'NA';
+        }
+        print $fh join("\t",$chunk, $pos, $adepth, $edepth, 
+            $chrom_ratio, $chrom_log2_ratio, $genome_ratio,
+            $genome_log2_ratio),"\n";
+    }
+}
+
+sub normalized_ratio {
+    my $a = shift;
+    my $b = shift;
+    my $a_norm = shift;
+    my $b_norm = shift;
+
+    return ($a/$a_norm)/($b/$b_norm);
+}
+
+sub get_unique_chunks {
+    my $chunks = shift;
+    my $cov    = shift;
+
+    my %unique = ();
+    $unique{$_} = 1 for @$chunks;
+
+    for (keys %{$cov->{chrom_data}}) {
+        $unique{$_} = 1 unless $unique{$_};
+    }
+
+    my @un = keys %unique;
+    return \@un;
+}
+

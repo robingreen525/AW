@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/coordinate
+END
+SpecifiedCoordinatePicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/coordinate/SpecifiedCoordinatePicker.java
+END
+CoordinateProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/coordinate/CoordinateProvider.java
+END
+CoordinatePicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/coordinate/CoordinatePicker.java
+END
+UniqueRandomPicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/coordinate/UniqueRandomPicker.java
+END
+Coordinate.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/coordinate/Coordinate.java
+END
+RandomNeighborPicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/coordinate/RandomNeighborPicker.java
+END
+RandomPicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/shoulab/!svn/ver/2333/metapop/trunk/source/org/fhcrc/honeycomb/metapop/coordinate/RandomPicker.java
+END

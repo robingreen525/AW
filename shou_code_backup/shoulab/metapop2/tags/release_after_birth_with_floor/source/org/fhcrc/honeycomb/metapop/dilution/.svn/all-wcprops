@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_after_birth_with_floor/source/org/fhcrc/honeycomb/metapop/dilution
+END
+DilutionRule.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_after_birth_with_floor/source/org/fhcrc/honeycomb/metapop/dilution/DilutionRule.java
+END
+NoDilution.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_after_birth_with_floor/source/org/fhcrc/honeycomb/metapop/dilution/NoDilution.java
+END
+ThresholdDilution.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_after_birth_with_floor/source/org/fhcrc/honeycomb/metapop/dilution/ThresholdDilution.java
+END
+GlobalThresholdDilution.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_after_birth_with_floor/source/org/fhcrc/honeycomb/metapop/dilution/GlobalThresholdDilution.java
+END
+PeriodicDilution.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_after_birth_with_floor/source/org/fhcrc/honeycomb/metapop/dilution/PeriodicDilution.java
+END
+IndividualThresholdDilution.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_after_birth_with_floor/source/org/fhcrc/honeycomb/metapop/dilution/IndividualThresholdDilution.java
+END

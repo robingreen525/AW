@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<meta http-equiv="refresh" content="5">
+<div>
+    <h3>Running!</h3>
+    <pre>{{outlog}}</pre>
+</div>
+{% endblock %}

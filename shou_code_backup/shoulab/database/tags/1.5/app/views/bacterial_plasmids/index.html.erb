@@ -1,0 +1,32 @@
+<h1>Listing bacterial_plasmids</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Background</th>
+    <th>Drug Resistance</th>
+    <th>Plasmid name</th>
+    <th>Plasmid sequence</th>
+    <th>Notes</th>
+    <th>Freeze date</th>
+  </tr>
+
+<% for bacterial_plasmid in @bacterial_plasmids %>
+  <tr>
+    <td><%=h bacterial_plasmid.number %></td>
+    <td><%=h bacterial_plasmid.background %></td>
+    <td><%=h bacterial_plasmid.drug_resistance %></td>
+    <td><%=h bacterial_plasmid.plasmid_name %></td>
+    <td><%=h bacterial_plasmid.plasmid_sequence %></td>
+    <td><%=h bacterial_plasmid.notes %></td>
+    <td><%=h bacterial_plasmid.freeze_date %></td>
+    <td><%= link_to 'Show', bacterial_plasmid %></td>
+    <td><%= link_to 'Edit', edit_bacterial_plasmid_path(bacterial_plasmid) %></td>
+    <td><%= link_to 'Destroy', bacterial_plasmid, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add new bacterial plasmid', new_bacterial_plasmid_path %>

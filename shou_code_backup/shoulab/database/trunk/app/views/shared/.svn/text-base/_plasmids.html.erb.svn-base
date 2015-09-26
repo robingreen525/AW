@@ -1,0 +1,46 @@
+<h1>Listing Bacterial Plasmids</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Background</th>
+    <th>Drug Resistance</th>
+    <th>Plasmid Name</th>
+    <th>Description</th>
+    <th>Plasmid Sequence</th>
+    <th>Source</th>
+    <th>Notes</th>
+    <th>Created by</th>
+    <th>Freeze Date</th>
+  </tr>
+
+<% for bacterial_plasmid in @bacterial_plasmids %>
+  <% seq_name = bacterial_plasmid.plasmid_sequence %>
+  <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td class="cen"><%=h bacterial_plasmid.number %></td>
+    <td class="cen"><%=h bacterial_plasmid.background %></td>
+    <td class="cen"><%=h bacterial_plasmid.drug_resistance %></td>
+    <td class="cen"><%=h bacterial_plasmid.plasmid_name %></td>
+    <td class="cen"><%=h bacterial_plasmid.description %></td>
+    <td class="lef"><%= if (seq_name.nil?) 
+                          ""
+                        else 
+                          link_to seq_name, "/data/sequences/#{seq_name}"
+                        end%></td>
+    <td class="lef"><%=h bacterial_plasmid.source %></td>
+    <td class="lef"><%=h bacterial_plasmid.notes %></td>
+    <td class="cen"><%=h bacterial_plasmid.initials %></td>
+    <td class="lef"><%=h bacterial_plasmid.freeze_date %></td>
+
+  <% if session[:user_id] %>
+    <td><%= link_to 'Edit', edit_bacterial_plasmid_path(bacterial_plasmid) %></td>
+    <td><%= link_to 'Copy', url_for(:action=>'copy', :id=>bacterial_plasmid.id) %></td>
+    <td><%= link_to 'Destroy', bacterial_plasmid, :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+<% if session[:user_id] %>
+  <br />
+  <%= link_to 'Add new plasmid', new_bacterial_plasmid_path %>
+<% end %>

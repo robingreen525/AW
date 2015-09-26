@@ -1,0 +1,27 @@
+<h1>Listing Bacterial Plasmids</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Background</th>
+    <th>Drug Resistance</th>
+    <th>Plasmid Name</th>
+    <th>Plasmid Sequence</th>
+    <th>Notes</th>
+    <th>Freeze Date</th>
+  </tr>
+
+<% for bacterial_plasmid in @bacterial_plasmids %>
+  <tr>
+    <td><%=h bacterial_plasmid.number %></td>
+    <td><%=h bacterial_plasmid.background %></td>
+    <td><%=h bacterial_plasmid.drug_resistance %></td>
+    <td><%=h bacterial_plasmid.plasmid_name %></td>
+    <td><%=h bacterial_plasmid.plasmid_sequence %></td>
+    <td><%=h bacterial_plasmid.notes %></td>
+    <td><%=h bacterial_plasmid.freeze_date %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

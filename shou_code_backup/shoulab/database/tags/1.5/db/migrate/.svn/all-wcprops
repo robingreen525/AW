@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/db/migrate
+END
+20080708051731_create_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/db/migrate/20080708051731_create_users.rb
+END
+20080725042033_add_adam_as_user.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/db/migrate/20080725042033_add_adam_as_user.rb
+END
+20080706011943_create_yeast_strains.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/db/migrate/20080706011943_create_yeast_strains.rb
+END
+20080706012104_create_bacterial_plasmids.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/db/migrate/20080706012104_create_bacterial_plasmids.rb
+END
+20080706013028_create_oligos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/db/migrate/20080706013028_create_oligos.rb
+END
+20090107081116_add_bacteria_drug_resistance_column.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/db/migrate/20090107081116_add_bacteria_drug_resistance_column.rb
+END
+20080708045619_add_yeast_strain_data.rb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/db/migrate/20080708045619_add_yeast_strain_data.rb
+END
+20080711044325_add_columns_to_oligo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/db/migrate/20080711044325_add_columns_to_oligo.rb
+END
+20080708070739_create_sessions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/db/migrate/20080708070739_create_sessions.rb
+END

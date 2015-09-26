@@ -1,0 +1,384 @@
+#alias background  genotype  notes source/date
+RJD 360	W303	MATacan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	from B. Fuller	Feb, 2002
+RJD361	W303	MAT alphacan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	from B. Fuller	Feb, 2002
+RJD1285	W303	sir2::LEU2 pep4::TRP1 MAT a can1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1		Feb, 2002
+RJD1348	W303	Cdc14-GFP::his5+, bar1::hisG,  MAT alphacan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	Dual specificity protein phosphatase (PTPase) that performs a function late in the cell cycle	Feb, 2002
+RJD1519	W303	Vma2-GFP::his5+, bar1::LEU2, pep4::TRP1, MAT acan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	Vacuolar H(+)-ATPase (V-ATPase) regulatory subunit (subunit B) involved in nucleotide binding	Feb, 2002
+RJD1526/AFS499	W303	TUB1-GFP::URA3, MAT ?can1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	Tubulin alpha-1 chain	Feb, 2002
+RJD1801	W303	Cim5-GFP::HIS3, pep4::TRP1, bar1::LEU2, MAT acan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	26S proteasome complex, ATPase component 	Feb, 2002
+RJD1802	W303	Pre6-GFP::HIS3, pep4::TRP1, bar1::LEU2, MAT acan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	proteasome core catalytic complex subunit	Feb, 2002
+RJD1803	W303	Pre6-GFP::HIS3, pep4::TRP1, bar1::LEU2, MAT acan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	proteasome core catalytic complex subunit	Feb, 2002
+RJD1805	W303	Rpn11-GFP::HIS3, pep4::TRP1, bar1::LEU2, MAT acan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	19S regulatory particle of the proteasome subunit	Feb, 2002
+RJD1824	W303	Rpn12-GFP::HIS3, pep4::TRP1, bar1::LEU2, MAT acan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	26S proteasome complex, Non-ATPase componentquite a few white colonies in the original streak-out plate	Feb, 2002
+RJD1303/DMY731		Sir2-GFP::LEU2, MAT a     ura3-52 trp1 lys2-801 leu2D1 his3D200 pep4::HIS3 prb1D1.6R can1 GAL 	NAD-dependent histone deacetylase of the Sir2 family, involved in maintenance of silencing of HMR, HML, and telomeres	Feb, 2002
+RJD1304/DMY758		Net1-GFP::LEU2, MAT a     ura3-52 trp1 lys2-801 leu2D1 his3D200 pep4::HIS3 prb1D1.6R can1 GAL 		Feb, 2002
+RJD1305/DMY765		Sir2-GFP::URA3, Sir4::LEU2, MAT a     ura3-52 trp1 lys2-801 leu2D1 his3D200 pep4::HIS3 prb1D1.6R can1 GAL 	nucleolus, no longer at telomeres.	Feb, 2002
+Net1-GFP	W303	Net1-GFP::kan, MAT acan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1		Mario Niepel@ Rout Lab, Feb, 2002
+Rpa190-GFP	W303	Rpa190-GFP::kan, MAT acan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	RNA polymerase I largest subunit	Mario Niepel@ Rout Lab, Feb, 2002
+Rpa190-GFP/+	W303	Rpa190-GFP::kan/+, MAT a/alphacan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	RNA polymerase I largest subunit	Mario Niepel@ Rout Lab, Feb, 2002
+	DF5	Nop1-GFP::HIS		Ben Timney, Rout lab, March, 2002 
+	DF5	Nup49-GFP::HIS	nuclear, nuclear pore, peripheral membrane	Ben Timney, Rout lab, March, 2002 
+	DF5	Kap121-CFP::KLURA	nuclear, cyto, nuclear pore.	Ben Timney, Rout lab, March, 2002 
+	DF5	Kap123-CFP::KLURA	nuclear, cyto, nuclear pore.	Ben Timney, Rout lab, March, 2002 
+DMY754	BJ5459 (protease deficient)	Sir3-GFP MATa  ura3-52 trp1 lys2-801 leu2D1 his3D200 pep4::HIS3 prb1D1.6R can1 GAL 		Moazed Lab, March, 2002
+DMY763	BJ5459 (protease deficient)	GFP-Sir4 MATa    ura3-52 trp1 lys2-801 leu2D1 his3D200 pep4::HIS3 prb1D1.6R can1 GAL 		Moazed Lab, March, 2002
+DHY51 	W303	SPC29-YFP (HIS) MATacan1-100 ade2-1 his3-11,-15 leu2-3,-112  ura3-1	Spindle Pole Bodyhttp://depts.washington.edu/~yeastrc/	March, 2002
+DHY55-1D 	W303	TRX3-YFP (HIS) MATacan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	mitochondriahttp://depts.washington.edu/~yeastrc/	March, 2002
+DHY56-2B 	W303	NIC96-YFP (HIS) MATacan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	Nuclear Memb/nuclear porehttp://depts.washington.edu/~yeastrc/	March, 2002
+DHY57	W303	HHF2-YFP (HIS)/HHF2 MATa/alphacan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	chromatin/Histone.  The fluorescent protein tag on HHF2 is unstable.  Recommend freezing quickly.  http://depts.washington.edu/~yeastrc/	March, 2002
+DHY62-1B 	W303	KEX2-YFP (HIS) MATacan1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	Late Golgihttp://depts.washington.edu/~yeastrc/	March, 2002
+DHY189 	W303	URA3::TUB1-YFP TUB1  MATacan1-100 ade2-1 his3-11,-15 leu2-3,-112 ade3D100	tubulinhttp://depts.washington.edu/~yeastrc/	March, 2002
+BSY2-1A 	W303	BNI4-YFP (kan)  MATa       can1-100 ade2-1 ade3D100 his3-11,-15 leu2-3,-112 TRP ura3-1	bud neckhttp://depts.washington.edu/~yeastrc/	March, 2002
+BSY3-1B 	W303	SMC3-YFP (kan)  MATa     can1-100 ade2-1 ade3D100 his3-11,-15 leu2-3,-112 TRP ura3-1	nuclear-cohesinhttp://depts.washington.edu/~yeastrc/	March, 2002
+BSY80-5B 	W303	ABP1-YFP (kan)  MATalpha     can1-100 ade2-1 ADE3 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	actin patcheshttp://depts.washington.edu/~yeastrc/	March, 2002
+DHY45A 	W303	SPC29-CFP (kan)  MATalpha    can1-100 ade2-1 ade3D100 his3-11,-15 leu2-3,-112 TRP ura3-1	SPBhttp://depts.washington.edu/~yeastrc/	March, 2002
+DHY61-2C 	W303	NIC96-CFP (kan)  MATalpha    can1-100 ade2-1 ade3D100 his3-11,-15 leu2-3,-112 TRP ura3-1	nuclear memb-nuclear porehttp://depts.washington.edu/~yeastrc/	March, 2002
+DHY199	W303	HHF2-CFP (kan)/HHF2 MATa/alpha   can1-100 ade2-1 his3-11,-15 leu2-3,-112 trp1-1/trp1 or TRP ura3-1	chromatin/Histone.  The fluorescent protein tag on HHF2 is unstable.  Recommend freezing quickly.  http://depts.washington.edu/~yeastrc/	March, 2002
+DHY66 	W303	TRX3-CFP/TRX3-CFP MATa/alpha can1-100 ade2-1 ade3D100 his3-11,-15 leu2-3,-112 TRP ura3-1 TRP	mitochondriahttp://depts.washington.edu/~yeastrc/	March, 2002
+BSY60-8B 	W303	ABP1-CFP (kan)  MATa   can1-100 ade2-1 ade3D100 his3-11,-15 leu2-3,-112 trp1-1 ura3-1	actin patcheshttp://depts.washington.edu/~yeastrc/	March, 2002
+FY 1679	FY 1679	MATa/MATalpha ura3-52/ura3-52 leu2D1/LEU2 trp1D63/TRP1 his3D200/HIS3 GAL2/GAL2	Yeast 16:1025-1033 (2000)	B.Winsor@ibmc.u-strasbg.fr, April 2, 2002
+FY 212	FY 1679	ARP5-(GA)5-GFPS65T-kanMX6/+, MATa/MATalpha ura3-52/ura3-52 leu2D1/LEU2 trp1D63/TRP1 his3D200/HIS3 GAL2/GAL2 	nuclear localisation, Yeast 16:1025-1033 (2000)	B.Winsor@ibmc.u-strasbg.fr, April 2, 2002
+31M6#3A	3x BX S288C	MATa   PUR6  lys2D0  	p36	March, 2003
+31M6#3B	3x BX S288C	MATalpha  PUR6  lys2D0  	p36	March, 2003
+Y349		MATalpha lys2-D201 leu2-3,112 ura3-52 his3-D200	B.Daignan-Fornier@ibgc.u-bordeaux2.fr   Genetics 156 (2000) :953-961541-545 are isogenic; not isogenic but closer to S288c than to W303 	Jan, 2003
+mutant 129		MATalpha  bra3-1  lys2-D201 leu2-3,112 ura3-52 his3-D200 	pur5 = bra3 = GMP kinase (GUK1 gene)B.Daignan-Fornier@ibgc.u-bordeaux2.fr   Genetics 156 (2000) :953-961, purine excretor541-545 are isogenic; not isogenic but closer to S288c than to W303 	Jan, 2003
+mutant 130		MATalpha  bra3-2  lys2-D201 leu2-3,112 ura3-52 his3-D200 	B.Daignan-Fornier@ibgc.u-bordeaux2.frweaker purine excretor than bra3-1541-545 are isogenic; not isogenic but closer to S288c than to W303 	Jan, 2003
+Y350		MATa   lys2-D201  leu2-3,112  ura3-52  	B.Daignan-Fornier@ibgc.u-bordeaux2.fr   Genetics 156 (2000) :953-961541-545 are isogenic; not isogenic but closer to S288c than to W303 	Jan, 2003
+Y508		MATa   hpt1::URA3  lys2-D201  leu2-3,112  ura3-52  	B.Daignan-Fornier@ibgc.u-bordeaux2.fr   Genetics 156 (2000) :953-961, purine excretor541-545 are isogenic; not isogenic but closer to S288c than to W303 	Jan, 2003
+BY4743 (Euroscarf Y20000)	S288C100%	MATa/MATalpha  his3D1/his3D1  leu2D0/leu2D0  met15D0/MET15  lys2D0/LYS2  ura3D0/ ura3D0	Brachmann CB et al., Yeast 14:115-132 (1998) .  Designer deletion strains derived from Saccharomyces cerevisiae S288C: a useful set of strains and plasmids for PCR-mediated gene disruption and other applications.	Euroscarf, Jan 2003
+YDR502C KO (Euroscarf Y17264)	S288C100%, BY4742 background 	MATalpha  YDR502C (SAM2, ETH2)::kanMX4  his3D1  leu2D0  lys2D0  ura3D0	Brachmann CB et al., Yeast 14:115-132 (1998)  http://www-deletion.stanford.edu/cgi-bin/deletion/search3.pl	Euroscarf, Jan 2003
+CSH-1L	S288C	MATalpha gal mal 	Laboratory wild type strain, S288C archival copy.  Gerry Fink #4651	
+p5D1	S288C100%	MATa            his3D1  leu2D0  ura3D0  met15D0  lys2D0   	P5, dissection of BY4743 (WY546)The old one "FW19: MATalpha ade2-1 can1  his1-7, -315" was replaced on Jan 25, 2003	
+p5D4	S288C100%	MATalpha    his3D1  leu2D0  ura3D0 	P5, dissection of BY4743 (WY546)The old one "FW20: MATa  ade2-1 can1  his1-7, -315" Gerry Fink #6952, Strain L672. from Fred Winston was replaced on Jan 25, 2003	
+p5C1	S288C100%	MATalpha  his3D1  leu2D0  ura3D0  met15D0  lys2D0   	P5, dissection of BY4743 (WY546)	Euroscarf, Jan 2003
+p5C2	S288C100%	MATa          his3D1  leu2D0  ura3D0 	P5, dissection of BY4743 (WY546)	Euroscarf, Jan 2003
+p5C3	S288C100%	MATa          his3D1  leu2D0  ura3D0  met15D0   	P5, dissection of BY4743 (WY546)	Euroscarf, Jan 2003
+p5C4	S288C100%	MATalpha  his3D1  leu2D0  ura3D0   lys2D0   	P5, dissection of BY4743 (WY546)	Euroscarf, Jan 2003
+p5G1	S288C100%	MATa          his3D1  leu2D0  ura3D0   lys2D0   	P5, dissection of BY4743 (WY546)	Euroscarf, Jan 2003
+p5G3	S288C100%	MATalpha  his3D1  leu2D0  ura3D0  met15D0  	P5, dissection of BY4743 (WY546)	Euroscarf, Jan 2003
+YNN282	Berkeley YGSC	MATalpha  trp1-D  his3-D200 ura3-52 lys2-801a ade2-10 gal 	Res. Microbiol. (1997) 148:613-623.	casalone@DBAG.UNIFI.IT, Jan 2003
+FSC2.1	Berkeley YGSC	MATalpha  trp1-D  his3-D200  ura3-52  lys2-801a  ade2-10  gal  TFL1	Res. Microbiol. (1997) 148:613-623; resistant to >200 mg/ml TFL.  Excrete less than WY559. 	casalone@DBAG.UNIFI.IT, Jan 2003
+FSC2.4	Berkeley YGSC	MATalpha  trp1-D  his3-D200  ura3-52  lys2-801a  ade2-10  gal  TFL1. Flocculates.	Res. Microbiol. (1997) 148:613-623; resistant to >200 mg/ml TFL . It floculates!	casalone@DBAG.UNIFI.IT, Jan 2003
+		MATa  pur1	pure , suppressed by ade4-su.  Nature New Biology (1971) 229:116; Mol Gen Genet (1983) 191:407-412.   Genetical Res (1970) 15:7-17. pur1-pur6 and hpt1 are all unliked.	r.woods.uwinnipeg.ca@ds1.uwinnipeg.ca, Jan 2003
+		MATa  pur1-ps	a partially suppressible allele of pur1.  Genetical Res.  Vol.15 pp. 7-17.	r.woods.uwinnipeg.ca@ds1.uwinnipeg.ca, Jan 2003
+		MATa  pur2,  flocculation (clumps can be disrupted by pippeting, but not vortexing) 	pure , suppressed by ade4-su. Genetical Res.  Vol.15 pp. 7-17.	r.woods.uwinnipeg.ca@ds1.uwinnipeg.ca, Jan 2003
+		MATa  pur3	pure, suppressed by ade4-su. Genetical Res.  Vol.15 pp. 7-17.	r.woods.uwinnipeg.ca@ds1.uwinnipeg.ca, Jan 2003
+		MATa  pur4	pure , suppressed by ade4-su. Genetical Res.  Vol.15 pp. 7-17.	r.woods.uwinnipeg.ca@ds1.uwinnipeg.ca, Jan 2003
+		MATa  pur5, flocculation (clumps can be disrupted by pippeting, but not vortexing) 	pur5 = bra3 = GMP kinase (GUK1 gene), affects IMP dehydrogenase.  pure , unlinked to other purs and hpt1.  suppressed by ade4-su. Genetical Res.  Vol.15 pp. 7-17. Mol Gen Genet (1983) 191:407-412	r.woods.uwinnipeg.ca@ds1.uwinnipeg.ca, Jan 2003
+		MATa  pur6,  flocculation (clumps can be disrupted by pippeting, but not vortexing) (? - see p82)	pur6 is a regulatory mutant of ADE4, the first enzyme in adenine biosynthesis. pure , NOT suppressed by ade4-su, unlinked to hpt1 but does not complement hpt1.  Mol Gen Genet (1983) 191:407-412.  Genetical Res.  Vol.15 pp. 7-17. 	r.woods.uwinnipeg.ca@ds1.uwinnipeg.ca, Jan 2003
+		MATa  PUR6, flocculation (clumps can be disrupted by pippeting, but not vortexing) 	purE. PUR6 is a regulatory mutant of ADE4, the first enzyme in adenine biosynthesis. unlinked to hpt1.  NOT suppressed by ade4-su.  Mol Gen Genet (1983) 191:407-412;  Genetical Res.  Vol.15 pp. 7-17. 	r.woods.uwinnipeg.ca@ds1.uwinnipeg.ca, Jan 2003
+SA1		MATa ade4-su+	Refloculate if sit around after sonication.  ade4-su+ allows excretion of purines, ADE+ prototrophic.	r.woods.uwinnipeg.ca@ds1.uwinnipeg.ca, Jan 2003
+W6-2D		MATa ade4-su	ade4-su suppressess excretion of purines, ADE prototrophic. reduced activity of Ade4.	r.woods.uwinnipeg.ca@ds1.uwinnipeg.ca, Jan 2003
+XV185-14C	S288C	MATa  ade2-1  arg4-17  his1-7  hom3-10  lys1-1  trp5-48	Genetics 148:1647 (1998).  Bob Mortimer's original mutants, with the exception of hom3-10, which came from Giovanni Magni's collection.  The his1-7 mutant is from Sy Fogel.  All of Sy's strains derived from s288c.  Magni studied genetics with Winge, and his collection, at first, were the brewer's yeast that Winge worked with.  He gradually mixed in a lot of Mortimer's strains which mostly all began from s288c.The trp5-48 mutant has one specific function.  Any stray PSI factors that are floating around in the different strain collections immediately will suppress trp5-48.  Since my work deals with mutation rates, the trp5-48  mutant is needed for PSI factor detecion because when I make crosses to work with some exotic DNA repair mutant, or something else, I have to make certain that PSI factors are eliminated, because it can alter the spontaneous mutation rates, especially in lys1-1, arg4-17, and ade2-1, the three ochre suppressible mutants.  hom3 mutants require Met and Thr.	vborstel@ualberta.ca, Jan 2003
+XV2022-2D	S288C	MATa  ade2-1  arg4-17  his1-7  hom3-10  lys1-1  trp5-48  ura3D	The XV2023-2D should have a similar genotype to XV185-14C, but it also has a URA3 large deletion. hom3 mutants require Met and Thr.	vborstel@ualberta.ca, Jan 2003
+BY4700	S288C100%	MATa  ura3D0 	47103#A1. ATCC200866. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4702	S288C100%	MATalpha   leu2D0   lys2D0  met15D0  	47103#A2. ATCC200867. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified. 	 Jan 2003
+BY4704	S288C100%	MATa   ade2D::hisG?  his3D200  leu2D0   lys2D0  met15D0  trp1D63     	47103#A3. ATCC200868. Designer Deletion strains.  See WY615.	 Jan 2003
+BY4705	S288C100%	MATalpha   ade2D::hisG?  his3D200  leu2D0   lys2D0  met15D0  trp1D63 ura3D0 	47103#A4. ATCC200869. Designer Deletion strains. Yeast 14: 115-132, 1998.  	Jan 2003
+BY4706	S288C100%	MATa   met15D0      	47103#A5. ATCC200870. Designer Deletion strains. Yeast 14: 115-132, 1998. Verified. 	Jan 2003
+BY4707	S288C100%	MATalpha   met15D0  	47103#A6. ATCC200871. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4709	S288C100%	MATalpha   ura3D0	47103#A7. ATCC200872. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4710	S288C100%	MATa  trp1D63 	47103#A8. ATCC200873. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4711	S288C100%	MATalpha  trp1D63 	47103#A9. ATCC200874. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4712	S288C100%	MATa  leu2D0   	47103#A10. ATCC200875. Designer Deletion strains. Yeast 14: 115-132, 1998. Verified.	Jan 2003
+BY4713	S288C100%	MATalpha   leu2D0   	47103#A11. ATCC200876. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4714	S288C100%	MATa   his3D200  	47103#A12. ATCC200877. Designer Deletion strains.  Verified.	 Jan 2003
+BY4715	S288C100%	MATa   lys2D0  	47103#B1. ATCC200878. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4716	S288C100%	MATalpha   lys2D0  	47103#B2. ATCC200879. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+22M8#5D	S288C	MATalpha  ade2D::hisG  ura3D0	p29.  Red.	Jan 2003
+BY4718	S288C100%	MATa  met15D0  ura3D0	47103#B4. ATCC200881. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4719	S288C100%	MATa  trp1D63  ura3D0	47103#B5. ATCC200882. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4720	S288C100%	MATalpha   lys2D0   trp1D63  ura3D0	47103#B6. ATCC200883. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4722	S288C100%	MATalpha  leu2D0  ura3D0	47103#B7. ATCC200884. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4723	S288C100%	MATa  his3D200  ura3D0	47103#B8. ATCC200885. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4724	S288C100%	MATa  lys2D0  ura3D0	47103#B9. ATCC200886. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4725	S288C100%	MATa  ade2D::hisG  ura3D0.   Consider WY640.	47103#B10. ATCC200887. Designer Deletion strains.  Verified (22M8).  Red, but does not segregate 2:2 (p29)	Jan 2003
+BY4726	S288C100%	MATalpha   ade2D::hisG  ade? ura3D0   (replace with WY586)	47103#B11. ATCC200888. Designer Deletion strains.  Two ade? See 16M2/p21.	Jan 2003
+BY4727	S288C100%	MATalpha   his3D200  leu2D0   lys2D0  met15D0  trp1D63  ura3D0	47103#B12. ATCC200889. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4728	S288C100%	MATa   his3D200  trp1D63   ura3D0	47103#C1. ATCC200890. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4729	S288C100%	MATalpha   his3D200  trp1D63  ura3D0	47103#C2. ATCC200891. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4730	S288C100%	MATa  leu2D0  met15D0  ura3D0	47103#C3. ATCC200892. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4731	S288C100%	MATalpha  leu2D0  met15D0  ura3D0	47103#C4. ATCC200893. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4732	S288C100%	MATalpha  his3D200  met15D0  trp1D63  ura3D0	47103#C5. ATCC200894. Designer Deletion strains. Yeast 14: 115-132, 1998. Verified. 	Jan 2003
+BY4733	S288C100%	MATa  his3D200  leu2D0  met15D0  trp1D63  ura3D0	47103#C6. ATCC200895. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4734	S288C100%	MATalpha  his3D200  leu2D0  met15D0  trp1D63  ura3D0	47103#C7. ATCC200896. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+SY9913	S288C100%	MATalpha  ura3D0  leu2D0  his3D1  lys2D0  ade8D0	Yeast 2001 Apr;18(6):563-75; d.struttman@bso.man.ac.uk; steve.oliver@man.ac.uk	March 2003
+BY4736	S288C100%	MATa   ade2D::hisG?  his3D200  met15D0  trp1D63  ura3D0	47103#C9. ATCC200898. Designer Deletion strains. Yeast 14: 115-132, 1998.  	Jan 2003
+BY4737	S288C100%	MATalpha   ade2D::hisG?  his3D200  met15D0  trp1D63  ura3D0	47103#C10. ATCC200899. Designer Deletion strains. Yeast 14: 115-132, 1998.  	Jan 2003
+BY4738	S288C100%	MATalpha  trp1D63  ura3D0	47103#C11. ATCC200900. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+BY4739	S288C100%	MATalpha   leu2D0   lys2D0  ura3D0	47103#C12. ATCC200901. Designer Deletion strains. Yeast 14: 115-132, 1998.  Verified.	Jan 2003
+16M2#4B	~S288C	MATalpha  his3D200	p21	Jan 2003
+S288C	~S288C	MATalpha	From Karl Poralla	poralla@web.de, Jan 2003
+S288C	~S288C	MATalpha	From Karl Poralla	poralla@web.de, Jan 2003
+BOR1	~S288C	MATalpha  BOR1	From Karl Poralla.  Borrelidin resistant.  Thr and homeserine O/E. Closely linked to HOM3.	poralla@web.de, Jan 2003
+BOR1	~S288C	MATalpha  BOR1	From Karl Poralla.  Borrelidin resistant.  Thr and homeserine O/E.	poralla@web.de, Jan 2003
+7M1#1B		MATalpha   hpt1::URA3  lys2-D201  leu2-3,112  ura3-52  	WY541x WY545	Jan, 2003
+7M1#4C		MATalpha   hpt1::URA3  lys2-D201  leu2-3,112  ura3-52 his3-D200 	WY541x WY545	Jan, 2003
+10M1	S288C100%	MATa/alpha   ade2D::hisG/ade2D::hisG  his3D200/+  leu2D0/+   lys2D0/+  met15D0/+  trp1D63/+  ura3D0/+  ade?/ade?    	WY574xWY594 #1. P21: since all spores and the diploid are white, and since WY594 (B11) has two unlinked ade mutations, 10M1 can be ade?/ade?	 Jan 2003
+10M2B#3D	~S288C	MATa  ade2-1  his1-7  lys1-1   ura3D0	p17	Feb 2003
+16M4	S288C100%	MATa/alpha   ade2D::hisG/+  his3D200/+  leu2D0/leu2D0   lys2D0/+  met15D0/+  trp1D63/+  ura3D0/+    	WY574xWY590 	 Jan 2003
+16M5	S288C100%	MATa/alpha   lys2D0/lys2D0  trp1D63/+  ura3D0/+    	WY589xWY584 	 Jan 2003
+10M2B#9A	~S288C	MATalpha  his1-7  hom3-10  lys1-1 	p17.  hom3 mutants require Met and Thr.  his1 and hom3 are linked.  out of 3/40 TT; 37/40 PD	vborstel@ualberta.ca, Jan 2003
+B585	not S288C	MATa  his1-1  trp2-1  lys2-1	Timothy_Curran@urmc.rochester.edu. Journal of Bacteriology (1999) 181:4774-4779	From Fred Sherman. Feb, 2003
+B7823	not S288C	MATa  his1-7  hom3-10  ura3  rad6::LEU+	Timothy_Curran@urmc.rochester.edu.  585-273-1509.	From Fred Sherman. Feb, 2003
+10M2B #12A	~S288C	MATalpha  ade2-1  arg4-17  trp5-48	p17	vborstel@ualberta.ca, Jan 2003
+10M2B #15A	~S288C	MATa  ade2-1  his1-7  hom3-10 	p17	Feb 2003
+16M7#13A	~S288C	MATalpha  his1-7   	p22	Feb 2003
+16M2#2A	S288C100%	MATa  ade2D::hisG  his3D200    	p21-22.  The ade allele is allelic to ade2-1 (22M2).	 Jan 2003
+16M2#2C	S288C100%	MATalpha  ade2D::hisG  ura3D0    	p21-22. The ade allele is allelic to ade2-1 (22M4).	 Jan 2003
+16M2#7B	S288C100%	MATa  ade2D::hisG      	p21-22.  Grow on SD+Ade. verified in 22M8.	 Jan 2003
+16M2#7D	S288C100%	MATalpha  ade2D::hisG      	p21-22.  Grow on SD+Ade. verified in 23M1.	 Jan 2003
+AEC11T(big)	~S288C(X2180)	MATa tlR  (lyse) dominant, low mating efficiency with S288C, spores inviable.	The original strain was streaked on thialysine (AEC) plate, and lysine excretion was tested.  AEC11T (big) but not (small) yielded visible-by-eye feeding result after 2 days at 30C (p23-24)	BhattaJK@MUOhio.edu, Feb 2003
+16M2#12B	S288C100%	MATalpha  ade2D::hisG  his3D200    	p21.  This colony is red.	 Jan 2003
+AEC39(big)	~S288C(X2180)	MATa TLR (lyse)  When mated to S288C, form diploid, and sporulate, but spores inviable.	The original strain was streaked on thialysine (AEC) plate, and lysine excretion was tested.  AEC11T (big) and (small) yielded visible-by-eye feeding result after 4 days at 30C (p23-24)	BhattaJK@MUOhio.edu, Feb 2003
+18M1#9A	1x  backcross to S288C	MATalpha  his1-1  trp2-1  (flocculates)	p18	Feb, 2003
+16M1#2A	1x  backcross to S288C	MATa  PUR6  leu2D0   lys2D0  met15D0  (does not flocculate)	p16	Feb 2003
+22M9#4B	~S288C	MATa  his1-7    	p27	 Jan 2003
+22M9#4C	~S288C	MATa  ade2D::hisG  his1-7    	p27	 Jan 2003
+23M1#4A	S288C100%	MATalpha  ade2D::hisG   lys2D0    	p27	 Jan 2003
+23M1#8C	S288C100%	MATa  ade2D::hisG   lys2D0    	p27	 Jan 2003
+23M2#1D	S288C100%	MATalpha  ade2D::hisG   leu2D0      	p29	 Feb 2003
+23M2#9C	S288C100%	MATa  ade2D::hisG   leu2D0      	p29	 Feb 2003
+22M8#1A	~S288C	MATa  ade2D::hisG  ura3D0	p29.  Red. 	Jan 2003
+26M1#4D	2x  backcross to S288C	MATa  his1-1 (does not flocculate)	p31	
+26M2#3B	2x  backcross to S288C	MATalpha  PUR6  his3D200  	p31	March 2003
+26M2#8A	2x  backcross to S288C	MATalpha  PUR6  lys2D0  	p31	March 2003
+31M4	S288C100%	MATa/alpha  his3D200/his3D200  ade2D::hisG/+  ura3D0/+    	p31.  WY591 x WY630	 March 2003
+SY9912	S288C100%	MATa  ura3D0  leu2D0  his3D1  lys2D0  ade8D0	Yeast 2001 Apr;18(6):563-75; d.struttman@bso.man.ac.uk; steve.oliver@man.ac.uk	March, 2003
+31M5#8A	3x  back-X S288C	MATalpha  his1-1  lys2D0	p35	March, 2003
+31M5#8C	3x  back-X  S288C	MATa  his1-1 	p35	March, 2003
+31M5#3C	3x  back-X  S288C	MATalpha  his1-1 	p35	March, 2003
+31M5#6A	3x  back-X S288C	MATa  his1-1  lys2D0	p35	March, 2003
+31M3#6B	S288C100%	MATalpha  YDR502C (SAM2, ETH2)::kanMX4  ura3D0  ade2D::hisG	p35 - to facilitate mating with prototrophic mutants	March 2003
+31M3#7A	S288C100%	MATa  YDR502C (SAM2, ETH2)::kanMX4  ura3D0  	p35 - to facilitate mating with prototrophic mutants	March 2003
+31M3#1D	S288C100%	MATalpha  YDR502C (SAM2, ETH2)::kanMX4  leu2D0  	p35 - to facilitate mating with prototrophic mutants	March 2003
+31M6#7C	3x BX S288C	MATa   PUR6  his3D200  	p36	March, 2003
+31M6#10B	3x BX S288C	MATalpha   PUR6  his3D200  	p36	March, 2003
+39M2.1#1C	S288C100%	MATalpha  ade8D0  ura3D0  	p42	March, 2003
+39M2.1#2D	S288C100%	MATa  ade8D0  his3D1  	p42	March, 2003
+39M2.1#8D	S288C100%	MATa  ade8D0  lys2D0  ura3D0  	p42	March, 2003
+39M2.1#10B	S288C100%	MATalpha  ade8D0  his3D1  	p42	March, 2003
+39M2.1#12C	S288C100%	MATa  ade8D0  his3D1  leu2D0   	p42	March, 2003
+39M2.1#14B	S288C100%	MATalpha  ade8D0  	p42	March, 2003
+39M2.1#18C	S288C100%	MATalpha  ade8D0  trp1D63	p42	March, 2003
+RJD662		MATalpha   ade6 (ts?)	mating type tester	Jan, 2003
+RJD663		MATa   ade6 (ts?) 	mating type tester	March, 2003
+39M2.1#19B	S288C100%	MATalpha  ade8D0  leu2D0  	p42	March, 2003
+39M2.2#3C	S288C100%	MATa  ade8D0  lys2D0  his3D1  leu2D0  	p42	March, 2003
+39M2.2#8C	S288C100%	MATa  ade8D0  lys2D0  his3D1  	p42	March, 2003
+39M2.2#9A	S288C100%	MATalpha  ade8D0  lys2D0  	p42	March, 2003
+39M2.2#10D	S288C100%	MATalpha  ade8D0  lys2D0  his3D1  	p42	March, 2003
+39M2.2#11B	S288C100%	MATa	p42	March, 2003
+39M2.2#12C	S288C100%	MATa  ade8D0  leu2D0  	p42	March, 2003
+39M2.2#13D	S288C100%	MATalpha  ade8D0  trp1D63  ura3D0	p42	March, 2003
+39M2.2#14D	S288C100%	MATa  ade8D0  trp1D63  ura3D0	p42	March, 2003
+39M2.2#16D	S288C100%	MATalpha	p42	March, 2003
+FSC1.2	Berkeley YGSC	MATalpha  trp1-D  his3-D200  ura3-52  lys2-801a  ade2-10  gal  TFL1	Res. Microbiol. (1997) 148:613-623; resistant to >200 mg/ml TFL.  D2-3: excrete half as much leucine as WY559.	casalone@DBAG.UNIFI.IT, Jan 2003
+635.1#11	~S288C	MATa  ade2D::hisG  his1-7-e    	p45	 Jan 2003
+635.10#7	~S288C	MATa  ade2D::hisG  his1-7-e    	p45	 Jan 2003
+635.2#1	~S288C	MATa  ade2D::hisG  his1-7-e    	p45	 Jan 2003
+635.3#23	~S288C	MATa  ade2D::hisG  his1-7-e    	p45	 Jan 2003
+635.7#9	~S288C	MATa  ade2D::hisG  his1-7-e    	p45	 Jan 2003
+635.3#12	~S288C	MATa  ade2D::hisG  his1-7-e  rho-    	p45	 Jan 2003
+646#1	3x  back-X S288C	MATalpha  his1-1-e  lys2D0	p40A, 46-47	March, 2003
+646#5	3x  back-X S288C	MATalpha  his1-1-e  lys2D0	p40A, 46-47	March, 2003
+647#1	3x  back-X  S288C	MATa  his1-1-e	p40A, 46-47	March, 2003
+647#5	3x  back-X  S288C	MATa  his1-1-e	p40A, 46-47	March, 2003
+647#9	3x  back-X  S288C	MATa  his1-1-e	p40A, 46-47	March, 2003
+647#16'	3x  back-X  S288C	MATa  his1-1-e	p40A, 46-47	March, 2003
+44M1#25B	~S288C	MATa  ade8D0  his1-7-e    	p44, p50	 Jan 2003
+44M1#36D	~S288C	MATalpha  ade8D0  his1-7-e    	p44, p50	 Jan 2003
+44M1#14B	~S288C	MATalpha  lys2D0  his1-7-e    	p44, p50	 Jan 2003
+44M1#21A	~S288C	MATa  ade2D::hisG lys2D0  his1-7-e    	p44, p50	 Jan 2003
+44M1#30C	~S288C	MATalpha  ade8D0  lys2D0  his1-7-e    	p44, p50	 Jan 2003
+44M1#14A	~S288C	MATa  his1-7-e    	p44, p50	 Jan 2003
+44M1#21D	~S288C	MATalpha  ade8D0  his1-7-e    	p44, p50	 Jan 2003
+49M1#1A	S288C100%	MATa  ade8D0  	p54	March, 2003
+49M2#1C	4x  back-X  S288C	MATa  ade8D0  his1-1 	p54	March, 2003
+49M2#2C	4x  back-X  S288C	MATalpha  ade8D0  his1-1 	p54	March, 2003
+47M1#2B	~S288C	MATa  ade2D::hisG  his1-7-e      	p52	 Jan 2003
+YKL178C KO(Euroscarf Y05028)	100%S288C-derived, BY4742 background 	MATa  YKL178C (ste3)::kanMX4  his3D1  leu2D0  met15D0  ura3D0	ste3 = mating factor a receptor.  Alpha cells lacking STE3 are sterile, but a cells lacking STE3 can mate	Euroscarf, Jan 2003
+54M1	S288C100%	MATa/alpha  ade8D0/ade8D0  leu2D0/+  +/his3D1	p54	March, 2003
+JB38-1	W303	MATa  trp1::ADHp-SV40NLS-mutant PKI NES-GFP-GFP/TRP1 (1 copy)  can1-100 ade2-1  his3-11,-15  leu2-3,-112  ura3-1	from Fred Cross Lab. Intergration of  WSB29/30 after linearize with SnaB1.	Feb, 2002
+JB38-6	W303	MATa  trp1::ADHp-SV40NLS-mutant PKI NES-GFP-GFP/TRP1 (3 copies)  can1-100 ade2-1  his3-11,-15  leu2-3,-112  ura3-1	from Fred Cross Lab. Intergration of  WSB29/30 after linearize with SnaB1.	Feb, 2002
+DBY746	partly S288C	MATalpha  his3D1  leu2-3 -112  ura3-52  trp1-289 (amber)  gal(s) 	David Botstein Lab.  also through ATCC. his3D1: D187bp HindIII/HindIII frag. (305-492)DBY746 is only partly S288C.  The Botstein strain book says it's the product from a cross of an S288C strain with the Lacroute strain background (where ura3-52 came from).	
+55M1#5C	S288C100%	MATa  YKL178C (ste3)::kanMX4  leu2D0  	p60	Euroscarf, Jan 2003
+YPH250	?S288C	MATa  lys2-801 (amber)  ade2-101 (orche)  his3D200  leu2D1  ura3-52 (Ty1-insertion)  trp1D1	Phil Hieter/David Botstein Lab.  	
+61M1	S288C100%	MATa/alpha  ade8D0/+  his3D200/+  	p61	March, 2003
+60L2#2	W303	MATa  trp1-1 ::pRS404-ADHp-venusYFPcan1-100 ade2-1 his3-11,-15 leu2-3,-112  ura3-1	WY500+60L2#2(WSB31) linearized with SnaB1.  venusYFP has ~10 extra aa at C-term.	Feb, 2002
+60L2#3	W303	MATa  trp1-1 ::pRS404-ADHp-venusYFPcan1-100 ade2-1 his3-11,-15 leu2-3,-112  ura3-1	WY500+60L2#3(WSB32) linearized with SnaB1.  venusYFP has ~10 extra aa at C-term.	Feb, 2002
+60L3#2	W303	MATa  trp1-1 ::pRS404-ADHp-CFPcan1-100 ade2-1 his3-11,-15 leu2-3,-112  ura3-1	WY500+60L3#2(WSB33) linearized with SnaB1.  CFP has ~10 extra aa at C-term.	Feb, 2002
+60L3#3	W303	MATa  trp1-1 ::pRS404-ADHp-CFPcan1-100 ade2-1 his3-11,-15 leu2-3,-112  ura3-1	WY500+60L3#3(WSB34) linearized with SnaB1.  CFP has ~10 extra aa at C-term.	Feb, 2002
+pRS404	W303	MATa  trp1-1 ::pRS404can1-100 ade2-1 his3-11,-15 leu2-3,-112  ura3-1	WY500+pRS404 linearized with SnaB1.  	Feb, 2002
+62M1#7B	~S288C	MATalpha  trp1-289 (amber)  gal(s)? flocc (severe)	p64	
+62M1#8D	~S288C	MATa  trp1-289 (amber)  gal(s)? 	p64	
+62M1#8A	~S288C	MATalpha  ura3-52   gal(s)? 	p64	
+62M1#12D	~S288C	MATa  ura3-52   gal(s)? 	p64	
+62M1#18D	~S288C	MATa  leu2-3 -112  gal(s)? 	p64	
+62M1#3D	~S288C	MATalpha   leu2-3 -112   trp1-289 (amber)  gal(s)?	p64	
+62M1#6A	~S288C	MATalpha   trp1-289 (amber)  ura3-52   gal(s)? flocc (mild?)	p64	
+62M2#4A	~S288C	MATa  ade2-101 (orche)  	p64	
+62M2#8B	~S288C	MATalpha  ade2-101 (orche)   lys2-801	p64	
+62M2#11A	~S288C	MATa   lys2-801  leu2D1  ura3-52 (Ty1-insertion) 	p64	
+62M2#15D	~S288C	MATalpha  lys2-801	p64	
+64M1#14B	~S288C	MATalpha   trp1-289 (amber)  	p67	
+64M1#12A	~S288C	MATa   YKL178C(ste3)::kanMX4  trp1-289 (amber)  	p67	
+64M1#18C	~S288C	MATa   trp1-289 (amber)  (does not flocc, but may contain a silent flocc allele)	p67	
+723+ 62L1#2	~S288C	MATa   YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	WY723 transformed with 62L1#2 linearized with Xba1	
+723+ 62L1#3	~S288C	MATa   YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	WY723 transformed with 62L1#3 linearized with Xba1	
+723+ 62L2#2	~S288C	MATa   YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP, strong signal	WY723 transformed with 62L2#2 linearized with Xba1	
+723+ 62L2#3	~S288C	MATa   YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP, strong signal	WY723 transformed with 62L2#3 linearized with Xba1	
+723+ 62L2#3	~S288C	MATa   YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP, normal signal	WY723 transformed with 62L2#3 linearized with Xba1	
+723+ 62L4#1	~S288C	MATa   YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-yEGFP	WY723 transformed with 62L4#1 linearized with Xba1	
+723+ 62L4#3	~S288C	MATa   YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-yEGFP	WY723 transformed with 62L4#3 linearized with Xba1	
+67M4#10D	~S288C	MATa  ade8D0  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p68	
+67M8#9C	~S288C	MATa  ade8D0  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP	p68	
+67M7#1A	~S288C	MATa  his3D200  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP	p68	
+67M9#5B	~S288C	MATa  YKL178C(ste3)::kanMX4  	p68	
+67M2#9B	~S288C	MATa  ade8D0  his1-7-e  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP    	p72	 Jan 2003
+67M5#8C	~S288C	MATa  his3D200  PUR6  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP    	p72	 Jan 2003
+6657-4D	(S288C)?	MATa  his3-11,-15  leu2-3,112    	From Gerry Fink Lab.	Feb, 2002
+6930-8D	(S288C)?	MATalpha  his3-11,-15          	From Gerry Fink Lab.	 Jan 2003
+67M3#10B	~S288C	MATa  his3D200  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p73	Feb, 2002
+67M6#16A	~S288C	MATa  ade8D0  his1-7-e  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP    	p73	 Jan 2003
+JK9-3da/SEC7-EGFPx3/pHS12-DsRed.T4		MATa  [ADHp-preseqCox4-DsRed.T4/LEU2]  leu2-3,112  ura3-52  trp1  his4  SEC7::SEC7-EGFPx3   rme1  GAL+  HMLa     	[pHS12-DsRed.T4] is maintained on -LEU plate.  This is the popped out strain with the chromosomal copy of SEC7 replaced with a triple GFP-tagged version.  The strain has bright green Golgi but also very bright red mitochondria.  See Nat. Biotechnology 20:83-87.  bsglick@midway.uchicago.edu	 BS Glick Lab, June 2003
+67M1#10D	~S288C	MATa  his3D200  PUR6  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP    	p73	 Jan 2003
+Y14235	S288C100%	MATalpha  YDR399w(hpt1)D::kanMX4  his3D1  leu2D0  lys2D0  ura3D0 	Euroscarf	
+79M1.1#9A	~S288C	MATa  YDR399w(hpt1)D::kanMX4  ste3::kanMX4  his3D1  trp1-289::pRS404(TRP)-ADHp-CFP	p79	
+79M1.6#1C	~S288C	MATalpha  YDR399w(hpt1)D::kanMX4  his3D1  lys2D0   trp1-289::pRS404(TRP)-ADHp-CFP	p79	
+67M4#7A	~S288C	MATalpha  trp1-289::pRS404(TRP)-ADHp-venus-YFP  ade8D0  	p68	
+67M8#6C	~S288C	MATalpha  trp1-289::pRS404(TRP)-ADHp-CFP  ade8D0  	p68	
+67M4#6C	~S288C	MATalpha   trp1-289::pRS404(TRP)-ADHp-venus-YFP  (MAT is deduced)	p68	
+67M7#3B	~S288C	MATalpha   trp1-289::pRS404(TRP)-ADHp-CFP  (MAT is deduced)	p68	
+723+ 83L2#1.2	~S288C	MATa   YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	WY723 transformed with WSB41 linearized with Xba1	
+723+ 83L2#1.11	~S288C	MATa   YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (weak)	WY723 transformed with WSB41 linearized with Xba1	
+sst1	alpha factor tester	MATa  sst1 (bar1) ade2? (red)	supersensitive to alpha factor.  Guide to Yeast Gen. & Mol Bio. p84.  spread (1~5)x10^5 on YPD.  	
+sst2	a-factor tester	MATalpha  sst2 ade2? (red)	accumulates ste mutants on subculturing.  sst2 confers supersensitivity to the pheromones of the opposite mating type on both MATa and MAT alpha cells.  defective in adaptation.  Guide to Yeast Gen. & Mol Bio. p84	
+WY732#2	~S288C	MATa  ade8D0  lysE  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p84, 87-89.  0.5 microliter MNNG (5mg/ml) in 0.5 ml 	
+WY732#10	~S288C	MATa  ade8D0  lysE  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p84, 87-89.  0.5 microliter MNNG (5mg/ml) in 0.5 ml 	
+WY732#14	~S288C	MATa  ade8D0  lysE  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p84, 87-89.  1.0 microliter MNNG (5mg/ml) in 0.5 ml 	
+WY732#19	~S288C	MATa  ade8D0  lysE  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p84, 87-88.  1.0 microliter MNNG (5mg/ml) in 0.5 ml 	
+WY732#30	~S288C	MATa  ade8D0  lysE  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p84, 87-88.  3.0 microliter MNNG (5mg/ml) in 0.5 ml 	
+WY732#32	~S288C	MATa  ade8D0  lysE  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p84, 87-89.  3.0 microliter MNNG (5mg/ml) in 0.5 ml 	
+WY732#57	~S288C	MATa  ade8D0  lysE  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p84, 87-88.  3.0 microliter MNNG (5mg/ml) in 0.5 ml 	
+WY732#64	~S288C	MATa  ade8D0  lysE  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p84, 87-89.  1.0 microliter MNNG (5mg/ml) in 0.5 ml 	
+67M3#6B	~S288C	MATa  his3D200  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p73	Feb, 2002
+67M4#10C	~S288C	MATa  ade8D0  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p68	
+67M8#1C	~S288C	MATa  ade8D0  trp1-289::pRS404(TRP)-ADHp-CFP	p68	
+67M7#2A	~S288C	MATa  his3D200  trp1-289::pRS404(TRP)-ADHp-CFP	p68	
+89M2#12C	~S288C	MATa   YKL178C(ste3)::kanMX4  lys2D0  his1-7-e trp1-289::pRS404(TRP)-ADHp-venus-YFP	p90	
+89M1#16C	~S288C	MATa   YKL178C(ste3)::kanMX4  PUR6  lys2D0 trp1-289::pRS404(TRP)-ADHp-CFP	p90	
+94M2#14D	~S288C	MATa  ade8D0  his1-7  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP	p95	
+94M10#7A	~S288C	MATa  lys2D0  trp1-289::pRS404(TRP)-ADHp-CFP  	p95	
+94M10#8A	~S288C	MATa  lys2D0  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP  	p95	
+94M10#12C	~S288C	MATalpha  his3D200   trp1-289::pRS404(TRP)-ADHp-CFP  	p95	
+94M10#21D	~S288C	MATalpha  lys2D0  trp1-289::pRS404(TRP)-ADHp-CFP  	p95	
+94M10#4A	~S288C	MATa  lys2D0  his3D200  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP  	p95	
+94M1#10D	~S288C	MATa  ade8D0  his1-1  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP	p68	
+646#36 (weak)	3x  back-X S288C	MATalpha  his1-1-e  lys2D0	p40A, 46-47	March, 2003
+WY732#5	~S288C	MATa  ade8D0  lysE  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p84, 94.  0.5 microliter MNNG (5mg/ml) in 0.5 ml 	
+WY732#12	~S288C	MATa  ade8D0  lysE  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p84, 94.  0.5 microliter MNNG (5mg/ml) in 0.5 ml 	
+769#14	~S288C	MATa  ade8D0  his1-7-14  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP	p97, strong (1-Day)	
+769#38	~S288C	MATa  ade8D0  his1-7-38  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP	p97, medium (3-Day)	
+769#85	~S288C	MATa  ade8D0  his1-7-85  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP	p97, medium (5-Day)	
+769#7	~S288C	MATa  ade8D0  his1-7-7  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP	p97, medium (4-Day)	
+769#84	~S288C	MATa  ade8D0  his1-7-84  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP	p97, weak (5-Day)	
+769#23	~S288C	MATa  ade8D0  his1-7-23  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-CFP	p97, weak (late)	
+96M1#2B	~S288C	MATa   ade8D0  YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M1#6A	~S288C	MATa   lys2D0  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M1#6C	~S288C	MATa  ade8D0  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M1#7A	~S288C	MATa  his3D1  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M1#14A	~S288C	MATa  his3D1  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M1#20A	~S288C	MATalpha  his3D1  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M1#5A	~S288C	MATalpha  ade8D0  his3D1  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M1#5D	~S288C	MATa  ade8D0  lys2D0  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M1#9A	~S288C	MATalpha  his3D1  lys2D0 trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M1#18A	~S288C	MATa  lys2D0  his3D1  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M1#9C	~S288C	MATa  ade8D0  his3D1  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+96M2#23D	~S288C	MATa   his3D200  pur2   YKL178C(ste3)::kanMX4  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back; pur2 backcrossed three times into S288C	
+98M2#4A	~S288C	MATalpha   lys2D0  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+98M2#13A	~S288C	MATa  ade8D0  lys2D0  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+98M2#21B	~S288C	MATa  lys2D0  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p97 back	
+101M3#6B	~S288C	MATalpha  his3D1  LYS-E1trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p102+back, mutagenized strain backcrossed four times. 4 days (plate assay).	
+101M3#6D	~S288C	MATa  his3D1  LYS-E1  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-CFP	p102+back, mutagenized strain backcrossed four times.  4 days (plate assay).	
+101M3#8D	~S288C	MATa  his3D1  LYS-E1  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p102+back, mutagenized strain backcrossed four times. 4 days (plate assay).  p70 mutagenesis-> 77M1, 94M4, 94M6,101M3, 102M1	
+101M2#18B	~S288C	MATa  his3D1  lys-e2  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-YFP	p102+back, mutagenized strain backcrossed four times. 4.5days (plate assay).	
+98M4#12C	4xbackX	MATa  bra3-1  his3D1  YKL178C(ste3)::kanMX4 trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p99 back	Jan, 2003
+98M4#14B	4xbackX	MATa  bra3-1  lys2-D201  YKL178C(ste3)::kanMX4 trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p99 back	Jan, 2003
+98M4#23B	4xbackX	MATalpha  bra3-1  his3D1  trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p99 back	Jan, 2003
+98M4#9B	4xbackX	MATalpha  bra3-1    trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p99 back	Jan, 2003
+102M1#3B	~S288C	MATa  ade8D0  LYS-E1  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-YFP	p104 back, mutagenized strain backcrossed five times. 8.5 days (plate assay).	
+102M1#4B	~S288C	MATa  his3D1  LYS-E1  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p104 back, mutagenized strain backcrossed five times. 4 days (plate assay).	
+102M1#28D	~S288C	MATa  his3D1  LYS-E1  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-YFP	p104 back, mutagenized strain backcrossed five times. 4 days (plate assay).	
+102M1#35A	~S288C	MATa  ade8D0  LYS-E1  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p104 back, mutagenized strain backcrossed five times. 8 days (plate assay). 77M1, 94M4, 94M6,101M3, 102M1. p77(excretion assay), p71	
+104M2#3C	~S288C	MATa  lys2D0 trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	
+104M2#4B	~S288C	MATalpha  lys2D0 trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	
+104M2#11A	~S288C	MATa  lys2D0  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	
+104M5#3D	~S288C	MATa  lys2D0  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-venus-YFP	p108 back	
+104M5#6A	~S288C	MATa  lys2D0  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p108 back	
+104M5#10D	~S288C	MATalpha  lys2D0  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p108 back	
+104M3#1C	~S288C	MATa  his3D1  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	March, 2003
+104M3#3B	~S288C	MATa  ade8D0  trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	March, 2003
+104M3#4A	~S288C	MATalpha  ade8D0  trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	March, 2003
+104M3#11C	~S288C	MATa  ade8D0  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	March, 2003
+104M3#12A	~S288C	MATa  his3D1  trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	March, 2003
+104M3#18D	~S288C	MATalpha  his3D1  trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	March, 2003
+104M6#1B	~S288C	MATalpha  his3D200  trp1-289::pRS404(TRP)-ADHp-venus-YFP	p108 back	March, 2003
+104M7#7B	~S288C	MATalpha  ade8D0   trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p108 back	March, 2003
+104M3#24D	~S288C	MATa  ade8D0  his3D1  YKL178C(ste3)::kanMX4trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	March, 2003
+104M6#2D	~S288C	MATa  his3D200  ade8D0trp1-289::pRS404(TRP)-ADHp-venus-YFP	p108 back	March, 2003
+104M6#4A	~S288C	MATalpha  his3D200  ade8D0trp1-289::pRS404(TRP)-ADHp-venus-YFP	p108 back	March, 2003
+104M7#8C	~S288C	MATalpha  ade8D0   lys2D0     trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p108 back	March, 2003
+104M3#4C	~S288C	MATa  ade8D0  his3D1  trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	March, 2003
+104M3#16A	~S288C	MATalpha  ade8D0  his3D1  trp1-289::pRS404(TRP)-ADHp-yEGFP	p108 back	March, 2003
+	S288C100%	MATa, rho-	p108, EtBr treated.  Not sure if rho(0).	March, 2003
+104M8#12C	~S288C	MATa   YKL178C(ste3)::kanMX4  PUR6  lys2D0 trp1-289::pRS404(TRP)-ADHp-venus-YFP	p103back	
+DL1rho0		MATalpha, lys2, rho0, D273	7-12-89:EtBr treated DL1.  Restreaked 4x, resp- when mated to TF189rho0.  Fox lab.tdf1@cornell.edu	March, 2003
+DL1		MATalpha, lys2, rho+, D273	Derived from D273-10B by spontaneous mutation. ATCC#MYA-630 (MATa lys2 [rho+])  Fox lab. tdf1@cornell.edu	March, 2003
+119M2#9B	~S288C	MATa  YDR399w(hpt1)D::kanMX4  ste3D::kanMX4  lys2D0   trp1-289::pRS404(TRP)-ADHp-CFP	p119back; p122 liquid assay	
+119M2#27A	~S288C	MATa  YDR399w(hpt1)D::kanMX4  ste3D::kanMX4  lys2D0   trp1-289::pRS404(TRP)-ADHp-venus-YFP	p119back; p122 liquid assay	
+122M2#5D	~S288C	MATa  lys2D0  YKL178C(ste3)::kanMX4  pur2trp1-289::pRS404(TRP)-ADHp-venus-YFP	5x backcross; p122 back	
+122M2 #15C	~S288C	MATa  lys2D0  YKL178C(ste3)::kanMX4  pur2trp1-289::pRS404(TRP)-ADHp-DsRed.T4(strong)	5x backcross; p122 back	
+126M1	~S288C	MATa/alpha  his3D1/ his3D1  YKL178C(ste3) ::kanMX4/+   LYS-E1/+   trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)/trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p126	
+126M2	~S288C	MATa/alpha  his3D1/ his3D1  YKL178C(ste3) ::kanMX4/+     trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)/trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p126	
+126M3	~S288C	MATa/alpha  his3D1/ his3D1  YKL178C(ste3) ::kanMX4/+   LYS-E1/LYS-E1   trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)/trp1-289::pRS404(TRP)-ADHp-DsRed.T4 (strong)	p126	
+02858a-1	Sigma1278b	MATa  leu2  trp1   lys20::TRP1  LYS21   	Not S288C.  Eur.J.Biochem.261,163-170. fanarg@ulb.ac.be   MAT Verified.	20040910
+02858a-2	Sigma1278b	MATa  leu2  trp1   LYS20  lys21::LEU2   	Not S288C.  Eur.J.Biochem.261,163-170. fanarg@ulb.ac.be    MAT Verified.	
+02895a-2	Sigma1278b	MATa  leu2  trp1   LYS20(fbr2)  lys21::LEU2   	Not S288C.  Eur.J.Biochem.261,163-170. fanarg@ulb.ac.be    MAT Verified.	
+02858d-3	Sigma1278b	MATalpha  leu2  trp1   LYS21(fbr)  lys20::LEU2   	Not S288C.  Eur.J.Biochem.261,163-170. fanarg@ulb.ac.be    MAT Verified.	
+02940c	Sigma1278b	MATalpha  leu2  trp1   LYS20(fbr2)  LYS21(fbr)   	Not S288C.  Eur.J.Biochem.261,163-170. fanarg@ulb.ac.be    MAT Verified.	
+128M1 #25C	~S288C	MATalpha  his3D1  leu2-3 -112   trp1-289 (amber)   LYS-E1  	p102+back, mutagenized strain backcrossed five times.  6 days (plate assay).	
+JB164-4C	W303	MATa ACT1p-DsRed::TRP1 can1-100  his3-11,-15 leu2-3,-112 trp1-1 ura3-1	from Fred Cross lab	
+226M1#2C	S288C 100%	MATa  YKL178C(ste3)::kanMX4  leu2D0  ura3D0		Jan, 2008
+226M1#5A	S288C 100%	MATa  YKL178C(ste3)::kanMX4  ura3D0		Jan, 2008
+226M1#8D	S288C 100%	MATa  leu2D0  ura3D0		Jan 2008
+FY7	S288C100%	MATalpha  ura3-52  trp1D63	Yeast  (1995) 11:53Information about the trp1d63 and leu2d1 alleles can be found in Sikorski and Hieter, Genetics. 1989 May;122(1):19-27.  Information on the ura3-52 allele can be found in Rose and Winston, Mol Gen Genet. 1984;193(3):557-60.  For his3 I don't have any alleles other than a complete deletion.	Fred Winston, Feb 2008
+FY8	S288C100%	MATalpha  ura3-52  lys2D202	Yeast  (1995) 11:53Information about the trp1d63 and leu2d1 alleles can be found in Sikorski and Hieter, Genetics. 1989 May;122(1):19-27.  Information on the ura3-52 allele can be found in Rose and Winston, Mol Gen Genet. 1984;193(3):557-60.  For his3 I don't have any alleles other than a complete deletion.	Fred Winston, Feb 2008
+FY10	S288C100%	MATalpha  ura3-52  leu2D1	Yeast  (1995) 11:53Information about the trp1d63 and leu2d1 alleles can be found in Sikorski and Hieter, Genetics. 1989 May;122(1):19-27.  Information on the ura3-52 allele can be found in Rose and Winston, Mol Gen Genet. 1984;193(3):557-60.  For his3 I don't have any alleles other than a complete deletion.	Fred Winston, Feb 2008
+YLND33-11	natural isolate	MATa/alpha ho::loxP/ho::loxP leu2D0/LEU2 LYS2/lys2D0 ura3D0/ura3D0 AMN1/amn1-::loxP-KAN-loxP	a natural isolate that is deleted of AMN1 (to prevent it from sticking to each other). AMN1/amn1-::loxP-KAN-loxP.  The AMN1 gene was knocked out in YLND31. Transformed cells with a PCR product with pUG6 as template and AMN1_pUG6_F and AMN1_pUG6_R as primers. Proper targeting to the AMN1 locus was confirmed by colony PCR.  Also deleted of HO with loxP-Kan-loxP and pop-out of Kan marker.	From Lazar Dimitrov @ Dan Gottschling Lab
+p236#1D	natural isolate	MATalpha ho::loxP  ura3D0  amn1D::loxP-KAN-loxP	sporulated from WY856	March 1, 2008
+p236#2B	natural isolate	MATa ho::loxP leu2D0  ura3D0  amn1D::loxP-KAN-loxP	sporulated from WY856	March 1, 2008
+p236#6B	natural isolate	MATalpha ho::loxP lys2D0  ura3D0  amn1D::loxP-KAN-loxPxP	sporulated from WY856	March 1, 2008
+WY851(WSO22,23).1	S288C, 100%	MATa  YKL178C(ste3)::kanMX4  ura3D0  ade4::URA3 ??when transformed with 833(26,27), 0/10 could release ade	the strain is inviable on -ade.  Use WSO22 & WSO23 to amplify URA3, and transform WY851 (p228).  	March 2, 2008
+WY851(WSO24,25)#2	S288C, 100%	MATa  YKL178C(ste3)::kanMX4  ura3D0  lys21::URA3	the strain is viable on -lys because it still has LYS20.  Use WSO24 & WSO25 to amplify URA3, and transform (p228).  PCR verification using WSO28 and WSO30 (p233)	March 2, 2008
+p234M1#7C	S288C, 100%	MATalpha    his3D1  ura3D0 		
+p234M1#15C	S288C, 100%	MATalpha    his3D1  		
+p234M1#22A	S288C, 100%	MATa  YKL178C(ste3)::kanMX4  ura3D0  lys21::URA3 his3D1	the strain is viable on -lys because it still has LYS20.  Use WSO24 & WSO25 to amplify URA3, and transform (p228).  PCR verification using WSO28 and WSO30 (p233)	March 2, 2008
+WY851(WSO22,23).2	S288C, 100%	MATa  YKL178C(ste3)::kanMX4  ura3D0  ade4::URA3	the strain is inviable on -ade.  Use WSO22 & WSO23 to amplify URA3, and transform WY851 (p228).  	March 2, 2008
+p245M1#15A	S288C, 100%	MATa  leu2D1		
+p245M1#12C	S288C, 100%	MATalpha  ura3-52	   	
+p245M1#18A	S288C, 100%	MATalpha  leu2D1		
+p245M1#18C	S288C, 100%	MATa   ura3-52		
+WY865+833(26,27).1	S288C, 100%	MATa  YKL178C(ste3)::kanMX4  ura3D0  ade4::ADE4(PUR6)	Use WSO26 & WSO27 to amplify Ade4, and transform WY865 (~p246).   Streak on 5-FOA	2008
+WY865+833(26,27).2	S288C, 100%	MATa  YKL178C(ste3)::kanMX4  ura3D0  ade4::ADE4(PUR6)	Use WSO26 & WSO27 to amplify Ade4, and transform WY865 (~p246).  Streak on 5-FOA	2008
+247M1#2D	S288C100%	MATa  ade8D0  trp1D63		May,2008
+247M1#4A	S288C100%	MATalpha  ade8D0  trp1D63  leu2D0		May,2008
+247M1#4C	S288C100%	MATa  ade8D0  trp1D63 leu2D0		May,2008
+873+WSB51,#1	S288C100%	MATalpha  ade8D0  trp1D63  leu2D0  lys21::LEU2 	WY873  + WSB51 Not1 digestion; PCR verified	
+671+ WSB50,#1	S288C100%	MATalpha  ade8D0  trp1D63  ura3D0   lys20::TRP1	WY671  + WSB50 Not1 digestion; PCR verified	
+875+WSB50,#3	S288C100%	MATalpha  ade8D0  trp1D63  leu2D0  lys21::LEU2  lys20::TRP1	WY875  + WSB50 Not1 digestion; PCR verifiedWSO32, 33	
+876+ WT(24,25),#1	S288C100%	MATalpha  ade8D0  trp1D63  ura3D0   lys20::TRP1  lys21::URA3	WY876  + WT(24,25); PCR verifiedWSO28, 30	
+870x585, #4b	S288C, 100%	MATa  YKL178C(ste3)::kanMX4   lys2D0  ade4::ADE4(PUR6)		Adam Waite, June 2008
+870x585, #19a	S288C, 100%	MATa  YKL178C(ste3)::kanMX4   lys2D0  ade4::ADE4(PUR6)		Adam Waite, June 2008
+870x585, #12c	S288C, 100%	MATa  YKL178C(ste3)::kanMX4   lys2D0  		Adam Waite, June 2008
+870x585, #17d	S288C, 100%	MATa  YKL178C(ste3)::kanMX4   lys2D0  		Adam Waite, June 2008

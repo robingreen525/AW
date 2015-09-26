@@ -1,0 +1,153 @@
+#!/usr/bin/perl
+use strict; use warnings;
+use Data::Dumper;
+use Hspipeline; 
+
+$| = 1;
+&main();
+exit;
+
+sub main {
+  print STDERR 
+    "cnvfind <ancestor_path> <ancestor.pileup> <evolved.pileup 1>...<evolved.pileup n>" 
+    if @ARGV == 0;
+
+  my $anc_path = $ARGV[0];
+  my $anc = $ARGV[1];
+
+  print STDERR "Getting unique chunks in $anc...\n";
+  my $chunks = get_unique_chunks($anc);
+
+  print STDERR "Getting depth stats for $anc...\n";
+  my $anc_cov = scan_genome($anc);
+
+  print STDERR "Finding regions without coverage...\n";
+  find_no_cov($anc_path, $anc_cov);
+
+  for (my $i=2; $i<@ARGV; $i++) {
+    cnvfind($chunks, $anc_cov, $ARGV[$i]);
+  }
+}
+
+sub find_no_cov {
+  my $path = shift;
+  my $depth_data = shift;
+
+  my $name = get_name($path);
+  open my $dh, "> ${path}/${name}_deletion_locations.txt";
+  print $dh "#chrom\tpos\n";
+
+  for my $chrom (keys %$depth_data) {
+    my @present = [];
+    for my $pos (keys %{$depth_data->{$chrom}{depth}}) {
+      $present[$pos] = 1;
+    }
+    for (my $i=0; $i<$#present; $i++) {
+      print $dh "$chrom\t$i\n" unless $present[$i];
+    }
+  }
+  close $dh;
+}
+
+sub cnvfind {
+  my $chunks = shift;
+  my $anc = shift;
+  my $evo = shift;
+
+  open my $out, "> ${evo}_cnvfind.txt";
+  print $out "chrom\tpos\tratio\tlog2.ratio\n";
+  for my $chunk (@$chunks) {
+    print STDERR "Getting depth stats for $chunk in $evo...\n";
+    my $evo_cov = get_depth($chunk, $evo);
+
+    print STDERR "Comparing coverage...\n";
+    compare_depth($out, $chunk, $anc, $evo_cov);
+    print STDERR "Done with $chunk!\n\n";
+  }
+  close $out;
+}
+
+sub compare_depth {
+  my $fh   = shift;
+  my $chunk = shift;
+  my $anc = shift;
+  my $evol = shift;
+
+  for my $pos (keys %{$anc->{$chunk}{depth}}) {
+    my $adepth = $anc->{$chunk}{depth}{$pos};
+    my $edepth = $evol->{$pos};
+    next unless defined $edepth && $adepth != 0 && $edepth != 0;
+
+    my $anc_normalized = $adepth/$anc->{$chunk}{ave};
+    my $evol_normalized = $edepth/$evol->{ave};
+    my $ratio           = $evol_normalized/$anc_normalized;
+    my $log2_ratio = log($ratio)/log(2);
+
+    print $fh "$chunk\t$pos\t$ratio\t$log2_ratio\n";
+  }
+}
+
+
+sub get_depth {
+  my $chunk = shift;
+  my $pileup = shift;
+
+  my %res = ();
+  my $delta = 0;
+  my $mean  = 0;
+  my $M2    = 0;
+  my $n     = 0;
+
+  open my $f, "< $pileup";
+  while (<$f>) {
+    # Line is chrom pos ref depth seq qual
+    my @line = split;
+    my $chrom  = $line[0];
+    my $pos   = $line[1];
+    my $depth = $line[3];
+
+    next unless $chrom eq $chunk;
+
+    # Calculate running mean and sd, according to Knuth (1998).
+    $n++;
+    $delta = $depth - $mean;
+    $mean += $delta/$n;
+    $M2    = $M2 + $delta*($depth-$mean);
+
+    $res{$pos} = $depth;
+  }
+  close $f;
+
+  $res{ave} = $mean;
+
+  return \%res;
+}
+
+sub get_unique_chunks {
+  my $anc = shift;
+  my $evo = shift;
+
+  my %unique = ();
+
+  open my $afh, "< $anc";
+  while (<$afh>) {
+    my @line = split;
+    my $chunk = $line[0];
+    next if $unique{$chunk};
+    $unique{$chunk} = 1;
+  }
+  close $afh;
+
+  open my $efh, "< $anc";
+  while (<$efh>) {
+    my @line = split;
+    my $chunk = $line[0];
+    next if $unique{$chunk};
+    $unique{$chunk} = 1;
+  }
+  close $efh;
+
+  my @un = keys %unique;
+  return \@un;
+}
+

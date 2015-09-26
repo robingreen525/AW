@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/shoulab/!svn/ver/2358/hspipeline/branches/robin/hspipeline/trunk
+END
+call_plot_cnv.r
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/shoulab/!svn/ver/2358/hspipeline/branches/robin/hspipeline/trunk/call_plot_cnv.r
+END
+hspipeline
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/shoulab/!svn/ver/2358/hspipeline/branches/robin/hspipeline/trunk/hspipeline
+END
+depthstats
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/shoulab/!svn/ver/2358/hspipeline/branches/robin/hspipeline/trunk/depthstats
+END
+plot_cnv.r
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/shoulab/!svn/ver/2358/hspipeline/branches/robin/hspipeline/trunk/plot_cnv.r
+END
+vcfunique
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/shoulab/!svn/ver/2358/hspipeline/branches/robin/hspipeline/trunk/vcfunique
+END
+cnvfind
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/shoulab/!svn/ver/2358/hspipeline/branches/robin/hspipeline/trunk/cnvfind
+END
+Hspipeline.pm
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/shoulab/!svn/ver/2358/hspipeline/branches/robin/hspipeline/trunk/Hspipeline.pm
+END
+plot_cnv_lm.r
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/shoulab/!svn/ver/2358/hspipeline/branches/robin/hspipeline/trunk/plot_cnv_lm.r
+END

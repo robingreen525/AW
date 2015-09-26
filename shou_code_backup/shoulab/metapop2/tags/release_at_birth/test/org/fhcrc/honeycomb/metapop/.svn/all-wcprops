@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop
+END
+MutationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/MutationTest.java
+END
+SubpopulationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/SubpopulationTest.java
+END
+FailReport.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/FailReport.java
+END
+Estimate.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/Estimate.java
+END
+DilutionRuleTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/DilutionRuleTest.java
+END
+SimpleStep.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/SimpleStep.java
+END
+FitnessCalculatorTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/FitnessCalculatorTest.java
+END
+CoordinatePickerTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/CoordinatePickerTest.java
+END
+WorldTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/WorldTest.java
+END
+CoordinateTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/CoordinateTest.java
+END
+RandomNumberUserTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/RandomNumberUserTest.java
+END
+AdaptiveRaceTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/AdaptiveRaceTest.java
+END
+MigrationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/MigrationTest.java
+END
+IntegerEstimate.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/IntegerEstimate.java
+END
+PopulationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/PopulationTest.java
+END
+EnvironmentChangerTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/repos/shoulab/!svn/ver/2336/metapop2/tags/release_at_birth/test/org/fhcrc/honeycomb/metapop/EnvironmentChangerTest.java
+END

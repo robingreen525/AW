@@ -1,0 +1,366 @@
+// vim: set filetype=java tabstop=2 shiftwidth=2 expandtab :
+package org.fhcrc.honeycomb.metapop;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import org.apache.commons.math.distribution.BinomialDistributionImpl;
+
+/** A <class>Population</class> contains cheaters and cooperators.
+ * Created on 27 Jan, 2012
+@author Adam Waite
+@version $Rev: 1217 $, $Date: 2012-02-06 15:03:01 -0800 (Mon, 06 Feb 2012) $
+ */
+public class Population {
+  /** the default seed for random number generation. */
+  private static final long DEFAULT_SEED = System.nanoTime();
+
+  /** The allowable size of the coefficient of variation for a distribution,
+   * below which it will be estimated by its mean */
+  private static final double ALPHA = 0.01;
+
+
+  // **********FINAL fields **************************************** /
+  
+  /** A seed to be used for random number generation */
+  private final long seed;
+
+  /** The percent advantage of cheaters over cooperators. */
+  private final double cheat_advantage;
+
+  /** The baseline fitnesses of each type */
+  private final List<Double> fitnesses;
+
+  /** A <code>Sampler</code> to get random numbers from distributions */
+  private final Sampler sampler;
+
+
+  // ********* MUTABLE fields ************************************/
+  
+  /** The total population size.  */
+  private double size;
+
+  /** The frequency of cooperators. */
+  private double coop_freq;
+
+  /** The ratio of cooperators to cheaters. */
+  private double coop_ratio;
+
+  /** The percent reduction imposed on each type's fitness due to the
+   * presence of cheaters. */
+  private double cheater_load;
+
+  /** The number of types. */
+  private int nTypes;
+
+  /** The number of each type of cooperator. */
+  private List<Double> coops;
+
+  /** The frequency of each type of cooperator. */
+  private List<Double> coop_freqs;
+
+  /** The total number of cooperators. */
+  private double nCoops;
+
+  /** The frequency of each type of cheater. */
+  private List<Double> cheat_freqs;
+
+  /** The number of each type of cheater. */
+  private List<Double> cheats;
+
+  /** The total number of cheaters. */
+  private double nCheats;
+
+  /** This constructor explicitly specifies the number of cooperators and
+   * cheaters in the simulation.
+   *
+  @param coops the number of each type of cooperator.
+  @param cheats the number of each type of cheater.
+  @param fitnesses the fitnesses of each type.
+  @param cheat_adv the fractional advantage of cheaters over cooperators.
+  @param seed a seed for the sampler.  Defaults to current system time.
+  */
+  public Population(List<Double> coops, List<Double> cheats, 
+                    List<Double> fitnesses, double cheat_advantage,
+                    long seed) 
+  {
+    if (coops.size() != cheats.size() || coops.size() != fitnesses.size() ||
+        cheats.size() != fitnesses.size()) {
+      throw new IllegalArgumentException("The lengths of cooperator, "+
+          "cheater, and fitness Lists must be equal.");
+    }
+    this.coops  = copyDoubles(coops);
+    this.cheats = copyDoubles(cheats);
+    this.cheat_advantage = cheat_advantage;
+    this.fitnesses = copyDoubles(fitnesses);
+    this.seed = seed;
+    nTypes = fitnesses.size();
+
+    sampler = new Sampler(ALPHA, seed);
+    update();
+  }
+
+  /** This constructor explicitly specifies the number of cooperators and
+   * cheaters in the simulation with default seed.
+   *
+  @param coops the number of each type of cooperator.
+  @param cheats the number of each type of cheater.
+  @param fitnesses the fitnesses of each type.
+  @param cheat_adv the fractional advantage of cheaters over cooperators.
+  @param seed a seed for the sampler.  Defaults to current system time.
+  */
+  public Population(List<Double> coops, List<Double> cheats, 
+                    List<Double> fitnesses, double cheat_advantage)
+  {
+    this(coops,cheats,fitnesses,cheat_advantage,DEFAULT_SEED);
+  }
+
+  /** Copy constructor with default seed (current time). *
+  @param pop the <code>Population</code> to be copied.
+  */
+  public Population(Population pop) {
+    this(pop.getCoops(), pop.getCheats(), pop.getFitnesses(),
+        pop.getCheatAdvantage(), DEFAULT_SEED);
+  }
+
+  /** Copy constructor with specified seed. 
+  @param pop the <code>Population</code> to be copied.
+  @param seed the seed for this <code>Population</code>.
+  */
+  public Population(Population pop, long seed) {
+    this(pop.getCoops(), pop.getCheats(), pop.getFitnesses(),
+        pop.getCheatAdvantage(), seed);
+  }
+
+
+  /** This constructor is intended to be used at the start of a simulation,
+   * when it is more convenient to specify population structure in terms of
+   * an initial size and frequencies.
+   *
+  @param size the initial population size.
+  @param coop_freq the initial frequency of coops.
+  @param cheat_adv the fractional advantage of cheaters over cooperators.
+  @param types the fitnesses and initial frequencies of each type.
+  @param seed a seed for the random number generator.  Defaults to current
+              system time.
+
+  @see Type
+  */
+  public Population(int size, double coop_freq, double cheat_advantage, 
+                    Types types, long seed)
+  {
+    this.size       = size;
+    this.coop_freq  = coop_freq;
+    this.cheat_advantage = cheat_advantage;
+    this.seed = seed;
+    sampler = new Sampler(ALPHA, seed);
+
+    fitnesses       = types.getFitnesses();
+    nTypes          = types.size();
+
+    coops   = new ArrayList<Double>(nTypes);
+    cheats  = new ArrayList<Double>(nTypes);
+
+    for (int i=0; i<nTypes; i++) {
+      double freq = types.getFrequency(i);
+      coops.add(size*coop_freq*freq);
+      cheats.add(size*(1-coop_freq)*freq);
+    }
+    update();
+  }
+
+  /** This constructor is intended to be used at the start of a simulation,
+   * when it is more convenient to specify population structure in terms of
+   * an initial size and frequencies.  Uses default seed.
+   *
+  @param size the initial population size.
+  @param coop_freq the initial frequency of coops.
+  @param cheat_adv the fractional advantage of cheaters over cooperators.
+  @param types the fitnesses and initial frequencies of each type.
+
+  @see Type
+  */
+  public Population(int size, double coop_freq, double cheat_advantage, 
+                    Types types)
+  {
+    this(size,coop_freq,cheat_advantage,types,DEFAULT_SEED);
+  }
+
+  /** increases population size of each type. */
+  public void grow() {
+    for (int i=0; i<nTypes; i++) {
+      double fitness = (1-cheater_load) * fitnesses.get(i);
+      coops.set(i, coops.get(i)  * Math.exp(fitness));
+      cheats.set(i, cheats.get(i) * Math.exp(fitness*(1+cheat_advantage)));
+    }
+    update();
+  }
+
+  /** Dilutes each type by the specified amount using a {@link Sampler} and
+   * returns a new <code>Population</code> of the diluted members.
+   *
+  @param amount the fractional amount to dilute each type.
+  @return       the diluted <code>Population</code>.
+  */
+  public Population dilute(double amount) {
+    HashMap<String, List<Double>> new_coops  =
+      sampler.sampleBinomial(coops, amount);
+    HashMap<String, List<Double>> new_cheats = 
+      sampler.sampleBinomial(cheats, amount);
+
+    coops  = new_coops.get("remaining");
+    cheats = new_cheats.get("remaining");
+
+    update();
+
+    return new Population(new_coops.get("sampled"),
+                          new_cheats.get("sampled"),
+                          fitnesses,
+                          cheat_advantage);
+  }
+
+  /** a wrapper for <code>dilute</code>, included for semantic clarity.
+   *
+  @return the migrating <code>Population</code>.
+   */
+  public Population retrieveMigrants(final double amount) {
+    return dilute(amount);
+  }
+
+  /** mixes the passed population with the current one.
+   *
+  @param incoming the incoming population to be mixed with the current one.
+  */
+  public void mix(final Population incoming) {
+    final List<Double> incoming_coops  = 
+      new ArrayList<Double>(incoming.getCoops());
+    final List<Double> incoming_cheats = 
+      new ArrayList<Double>(incoming.getCheats());
+    //System.out.println("Incoming coops: " + incoming_coops);
+    //System.out.println("Current coops: " + coops);
+    for (int i=0; i<nTypes; i++) {
+      coops.set(i,  coops.get(i)  + incoming_coops.get(i));
+      cheats.set(i, cheats.get(i) + incoming_cheats.get(i));
+    }
+  }
+
+  @Override
+  public String toString() {
+    return new String("coops: " + coops + "  cheats: " + cheats);
+  }
+
+  /** the size of the total <code>Population</code>.
+   *
+  @return the size of the <code>Population</code>
+  */
+  public double size() { return size; }
+
+  /** gets the <code>List</code> containing the number of each cooperator
+   * type.
+  @return the <code>List</code> containing the number of each type of
+  cooperator.
+  */
+  public List<Double> getCoops() { return copyDoubles(coops); }
+
+  /** gets the <code>List</code> containing the number of each cheater type.
+  @return the <code>List</code> containing the number of each type of
+  cheater.
+  */
+  public List<Double> getCheats() { return copyDoubles(cheats); }
+  /** gets the frequencies of each type of cooperator.
+  @return the frequencies of each type of cooperator.
+  */
+  public List<Double> getCoopFrequencies() { return copyDoubles(coop_freqs); }
+
+  /** gets the frequencies of each type of cheater.
+  @return the frequencies of each type of cheater.
+  */
+  public List<Double> getCheatFrequencies() { return copyDoubles(cheat_freqs); }
+
+  /** gets the <code>List</code> of fitnesses of each type.
+  @return the <code>List</code> of fitnesses of each type.
+  */
+  public List<Double> getFitnesses() { return copyDoubles(fitnesses); }
+
+  /** gets the number of cooperators.
+   *
+  @return the number of cooperators.
+  */
+  public double getNCoops() { return nCoops; }
+
+  /** gets the number of cheaters.
+   *
+  @return the number of cheaters.
+  */
+  public double getNCheats() { return nCheats; }
+
+  public double getNTypes() { return nTypes; }
+
+
+  /** gets the current cooperator frequency.
+   *
+  @return the current cooperator frequency.
+  */
+  public double getCoopFrequency() { return coop_freq; }
+
+  /** gets the current cooperator frequency.
+   *
+  @return the current cooperator:cheater ratio.
+  */
+  public double getCoopRatio() { return coop_ratio; }
+
+  /** gets the cheater advantage.
+   *
+  @return the cheater advantage.
+  */
+  public double getCheatAdvantage() { return cheat_advantage; }
+
+  /** gets the seed for this population.
+  @return the <code>List</code> of fitnesses of each type.
+  */
+  public long getSeed() { return seed; }
+
+  /** calculates new values for the mutable parameters of this
+   * <code>Population</code>. */
+  private void update() {
+    double coop_sum  = 0;
+    double cheat_sum = 0;
+    List<Double> new_coop_freqs  = new ArrayList<Double>(nTypes);
+    List<Double> new_cheat_freqs = new ArrayList<Double>(nTypes);
+    for (int i=0; i<nTypes; i++) {
+      coop_sum  += coops.get(i); 
+      cheat_sum += cheats.get(i); 
+    }
+
+    for (int i=0; i<nTypes; i++) {
+      new_coop_freqs.add(coops.get(i)/coop_sum); 
+      new_cheat_freqs.add(cheats.get(i)/cheat_sum); 
+    }
+
+    nCoops     = coop_sum;
+    nCheats    = cheat_sum;
+    coop_freq  = nCoops/(nCoops+nCheats);
+    coop_ratio = nCoops/nCheats;
+    size       = nCoops + nCheats;
+
+    coop_freqs  = new_coop_freqs;
+    cheat_freqs = new_cheat_freqs;
+
+    calculateCheaterLoad();
+  }
+
+  /** a function that converts the current frequency of cheaters into a 
+   * growth rate penalty for each type.
+   *
+  @return the growth rate penalty for the current cheater load.
+  */
+  private double calculateCheaterLoad() { return 0; };
+
+  private static List<Double> copyDoubles(List<Double> items) {
+    List<Double> clone = new ArrayList<Double>(items.size());
+    for (Double d:items) { clone.add(new Double(d)); }
+    return clone;
+  }
+}
+
+

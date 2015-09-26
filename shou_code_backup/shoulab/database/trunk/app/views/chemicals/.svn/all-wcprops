@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/chemicals
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/chemicals/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/chemicals/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/chemicals/new.html.erb
+END
+copy.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/chemicals/copy.html.erb
+END
+_chemical.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/chemicals/_chemical.html.erb
+END

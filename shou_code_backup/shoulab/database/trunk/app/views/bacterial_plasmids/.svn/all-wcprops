@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/bacterial_plasmids
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/bacterial_plasmids/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/bacterial_plasmids/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/bacterial_plasmids/new.html.erb
+END
+copy.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/bacterial_plasmids/copy.html.erb
+END
+_bacterial_plasmid.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/shoulab/!svn/ver/2324/database/trunk/app/views/bacterial_plasmids/_bacterial_plasmid.html.erb
+END

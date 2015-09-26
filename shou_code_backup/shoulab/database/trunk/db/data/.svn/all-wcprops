@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data
+END
+090919-oligo.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/090919-oligo.sql
+END
+130405-chemical_inventory.tab
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/130405-chemical_inventory.tab
+END
+090919-plasmids.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/090919-plasmids.sql
+END
+091206-chemicals.sql
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/091206-chemicals.sql
+END
+Chemicals-allonefile.csv
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/Chemicals-allonefile.csv
+END
+oligo_sql_parse.pl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/oligo_sql_parse.pl
+END
+chem_sql_parse.pl
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/chem_sql_parse.pl
+END
+Chemicals-allonefile.xls
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/Chemicals-allonefile.xls
+END
+equip_sql_parse.pl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/equip_sql_parse.pl
+END
+130405-chemical_inventory.csv
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/130405-chemical_inventory.csv
+END
+yeast_sql_parse.pl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/yeast_sql_parse.pl
+END
+130405-chemical_inventory.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/130405-chemical_inventory.sql
+END
+plasmid_sql_parse.pl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/plasmid_sql_parse.pl
+END
+yeast_test.csv
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/yeast_test.csv
+END
+081217_yeast.dat
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/shoulab/!svn/ver/2324/database/trunk/db/data/081217_yeast.dat
+END

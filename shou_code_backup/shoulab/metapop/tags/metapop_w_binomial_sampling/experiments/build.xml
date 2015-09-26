@@ -1,0 +1,19 @@
+<project default="compile">
+  <target name="metapop">
+    <subant target="compile" buildpath="../"/>
+    </target>
+
+  <path id="dependencies">
+    <pathelement location="lib/commons-math.jar"/>
+    <pathelement location="../build/classes/framework"/>
+  </path>
+
+  <target name="compile" depends="metapop">
+    <javac srcdir="." destdir="."
+      classpathref="dependencies"
+      debug="on"
+      includeantruntime="false">
+      <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+</project>

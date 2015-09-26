@@ -1,0 +1,57 @@
+#strain alias background  antibiotics genotype  frozen_date notes source
+B1	Bluescript with a T7 promoter on each side of the MCS driving transcription of each DNA  strand		http://www.ciwemb.edu (Nature, 395: 854)	Mary Abraham	L4440	DH5-alpha.	Amp
+B2	rnc14::Tn10(DE3 lysogen: lavUV5 promoter -T7 polymerase) (IPTG-inducible T7 polymerase) (RNase III minus) F-, mcrA, mcrB, IN(rrnD-rrnE)1, lambda -, 		Feeding StrainTn10 carries Tet(R).	Mary Abraham	HT115	HT115	Tet
+B3	Empty L4440 vectorF-, mcrA, mcrB, IN(rrnD-rrnE)1, lambda -, rnc14::Tn10(DE3 lysogen: lavUV5 promoter -T7 polymerase) (IPTG-inducible T7 polymerase) (RNase III minus)		Feeding StrainTn10 carries Tet(R).	Mary Abraham		HT115	Amp + Tet
+B4	GFP in L4440 vectorF-, mcrA, mcrB, IN(rrnD-rrnE)1, lambda -, rnc14::Tn10(DE3 lysogen: lavUV5 promoter -T7 polymerase) (IPTG-inducible T7 polymerase) (RNase III minus)		Feeding StrainTn10 carries Tet(R).	Mary Abraham		HT115	Amp + Tet
+B5	UNC22 in L4440 vectorF-, mcrA, mcrB, IN(rrnD-rrnE)1, lambda -, rnc14::Tn10(DE3 lysogen: lavUV5 promoter -T7 polymerase) (IPTG-inducible T7 polymerase) (RNase III minus)		Feeding StrainTn10 carries Tet(R).	Mary Abraham		HT115	Amp + Tet
+B6	OP50		feeding strain for C.elegans		OP50	OP50	None
+7	CEN/ARS-LYS2		ATCC87537S. cerevisiae/E. coli YC-type pRS shuttle vectors 		pRS317		Amp
+8	CEN/ARS-MET15		ATCC87537S. cerevisiae/E. coli YC-type pRS shuttle vectors 		pRS411		Amp
+9	CEN/ARS-ADE2		ATCC87537S. cerevisiae/E. coli YC-type pRS shuttle vectors 		pRS412		Amp
+10	CEN/ARS-HIS3		ATCC87537S. cerevisiae/E. coli YC-type pRS shuttle vectors 		pRS413		Amp
+11	CEN/ARS-TRP1		ATCC87537S. cerevisiae/E. coli YC-type pRS shuttle vectors 		pRS414		Amp
+12	CEN/ARS-LEU2		ATCC87537S. cerevisiae/E. coli YC-type pRS shuttle vectors 		pRS415		Amp
+13	CEN/ARS-URA3		ATCC87537S. cerevisiae/E. coli YC-type pRS shuttle vectors 		pRS416		Amp
+14	MET15, integrating		ATCC87536S. cerevisiae/E. coli YI-type pRS shuttle vectors   		pRS401		Amp
+15	ADE2, integrating		ATCC87536S. cerevisiae/E. coli YI-type pRS shuttle vectors   		pRS402		Amp
+16	HIS3, integrating		ATCC87536S. cerevisiae/E. coli YI-type pRS shuttle vectors   		pRS403		Amp
+17	TRP1, integrating		ATCC87536S. cerevisiae/E. coli YI-type pRS shuttle vectors   		pRS404		Amp
+18	LEU2, integrating		ATCC87536S. cerevisiae/E. coli YI-type pRS shuttle vectors   		pRS405		Amp
+19	URA3, integrating		ATCC87536S. cerevisiae/E. coli YI-type pRS shuttle vectors   		pRS406		Amp
+20	YFP (Venus), Kan, 4882bp.  		Venus (G418 selection). Base on pDH6. http://depts.washington.edu/~yeastrc/fm_home16.htm		pBS7		Amp
+21	YFP, his5 (S.pombe), 4726bp.  		a pH-tolerant YFP (HIS3) http://depts.washington.edu/~yeastrc/fm_home2.htm		pDH5		Amp
+22	YFP, Kan, 4882bp.  		YFP (G418 selection).  Base on pDH5 and pDH3. http://depts.washington.edu/~yeastrc/fm_home13.htm		pDH6		Amp
+23	CFP, Kan, 4882bp.  		CFP (G418 selection).  http://depts.washington.edu/~yeastrc/fm_home1.htm		pDH3		Amp
+24	CFP, hph, 4875bp.  		CFP (hygromycin-B selection). http://depts.washington.edu/~yeastrc/fm_home15.htm		pBS4		Amp
+25	DsRed.T1.N1, Kan, 4846bp.  	Feb, 2003	DsRed.T1.N1 (G418 selection) http://depts.washington.edu/~yeastrc/fm_home17.htm		pTY24		Amp
+26	pFA6a harboring pTEF-Kan-tTEF for knockout.		RDB903, from Peter Philippsen.		pFA6a-KanMX4	Amp. 	DH5alpha
+27	pFA6a harboring pTEF-(S.pombe his5+)-tTEF for knockout.		RDB904, from Peter Philippsen.		pFA6a-His3Mx6	Amp. 	DH5alpha
+28	CEN/ARS ADE8 plasmid, 6333bp.		Yeast 2001 Apr;18(6):563-75 steve.oliver@man.ac.uk, d.struttman@bso.man.ac.uk		pRS4110	Amp	
+29	(SacI) ADH promoter (HindIII) SV40-NLS (EcoRI) P12 mutant PKI NES (BamH1) GFPx2 (XhoI) from pKW431was cloned into pRS404.		JBO3T-1, Jamie@ Cross LabRef:  Cell 90:1041-1050.		pRS404-pKW431	Amp	
+30	(SacI) ADH promoter (HindIII) SV40-NLS (EcoRI) P12 mutant PKI NES (BamH1) GFPx2 (XhoI) from pKW431was cloned into pRS404.		JBO3T-2, an indept isolate identical to WSB29.  		pRS404-pKW431	Amp	
+31	pRS404(SacI) ADH promoter (HindIII) YFP-venus+~10 a.a. (XhoI) 		WSB20 +WSOs (13,8) -> YFP- venus; WSB29+30 -> ADHp		60L2#2	Amp	
+32	pRS404(SacI) ADH promoter (HindIII) YFP-venus+~10 a.a. (XhoI) 		an indept isolate identical to WSB31.  		60L2#3	Amp	
+33	pRS404(SacI) ADH promoter (HindIII) CFP+~10 a.a. (XhoI) 		WSB23 +WSOs (13,8) ->CFP; WSB29+30 -> ADHp		60L3#2	Amp	
+34	pRS404(SacI) ADH promoter (HindIII) CFP+~10 a.a. (XhoI) 		an indept isolate identical to WSB33.  		60L3#3	Amp	
+35	pFA6a-kanMX4-yEGFP tagging cassette 		Knop et al., Yeast 15:963-972 (1999).  contains S65G, S72A mutations near the chromo- phore; all codons in this version of the GFP gene are optimal for translation in yeast.		pYM12	Amp	
+36	not F'		from Santiago, frozen by Craig Correll.		DH5alpha		RDB626
+37	pRS404(SacI) ADH promoter (HindIII) YFP-venus (XhoI) 		WSB20 +WSOs (13,15) -> YFP- venus; WSB29+30 -> ADHp		62L1#2	Amp	
+38	pRS404(SacI) ADH promoter (HindIII) YFP-venus (XhoI) 		an indept isolate identical to WSB37.  		62L1#3	Amp	
+39	pRS404(SacI) ADH promoter (HindIII) CFP (XhoI) 		WSB23 +WSOs (13,15) -> CFP; WSB29+30 -> ADHp		62L2#2	Amp	
+40	pRS404(SacI) ADH promoter (HindIII) CFP (XhoI) 		an indept isolate identical to WSB39.		62L2#3	Amp	
+41	pRS404(SacI) ADH promoter (HindIII) RGS-His6-dsRed.T4(XhoI) 		WSB47 + WSOs (21,16) -> His6-dsRed; WSB29+30 -> ADHp		83L2#1	Amp	
+42	pRS404(SacI) ADH promoter (HindIII) RGS-His6-dsRed.T4(XhoI) 		an indept isolate identical to WSB41.		83L2#3	Amp	
+43	pRS404(SacI) ADH promoter (HindIII) yEGFP(XhoI) 		WSB35 +WSOs (17,18) -> yEGFP; WSB29+30 -> ADHp		62L4#1	Amp	
+44	pRS404(SacI) ADH promoter (HindIII) yEGFP(XhoI) 		an indept isolate identical to WSB43.		62L4#3	Amp	
+45	pFA6a-GFP(S65T)-HIS3MX6; HIS5 gene of  S. pombe driven by TEF promoter, GFP(S65T), bla gene, multiple cloning site, pSP72 derivative	06/25/03	Yeast 10: 1793-1808 (1994).peter.philippsen@unibas.ch		pFA6a-GFP(S65T)-HIS3MX6	Amp	
+46	pFA6a-GFP(S65T)-KanMX6; kanamycin and geneticin (G418) resistance gene, bla, GFP(S65T), multiple cloning site, pSP72 derivative.	06/25/03	Yeast 10: 1793-1808 (1994).peter.philippsen@unibas.ch		pFA6a-GFP(S65T)-KanMX6	Amp	
+47	DsRedT4 was cut with Not1, blunted with Klenow, cut with BamHI, and cloned into pQE81-L at BamHI and Ecl136II (GAG/CTC).  	06/25/03	low copy #! For IPTG-inducible gene expression in E.coli.  From B. Glick.  20-30 copies of plasmid per bacterium.  pQE81 is from Qiagen, with ColE1 origin of replication.		pQE81-L-DsRed.T4	Amp	
+48	a 335bp fragment containing the lambda attP site w/ NheI and AvrII @ the ends.  This was subcloned into pZE12-GFPaav cut with AvrII.  The resulting plasmid, pZE12Int-GFPaav, has a T1-attP fragment which can be transferred to other pZ vectors with HindIII-AvrII or XbaI-AvrII.For integration, cut out the colE1 origin with SpeI and AvrII, thenrecircularize (cohesive compatible).The Lac promoter undergoes mutation (due to intrinsic repeats?) when driving toxic protein at very high levels.  Gradually, the level of expression will drop.  	Oct, 2003	For integration into attB site.  Not AAV, but ASV!3351 bp	John Chuang	pZE12Int-GFPaav	Amp	
+49	a contaminant bacterium; colonies yellowish; capable of weaving yeast co-biofilm. 		8=Ade,Ura,Trp,His,Leu, Lys, Arg,Met			SD+8	
+50	lys20::TRP1; use Not1/Not1 fragment to transform yeast of trp1 background		plasmid; fanarg@ulb.ac.be Eur.J.Biochem.261,163-170. Use (WSO32, WSO33) to screen for 670bp.		pLAF109		
+51	lys21::LEU2; use Not1/Not1 fragment to transform yeast of leu2 background		plasmid; fanarg@ulb.ac.be Eur.J.Biochem.261,163-170. Use (WSO35, WSO36) to screen for 1.3kb.		pLAF112		
+52	LYS20-fbr2; use 2.2kb BamH1/BamH1 fragment to transf. lys20::TRP1 lys21::LEU2		plasmid; fanarg@ulb.ac.be Eur.J.Biochem.261,163-170. 		pAI8		
+53	LYS21-fbr; use 1.99kb BamH1/BamH1 fragment to transf. lys20::TRP1 lys21::LEU2		plasmid; fanarg@ulb.ac.be Eur.J.Biochem.261,163-170. 		pAI16		
+54	pRS406-ADHp-NLS-P12mut-GFPGFP		linearize with Stu1 to integrate into ura3-52. P12mut has a mutation in nuclear export signal. p240		WSL2-1	Amp	
+55	pRS406-ADHp-NLS-DsRed		linearize with Stu1 to integrate into ura3-52. p241		WSL4-1	Amp	
+56	pRS406-ADHp-NLS-DsRed		linearize with Stu1 to integrate into ura3-52. p241.  A different transformant.		WSL4-2	Amp	

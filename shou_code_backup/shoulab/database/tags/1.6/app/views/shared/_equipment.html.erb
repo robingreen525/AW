@@ -1,0 +1,34 @@
+<h1>Listing Equipment</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Company</th>
+    <th>Catalog &#35;</th>
+    <th>Price</th>
+    <th>Unit</th>
+    <th>Notes</th>
+  </tr>
+
+<% for equipment_and_supply in @equipment_and_supplies %>
+  <tr>
+    <td><%=h equipment_and_supply.description %></td>
+    <td><%=h equipment_and_supply.company %></td>
+    <td><%=h equipment_and_supply.cat_num %></td>
+    <td><%=h number_to_currency(equipment_and_supply.price) %></td>
+    <td><%=h equipment_and_supply.unit %></td>
+    <td><%=h equipment_and_supply.notes %></td>
+  <% if session[:user_id] %>
+    <td><%= link_to 'Edit', edit_equipment_and_supply_path(equipment_and_supply) %></td>
+    <td><%= link_to 'Destroy', equipment_and_supply, :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+
+
+  <% if session[:user_id] %>
+    <br />
+    <%= link_to 'Add New Equipment', new_equipment_and_supply_path %>
+  <% end %>
+

@@ -1,0 +1,17 @@
+To create a jar (Linux): The basic idea is we need to get the .class files created, then put them into a .jar archive.
+
+
+First, we need the location of the ImageJ root directory (I will call it $IJ_RT).
+Second, go into the directory with the ParticleTracker_.java file; ougth to be .../trunk. (This makes later steps a little easier.)
+Third, run the command "javac -classpath $IJ_RT/ij.jar ./ParticleTracker_.java"
+(For thoes who know linux "javac -classpath imagejs.jar javacode.java")
+
+The program will compile and finish. It will probably complain about "unsafe operations" or some such.
+(Ask the 13 year old; not my problem).
+
+Once compiled there ought to be a bunch of *.class files in ParticleTracker_.java's directory.
+We need to put all of these files into a .jar file (jar is little more than tar or zip file storage).
+To create the jar we run the command "jar cf ParticleTracker_.jar *.class" (From the ParticleTracker trunk directory.)
+(For thoes who know linux "jar cf archive_name.jar files_to_be_archived")
+
+That it; just "throw" the .jar file into the ImageJ plug-in directory and you are good to go.

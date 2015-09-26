@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/shoulab/!svn/ver/2336/metapop2/branches/scaling/source/org/fhcrc/honeycomb/metapop/coordinate/picker
+END
+CoordinatePicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/repos/shoulab/!svn/ver/2336/metapop2/branches/scaling/source/org/fhcrc/honeycomb/metapop/coordinate/picker/CoordinatePicker.java
+END
+UniqueRandomPicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/repos/shoulab/!svn/ver/2336/metapop2/branches/scaling/source/org/fhcrc/honeycomb/metapop/coordinate/picker/UniqueRandomPicker.java
+END
+SpecifiedPicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/repos/shoulab/!svn/ver/2336/metapop2/branches/scaling/source/org/fhcrc/honeycomb/metapop/coordinate/picker/SpecifiedPicker.java
+END
+RandomNeighborPicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/repos/shoulab/!svn/ver/2336/metapop2/branches/scaling/source/org/fhcrc/honeycomb/metapop/coordinate/picker/RandomNeighborPicker.java
+END
+RandomPicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/repos/shoulab/!svn/ver/2336/metapop2/branches/scaling/source/org/fhcrc/honeycomb/metapop/coordinate/picker/RandomPicker.java
+END

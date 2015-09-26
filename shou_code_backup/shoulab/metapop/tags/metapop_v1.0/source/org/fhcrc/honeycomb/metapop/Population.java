@@ -1,0 +1,641 @@
+package org.fhcrc.honeycomb.metapop;
+
+import org.fhcrc.honeycomb.metapop.dilutionrule.*;
+import org.fhcrc.honeycomb.metapop.environmentchanger.*;
+import org.fhcrc.honeycomb.metapop.fitness.cheaterloadcalculator.*;
+import org.fhcrc.honeycomb.metapop.fitness.fitnesscalculator.*;
+import org.fhcrc.honeycomb.metapop.resource.Resource;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+
+
+/** 
+ * A <class>Population</class> contains cheaters and cooperators.
+ *
+ * Created on 27 Jan, 2012
+ * @author Adam Waite
+ * @version $Rev: 1936 $, $Date: 2013-04-11 20:10:53 -0700 (Thu, 11 Apr 2013) $
+ *
+ */
+public class Population {
+    // **********FINAL fields **************************************** /
+
+    /** The random number generator. */
+    protected final RandomNumberUser rng;
+
+    /** The fractional advantage of cheaters over cooperators. */
+    private final double cheat_advantage;
+
+    /** The mutation rate from cooperator to cheater. */
+    private final double u;
+
+    /** The maximum fitnesses of each type (when cheat freq. = 0) */
+    protected final List<Double> max_fitnesses;
+
+
+    // ********* MUTABLE fields ************************************/
+
+    /** The total population size.  */
+    private double size;
+
+    /** The frequency of cheaters. */
+    private double cheat_freq;
+
+    /** The ratio of cooperators to cheaters. */
+    private double coop_ratio;
+
+    /** The <code>FitnessCalculator</code> to use */
+    protected FitnessCalculator fitness;
+
+    /** The number of types. */
+    protected int nTypes;
+
+    /** The number of each type of cooperator. */
+    protected List<Double> coops;
+
+    /** The number of each type of cheater. */
+    protected List<Double> cheats;
+
+
+    /** The current frequency of each type of cooperator. */
+    protected List<Double> coop_freqs;
+
+    /** The current frequency of each type of cheater. */
+    protected List<Double> cheat_freqs;
+
+    /** The total number of cooperators. */
+    protected double nCoops;
+
+    /** The total number of cheaters. */
+    protected double nCheats;
+
+    /** 
+     * This constructor explicitly specifies the number of cooperators and
+     * cheaters in the simulation.
+     *
+     * @param coops           the number of each type of cooperator.
+     * @param cheats          the number of each type of cheater.
+     * @param max_fitnesses   the fitnesses of each type.
+     * @param cheat_advantage the fractional advantage of cheaters over
+     *                        cooperators.
+     * @param u               the mutation rate from cooperator to cheater.
+     * @param fc              the <code>FitnessCalculator</code> to use.
+     * @param rng             a random number generator.
+
+     * @see FitnessCalculator
+     */
+    public Population(List<Double> coops, List<Double> cheats, 
+            List<Double> max_fitnesses, double cheat_advantage, double u,
+            FitnessCalculator fc, RandomNumberUser rng) 
+    {
+        if (fc == null) 
+            throw new IllegalArgumentException("FitnessCalculator is null.");
+
+        if (u < 0 || u > 1)
+            throw new IllegalArgumentException("u cannot be < 0 or > 1");
+
+        if (coops.size() == 0 && cheats.size() == 0) {
+            for (int i=0; i<max_fitnesses.size(); i++) {
+                coops.add(0.0);
+                cheats.add(0.0);
+            }
+        }
+
+        checkSizes(coops.size(), cheats.size(), max_fitnesses.size());
+
+        this.coops  = Utilities.copyDoubles(coops);
+        this.cheats = Utilities.copyDoubles(cheats);
+        this.cheat_advantage = cheat_advantage;
+        this.u = u;
+        this.max_fitnesses = Utilities.copyDoubles(max_fitnesses);
+        this.fitness = fc;
+        this.rng = rng;
+        nTypes = max_fitnesses.size();
+
+        update();
+    }
+
+    private Population(List<Double> max_fitnesses, double cheat_advantage,
+                       double u, FitnessCalculator fc, RandomNumberUser rng) 
+    {
+        this(new ArrayList<Double>(), new ArrayList<Double>(), max_fitnesses, 
+                cheat_advantage, u, fc, rng);
+    }
+
+    /**
+     * Copy constructor.
+     *
+     * @param pop the <code>Population</code> to be copied.
+     */
+    public Population(Population pop) {
+        this(pop.getCoops(), pop.getCheats(), pop.getMaxFitnesses(),
+             pop.getCheatAdvantage(), pop.getU(), pop.getFitnessCalculator(),
+             pop.getRNG());
+    }
+
+    /**
+     * This constructor is intended to be used at the start of a simulation,
+     * when it is more convenient to specify population structure in terms of
+     * an initial size and frequencies. Just converts frequencies to numbers
+     * and calls constructor that explicitly uses numbers of each type.
+     *
+     * @param size            the initial population size.
+     * @param cheat_freq      the initial frequency of cheaters.
+     * @param cheat_advantage the fractional advantage of cheaters over
+     *                        cooperators.
+     * @param types           the fitnesses and initial frequencies of each
+     *                        type.
+     * @param rng             a random number generator.
+     *
+     * @see Types
+     */
+    public Population(int size, double cheat_freq, double cheat_advantage,
+                      double u, Types types, FitnessCalculator fc,
+                      RandomNumberUser rng)
+    {
+        this(types.getMaxFitnesses(), cheat_advantage, u, fc,  rng);
+
+        int n_types = types.size();
+        for (int i=0; i<n_types; i++) {
+            double freq = types.getFrequency(i);
+            coops.set(i, size*(1-cheat_freq)*freq);
+            cheats.set(i, size*cheat_freq*freq);
+        }
+        update();
+    }
+
+    public void grow() { grow(null); }
+
+    /** changes population size of each type. */
+    public void grow(Resource resource) {
+        for (int type=0; type<nTypes; type++) {
+            double coop_size  = coops.get(type);
+            double cheat_size = cheats.get(type);
+
+            if (coop_size==0.0 && cheat_size==0.0) continue;
+
+            List<Double> fitnesses =
+                fitness.calculate(this, max_fitnesses.get(type));
+
+            double new_coop_size  = 
+                coop_size*StrictMath.exp(fitnesses.get(0));
+            double new_cheat_size = 
+                cheat_size*StrictMath.exp(fitnesses.get(1));
+
+            List<Double> new_sizes =
+                mutate(new_coop_size, new_cheat_size);
+            double coops_post_mutation = new_sizes.get(0);
+            double cheats_post_mutation = new_sizes.get(1);
+
+            // If a type falls below 1, set it to 0.
+            coops.set(type, (coops_post_mutation < 1.0) ?
+                            0.0 : coops_post_mutation);
+            cheats.set(type, (cheats_post_mutation < 1.0) ?
+                             0.0 : cheats_post_mutation);
+
+            // Make sure 0 < cell < 1 does not get through without failing.
+            if ((coops.get(type) < 1 && coops.get(type) > 0) || 
+                (cheats.get(type) < 1 && cheats.get(type) > 0))
+            {
+                throw new RuntimeException("Cheat or coop < 1");
+            }
+
+        }
+        update();
+    }
+
+    /** mutates a portion of cooperators to cheaters based on the value of
+     * <code>u</code>.  If 0 &gt; mutant &lt; 1 is created, makes a mutant with
+     * probability equal to that fraction.
+     *
+     * @param coop_size  the size of the cooperator population.
+     * @param cheat_size the size of the cheater population.
+     * @return           a <code>List</code> of the modified sizes of
+     *                   cooperators and cheaters of this type.
+     *                   Cooperators are index 0, cheats 1.
+     */
+    public List<Double> mutate(double coop_size, double cheat_size)
+    {
+        if (u == 0) return Arrays.asList(coop_size, cheat_size);
+
+        double mutants = coop_size * u;
+        if (mutants < 1) mutants = rng.getNextBinomial(1, mutants);
+        return Arrays.asList(coop_size - mutants, cheat_size + mutants);
+    }
+
+    /**
+     * Dilutes each type by the specified amount and
+     * returns a new <code>Population</code> of the diluted members.
+     *
+     * Each type is diluted by the requested amount.  If the requested amount
+     * is less than one cell, one cells is diluted and returned (for migration)
+     * with a probability equal to the requested amount.
+     *
+     * If before dilution less than one cell remains, it is diluted to nothing
+     * with a probability equal to one minus the requested amount and nothing 
+     * is available for migration.
+     *
+     * @param fraction the fraction of the <code>Population</code> to dilute as
+     *                 a value between 0 and 1.
+     *
+     * @return         the diluted <code>Population</code>.
+     */
+    public Population dilute(double fraction) {
+        if (fraction < 0 || fraction > 1) {
+            throw
+                new IllegalArgumentException("Fraction not between 0 and 1.");
+        }
+
+        List<Double> new_coops  = new ArrayList<Double>(nTypes);
+        List<Double> new_cheats = new ArrayList<Double>(nTypes);
+
+        //System.out.println("coops: " + coops);
+        //System.out.println("cheats: " + cheats);
+        for (int type=0; type<nTypes; type++) {
+            double[] diluted = {0.0, 0.0};
+            if (!(coops.get(type).equals(0.0) && cheats.get(type).equals(0.0)))
+            {
+                double[] coop_cheat = {coops.get(type), cheats.get(type)};
+                for (int i=0; i<coop_cheat.length; i++) {
+                    if (coop_cheat[i] > 0) {
+                        double requested_dilution = coop_cheat[i]*fraction;
+                        if (requested_dilution < 1) {
+                            // closer to 1 means greater likelihood of
+                            // diluting.
+                            diluted[i] =
+                                rng.getNextBinomial(1, requested_dilution);
+
+                            // A cell < 1 is *more* likely to be diluted away,
+                            // so the probability of dilution is 
+                            // 1-requested_dilution
+                            if (coop_cheat[i] < 1) {
+                                if (diluted[i] == 0) {
+                                    coop_cheat[i] = 0;
+                                } else {
+                                    diluted[i] = 0;
+                                }
+                            }
+                        } else {
+                            diluted[i] = requested_dilution;
+                        }
+                    }
+                }
+
+                //System.out.println("coops: " + coops.get(type));
+                //System.out.println("cheats: " + cheats.get(type));
+                coops.set(type, coop_cheat[0]-diluted[0]);
+                cheats.set(type, coop_cheat[1]-diluted[1]);
+
+                //System.out.println("diluted coops: " + diluted[0]);
+                //System.out.println("diluted cheats: " + diluted[1]);
+            }
+
+            new_coops.add(diluted[0]);
+            new_cheats.add(diluted[1]);
+        }
+
+        update();
+
+        return new Population(new_coops, new_cheats, getMaxFitnesses(),
+                              getCheatAdvantage(), getU(), 
+                              getFitnessCalculator(), getRNG());
+    }
+
+    /**
+     * Add mutants to the cooperator sub-population.
+     * Adds type 1 mutants based on the number of ancestor type, sampling from 
+     * a Poisson distribution.
+     *
+     * @param freq the frequency of new mutants.
+     *
+     */
+    public void addCoopMutants(double freq) {
+        coops.set(1, (double) rng.getNextPoisson(coops.get(1)*freq));
+    }
+
+    /**
+     * Add mutants to the cheater sub-population.
+     * Adds type 1 mutants based on the number of ancestor type, sampling from 
+     * a Poisson distribution.
+     *
+     * @param freq the frequency of new mutants.
+     *
+     */
+    public void addCheatMutants(double freq) {
+        cheats.set(1, (double) rng.getNextPoisson(cheats.get(1)*freq));
+    }
+
+    /**
+     * Removes lowest fitness type, moves higher fitness types to
+     * lowest fitness type, and selects new higher-fitness mutants from 
+     * these higher fitness types proportional to their original amounts.
+     *
+     * @param new_freqs the frequency of each new type.
+     *
+     */
+    public void shiftFitness(List<Double> new_freqs) {
+        if (new_freqs.size() != nTypes) {
+            throw new IllegalArgumentException(
+                "Number of new frequencies does not match number of types.");
+        }
+
+        double old_coop_mutants = 0.0;
+        double old_cheat_mutants = 0.0;
+
+        for (int i=1; i<nTypes; i++) {
+            double freq = new_freqs.get(i);
+
+            double current_coop_muts = coops.get(i);
+            double current_cheat_muts = cheats.get(i);
+            double new_coop_muts = 0;
+            double new_cheat_muts = 0;
+            if (freq > 0.0) {
+                if (current_coop_muts > 0) {
+                    new_coop_muts = rng.getNextPoisson(current_coop_muts*freq);
+                }
+                if (current_cheat_muts > 0) {
+                    new_cheat_muts =
+                        rng.getNextPoisson(current_cheat_muts*freq);
+                }
+            }
+            old_coop_mutants += (current_coop_muts - new_coop_muts);
+            old_cheat_mutants += (current_cheat_muts - new_cheat_muts);
+
+            coops.set(i, new_coop_muts);
+            cheats.set(i, new_cheat_muts);
+        }
+
+        coops.set(0, old_coop_mutants);
+        cheats.set(0, old_cheat_mutants);
+        update();
+    }
+
+    double persistence(double size) {
+        return (rng.getNextBinomial(1,size)==1) ? size : 0.0;
+    }
+
+
+    /**
+     * a wrapper for <code>dilute</code>, included for semantic clarity.
+     *
+     * @return the migrating <code>Population</code>.
+     */
+    public Population retrieveMigrants(final double amount) {
+        return dilute(amount);
+    }
+
+    /**
+     * mixes the passed population with the current one.
+     *
+     * @param incoming the incoming population to be mixed with the current
+     *                 one.
+     */
+    public void mix(final Population incoming) {
+        final List<Double> incoming_coops  = 
+            new ArrayList<Double>(incoming.getCoops());
+        final List<Double> incoming_cheats = 
+            new ArrayList<Double>(incoming.getCheats());
+        //System.out.println("Incoming coops: " + incoming_coops);
+        //System.out.println("Current coops: " + coops);
+        for (int type=0; type<nTypes; type++) {
+            coops.set(type,  coops.get(type)  + incoming_coops.get(type));
+            cheats.set(type, cheats.get(type) + incoming_cheats.get(type));
+        }
+        update();
+    }
+
+    public static List<Population> generate(int n,
+                                            final double initial_size,
+                                            final double initial_cheat_freq,
+                                            final double cheat_advantage,
+                                            final double u,
+                                            final Types types,
+                                            final FitnessCalculator fc,
+                                            RandomNumberUser rng)
+    {
+        List<Population> result = new ArrayList<Population>(n);
+
+        int n_types = types.size();
+        for (int i=0; i<n; i++) {
+            List<Double> coop = new ArrayList<Double>(n_types);
+            List<Double> cheat = new ArrayList<Double>(n_types);
+
+            coop.add(initial_size*(1-initial_cheat_freq));
+            cheat.add(initial_size*initial_cheat_freq);
+
+            for (int j=1; j<n_types; j++) {
+                double freq = types.getFrequency(j);
+
+                double coop_muts = 0;
+                double cheat_muts = 0;
+                if (freq > 0.0) {
+                    coop_muts  = rng.getNextPoisson(coop.get(0)*freq);
+                    cheat_muts = rng.getNextPoisson(cheat.get(0)*freq);
+                }
+                coop.add(coop_muts);
+                coop.set(0, coop.get(0)-coop_muts);
+                cheat.add(cheat_muts);
+                cheat.set(0, cheat.get(0)-cheat_muts);
+            }
+            result.add(new Population(coop, cheat, types.getMaxFitnesses(),
+                                      cheat_advantage, u, fc, rng));
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new String("coops: " + coops + "  cheats: " + cheats + "\n");
+    }
+
+    /**
+     * the random number generator.
+     *
+     * @return the random number generator.
+     */
+    public RandomNumberUser getRNG() { return rng; }
+
+    /**
+     * the size of the total <code>Population</code>.
+     *
+     * @return the size of the <code>Population</code>
+     */
+    public double getSize() { return size; }
+
+    /**
+     * gets the <code>List</code> containing the number of each cooperator
+     * type.
+     *
+     * @return the <code>List</code> containing the number of each type of
+     *         cooperator.
+     */
+    public List<Double> getCoops() { return Utilities.copyDoubles(coops); }
+
+    /**
+     * gets the <code>List</code> containing the number of each cheater type.  
+     *
+     * @return the <code>List</code> containing the number of each type of
+     *         cheater.
+     */
+    public List<Double> getCheats() { return Utilities.copyDoubles(cheats); }
+
+    /**
+     * gets the frequencies of each type of cooperator.
+     *
+     * @return the frequencies of each type of cooperator.
+     */
+    public List<Double> getCoopFrequencies() { 
+        return Utilities.copyDoubles(coop_freqs);
+    }
+
+    /**
+     * gets the frequencies of each type of cheater.
+     *
+     * @return the frequencies of each type of cheater.
+     */
+    public List<Double> getCheatFrequencies() { 
+        return Utilities.copyDoubles(cheat_freqs);
+    }
+
+    /**
+     * gets current fitnesses ordered by cheater/cooperator instead of type.
+     *
+     * @param w 0 for cooperators, 1 for cheaters.
+     */
+    private List<Double> getCurrentFitnesses(int w) {
+        List<Double> fitnesses = new ArrayList<Double>(nTypes);
+        for (int type=0; type<nTypes; type++) {
+            fitnesses.add(
+                    fitness.calculate(this, max_fitnesses.get(type)).get(w));
+        }
+        return fitnesses;
+    }
+
+    /**
+     * gets a <code>List</code> of the current fitnesses of each type of
+     * cooperator.
+     *
+     * @return the <code>List</code> of cooperator fitnesses.
+     */
+    public List<Double> getCoopFitnesses() { return getCurrentFitnesses(0); }
+
+    /**
+     * gets a <code>List</code> of the current fitnesses of each type of
+     * cheater.
+     *
+     * @return the <code>List</code> of cheater fitnesses.
+     */
+    public List<Double> getCheatFitnesses() { return getCurrentFitnesses(1); }
+
+    /**
+     * gets a <code>List</code> of maximum fitnesses of each type.
+     *
+     * @return the <code>List</code> of maximum fitnesses of each type.
+     */
+    public List<Double> getMaxFitnesses() { 
+        return Utilities.copyDoubles(max_fitnesses);
+    }
+
+    /**
+     * gets the mutation rate from cooperator to cheater.
+     *
+     * @return the mutation rate from cooperator to cheater.
+     */
+    public double getU() { return u; }
+     
+
+    /**
+     * gets the number of cooperators.
+     *
+     * @return the number of cooperators.
+     */
+    public double getNCoops() { return nCoops; }
+
+    /**
+     * gets the number of cheaters.
+     *
+     * @return the number of cheaters.
+     */
+    public double getNCheats() { return nCheats; }
+
+    public int getNTypes() { return nTypes; }
+
+
+    /**
+     * gets the current cooperator frequency.
+     *
+     * @return the current cooperator frequency.
+     */
+    public double getCheatFrequency() { return cheat_freq; }
+
+    /**
+     * gets the current cooperator frequency.
+     *
+     * @return the current cooperator:cheater ratio.
+     */
+    public double getCoopRatio() { return coop_ratio; }
+
+    /**
+     * gets the cheater advantage.
+     *
+     * @return the cheater advantage.
+     */
+    public double getCheatAdvantage() { return cheat_advantage; }
+
+    /**
+     * get a reference to the FitnessCalculator.
+     * @return the FitnessCalculator.
+     */
+    public FitnessCalculator getFitnessCalculator() { return fitness; }
+
+    /**
+     * calculates new values for the mutable parameters of this
+     * <code>Population</code>.
+     */
+    public void update() {
+        double coop_sum  = 0;
+        double cheat_sum = 0;
+        List<Double> new_coop_freqs  = new ArrayList<Double>(nTypes);
+        List<Double> new_cheat_freqs = new ArrayList<Double>(nTypes);
+
+        for (int type=0; type<nTypes; type++) {
+            coop_sum  += coops.get(type); 
+            cheat_sum += cheats.get(type); 
+        }
+
+        for (int type=0; type<nTypes; type++) {
+            new_coop_freqs.add((coops.get(type).equals(0)) ? 
+                    0 : coops.get(type)/coop_sum);
+
+            new_cheat_freqs.add((cheats.get(type).equals(0)) ? 
+                    0 : cheats.get(type)/cheat_sum);
+        }
+
+
+        nCoops     = coop_sum;
+        nCheats    = cheat_sum;
+        cheat_freq = nCheats/(nCoops+nCheats);
+        coop_ratio = nCoops/nCheats;
+        size       = nCoops + nCheats;
+
+        coop_freqs  = new_coop_freqs;
+        cheat_freqs = new_cheat_freqs;
+    }
+
+    // Check sizes of coop, cheat, and fitness arrays.
+    private void checkSizes(int coop_types, int cheat_types, int fitness_types)
+    {
+        if (coop_types != cheat_types || coop_types != fitness_types ||
+            cheat_types != fitness_types)
+        {
+            throw new IllegalArgumentException("The lengths of cooperator, "+
+                    "cheater, and fitness Lists must be equal.");
+        }
+
+    }
+}
+
+

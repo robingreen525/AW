@@ -1,0 +1,21 @@
+package org.fhcrc.honeycomb.metapop.fitness.cheaterloadcalculator;
+
+/**
+ * Calculates the load imposed on a population due to the presence of
+ * cheaters.
+ * Created on 7 Feb, 2012
+ * @author Adam Waite
+ * @version $Rev$, $Date$
+ *
+ */
+public interface CheaterLoadCalculator {
+
+    /** calculates the change in fitness due to cheater frequency.
+     * @param cheater_freq the current cheater frequency.
+     * @param max_fitness  the fitness when cheater frequency = 0.
+     *
+     * @return             the adjusted fitness.
+     *
+     */
+    abstract public double calculate(double cheater_freq, double max_fitness);
+}

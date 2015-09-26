@@ -1,0 +1,86 @@
+<!doctype html public "-//w3c//dtd xhtml 1.0 strict//en" "http://www.w3.org/tr/xhtml/dtd/xhtml1-strict.dtd">
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Adam Waite" />
+      <meta name="revised" content="Adam Waite, 2 February 2009" />
+  </head>
+  <style>
+    body {
+      background-color: #E5E5E5;
+    }
+
+    p,h1,ul,ol,legend {
+      font-family: verdana,sans-serif;
+      size=12px;
+    }
+    fieldset {
+      padding: 1em;
+    }
+    label {
+      float: left;
+      width: 25%;
+      margin-right:0.5em;
+      padding-top:0.2em;
+      text-align:left;
+      font-weight:bold;
+    }
+
+    .error p {
+      color: red;
+    }
+  </style>
+
+  <body>
+
+    <div>
+      <h1>Checkflow</h1>
+    </div>
+
+    <div>
+    <form action="ckfl" method="get">
+      <p>User: <input type="text" name="user" value="<tmpl_var name="user">" size="3" /></p>
+
+      <fieldset>
+        <legend>Concentration (beads/&#x3BC;L)</legend>
+          <input type="text" name="bead_conc" value="<tmpl_var name="bead_conc">" size="20" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Dilutions (comma separated)</legend>
+          <input type="text" name="dils" value="<tmpl_var name="dils">" size="20" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Folder (anything <b>after</b> //fred/shougroup/FACS/checkflow)</legend>
+        <ul>
+          <li>Folder must contain .fcs files.</li>  
+          <li>Each name should correspond to the dilution factor used for that run.</li> 
+          <li>Use 'p' for decimal points.</li>
+
+          <input type="text" name="f1" value="<tmpl_var name="f1">" /></br>
+          <tmpl_if name="folder_error">
+            <div class="error">
+              <p><tmpl_var name="folder_error"></p>
+            </div>
+          </tmpl_if>
+      </fieldset>
+      <input type="submit" value="Check!" />
+    </form>
+    </div>
+
+  <tmpl_if name="success">
+    <div class="result">
+      <fieldset>
+        <legend>Results</legend>
+        <img src="<tmpl_var name="flow_rate">" alt="Flow rate" /><br />
+        <img src="<tmpl_var name="bead_flow">" alt="Bead flow"  /><br />
+      </fieldset>
+    </div>
+  </tmpl_if>
+
+<!--    <img src="/data/checkflow/test/flow_rate.png" /><br /> -->
+
+    
+  </body>
+</html>

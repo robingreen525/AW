@@ -1,0 +1,26 @@
+package org.fhcrc.honeycomb.metapop.fitness.fitnesscalculator;
+
+/**
+ * Calculates the fitness based on the Monod equation.
+ *
+ * Created on 22 Apr, 2013
+ * @author Adam Waite
+ * @version $Id$
+ */
+public class MonodCalculator implements FitnessCalculator {
+    private double Vmax;
+    private double Km;
+    private double d;
+
+    MonodCalculator(double Vmax, double Km, double d) {
+        this.Vmax = Vmax;
+        this.Km   = Km;
+        this.d    = d;
+    }
+
+    @Override
+    public double calculate(Population pop) {
+
+        return (((Vmax+d)*nutrient_conc / (nutrient_conc + Km)) - d);
+    }
+}

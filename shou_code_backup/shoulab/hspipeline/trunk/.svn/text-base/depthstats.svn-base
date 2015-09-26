@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+use strict; use warnings;
+use Data::Dumper;
+use Hspipeline;
+
+$| = 1;
+&main();
+exit;
+
+sub main() {
+    print "depthstats <infile.pileup> <threshold>\n" 
+        and exit unless scalar @ARGV == 2;
+    my $genome = 
+        scan_genome({file=>$ARGV[0], max_threshold=>$ARGV[1], print=>1});
+}

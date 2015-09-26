@@ -1,0 +1,94 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Getopt::Std;
+use Data::Dumper;
+use Hspipeline;
+
+# Finds the set of variations in file1 that are not in file2, and the
+# variations that are in file1 and file2.
+main();
+exit;
+
+sub main {
+    $| = 1;
+    my %opts;
+    getopts('d:',\%opts);
+
+    my $d = $opts{'d'} || 0;
+
+    my $save_path = $ARGV[2];
+    mkdir $save_path unless -e $save_path;
+
+    unique($ARGV[0],$ARGV[1], $d, $save_path);
+    unique($ARGV[1],$ARGV[0], $d, $save_path);
+}
+
+sub unique {
+    my ($f1, $f2, $d, $save_path) = @_;
+
+    die "$f1 does not exist!" unless -e $f1;
+    die "$f2 does not exist!" unless -e $f2;
+    my $f1_path = get_parent($f1);
+    my $f2_path = get_parent($f2);
+    my $f1_name = get_name($f1);
+    my $f2_name = get_name($f2);
+
+    open my $uout, "> $save_path/in_${f2_name}_not_${f1_name}" 
+        or die "couldn't open file for writing: $!";
+    open my $sout, "> $save_path/in_${f2_name}_and_${f1_name}" 
+        or die "couldn't open file for writing: $!";
+
+    my %seen = ();
+    my $in;
+    open $in, '<', $f1 or die "couldn't open $f1: $!";
+    while (<$in>) {
+        next if /^#+/;
+        my @line = split;
+        $seen{$line[0]}{$line[1]} = 1;
+    }
+    close $in;
+    #print Dumper(\%seen);
+
+
+    open $in, '<', $f2 or die "couldn't open $f2: $!";
+    my $l = 1;
+    while (<$in>) {
+        if (/^#+/) {
+            print $sout $_;
+            print $uout $_;
+            next;
+        } else {
+            my @line = split;
+            my $close = 0;
+            my $filter = 0;
+            for my $pos ($line[1]-$d..$line[1]+$d) {
+                $close = 1 if ($seen{$line[0]}{$pos});
+            }
+            if (/\.vcf$/) {
+                my @rec = split ';', $line[7]; 
+                shift @rec if $rec[0] eq "INDEL";
+                my %info = map{ split '=', $_} @rec;
+
+                # Positive FQ indicates heterozygous.
+                # Removing this filter on the off chance that a chromosomal
+                # duplication plus important SNP looks heterozygous.
+                #$filter = 1 if $info{FQ} > 0;
+            }
+            if ($close) {
+                print $sout $_;
+            } elsif (!$filter) {
+                print $uout $_;
+            }
+        }
+        $l++;
+    }
+    close $in;
+    close $uout;
+    close $sout;
+}
+
+sub usage {
+    print qq/Usage: vcfunique file1.vcf file2.vcf\n"/;
+    exit;
+}

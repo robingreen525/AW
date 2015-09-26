@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/shoulab/!svn/ver/1093/C++/scales/tags/daughter_array/src
+END
+cell_test.cc
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/shoulab/!svn/ver/1093/C++/scales/tags/daughter_array/src/cell_test.cc
+END
+cell.cc
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/shoulab/!svn/ver/1093/C++/scales/tags/daughter_array/src/cell.cc
+END
+prealloc_cell_test.cc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/shoulab/!svn/ver/1093/C++/scales/tags/daughter_array/src/prealloc_cell_test.cc
+END
+rdist.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/shoulab/!svn/ver/1093/C++/scales/tags/daughter_array/src/rdist.hh
+END
+stack.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/shoulab/!svn/ver/1093/C++/scales/tags/daughter_array/src/stack.hh
+END
+limits.cc
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/shoulab/!svn/ver/1093/C++/scales/tags/daughter_array/src/limits.cc
+END
+rdist.cc
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/shoulab/!svn/ver/1093/C++/scales/tags/daughter_array/src/rdist.cc
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/shoulab/!svn/ver/1093/C++/scales/tags/daughter_array/src/Makefile
+END
+cell.hh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/shoulab/!svn/ver/1093/C++/scales/tags/daughter_array/src/cell.hh
+END

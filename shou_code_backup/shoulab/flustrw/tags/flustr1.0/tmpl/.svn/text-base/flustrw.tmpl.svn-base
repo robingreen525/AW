@@ -1,0 +1,111 @@
+<!doctype html public "-//w3c//dtd xhtml 1.0 strict//en" "http://www.w3.org/tr/xhtml/dtd/xhtml1-strict.dtd">
+<html>
+  <head>
+      <meta http-equiv="content-type" 
+       content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Adam Waite" />
+      <meta name="revised" content="Adam Waite, 15 Oct, 2010" />
+      <tmpl_if name="waiting"><meta http-equiv=refresh content=5></tmpl_if>
+  </head>
+  <style>
+    body {
+      background-color: #E5EEEE;
+    }
+
+    p,h1,ul,ol,legend {
+      font-family: verdana,sans-serif;
+      size=12px;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    .cen {
+      text-align: center;
+    }
+    .lef {
+      text-align: left;
+    }
+    fieldset {
+      padding: 1em;
+    }
+    label {
+      float: left;
+      width: 25%;
+      margin-right:0.5em;
+      padding-top:0.2em;
+      text-align:left;
+      font-weight:bold;
+    }
+
+    .error p {
+      color: red;
+    }
+  </style>
+
+  <body>
+
+    <div>
+      <h1>flustrw</h1>
+    </div>
+
+    <div>
+    <form action="flustrw" method="get">
+      <fieldset>
+        <legend>User</legend> 
+          <input type="text" name="user" 
+            value="<tmpl_var name="user">" size="3" /></p>
+          <tmpl_if name="user_error">
+            <div class="error">
+              <p><tmpl_var name="user_error"></p>
+            </div>
+          </tmpl_if>
+      </fieldset>
+
+      <fieldset>
+        <legend>Concentration (beads/mL)</legend>
+          <tmpl_if name="bead_conc">
+          <input type="text" name="bead_conc" 
+            value="<tmpl_var name="bead_conc">" size="5" />
+          <tmpl_else>
+          <input type="text" name="bead_conc" 
+            value="<tmpl_var name="def_bead_conc">" size="5" />
+          </tmpl_if>
+      </fieldset>
+
+      <fieldset>
+        <legend>Folder (anything <b>after</b> //fred/shougroup/)</legend>
+        <ul>
+          <li>Folder must contain .fcs files.</li>  
+          <li>Names <b>cannot</b> contain spaces!</li>
+
+          <input type="text" name="data_folder" 
+            value="<tmpl_var name="data_folder">" /></br>
+          <tmpl_if name="folder_error">
+            <div class="error">
+              <p><tmpl_var name="folder_error"></p>
+            </div>
+          </tmpl_if>
+      </fieldset>
+      <input type="submit" value="Run!" />
+    </form>
+    </div>
+
+  <tmpl_if name="waiting">
+    <div>
+      <br />
+      <hr>
+      <h1>Running...sit tight!</h1>
+    </div>
+  </tmpl_if>
+
+  <tmpl_if name="success">
+    <div class="result">
+      <br />
+      <hr>
+      <h1>Success!</h1>
+      <p>Results can be found at <b><tmpl_var name="result_path"></b></p>
+    </div>
+  </tmpl_if>
+
+  </body>
+</html>

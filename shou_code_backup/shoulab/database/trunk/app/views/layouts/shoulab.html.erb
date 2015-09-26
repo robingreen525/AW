@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Shou Lab <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'shoulab' %>
+</head>
+<body>
+
+<div id="banner">
+  <%= @page_title || 'Shou Lab Database' %>
+</div>
+<div id="columns">
+  <div id="side">
+    <p><a href="http://honeycomb.fhcrc.org/repos/shoulab"a>Source code</a></p>
+    <p><a href="http://honeycomb.fhcrc.org/db"a>Programs</a></p>
+
+
+    <% if session[:user_id] %>
+      <p><%= link_to 'Edit Yeast', :controller => :yeast_strains %></p>
+      <p><%= link_to 'Edit Bacteria', :controller => :bacterial_plasmids %></p>
+      <p><%= link_to 'Edit Oligos', :controller => :oligos %></p>
+      <p><%= link_to 'Edit Equipment', :controller => :equipment_and_supplies %></p>
+      <p><%= link_to 'Edit Chemicals', :controller => :chemicals %></p>
+      <p><%= link_to 'Edit Users', :controller => :users %></p>
+      <p><%= link_to 'Sign out', :controller => :admin, :action => :logout %> </p>
+    <% else %>
+      <p><%= link_to 'Yeast strains', :controller => :shoulab, :action => :yeast %></p>
+      <p><%= link_to 'Bacteria', :controller => :shoulab, :action => :plasmids %></p>
+      <p><%= link_to 'Oligos', :controller => :shoulab, :action => :oligos %></p>
+      <p><%= link_to 'Equipment', :controller => :shoulab, :action => :equipment %></p>
+      <p><%= link_to 'Chemicals', :controller => :shoulab, :action => :chemicals %></p>
+      <br />
+      <p><%= link_to 'Sign in', :controller => :admin, :action => :login %></p>
+    <% end %>
+
+  </div>
+</div>
+<div id="main">
+
+  <%= yield  %>
+
+</div>
+
+</body>
+</html>

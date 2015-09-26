@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/script
+END
+console
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/script/console
+END
+server
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/script/server
+END
+dbconsole
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/script/dbconsole
+END
+destroy
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/script/destroy
+END
+runner
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/script/runner
+END
+about
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/script/about
+END
+generate
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/script/generate
+END
+plugin
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/shoulab/!svn/ver/2324/database/tags/1.6/script/plugin
+END

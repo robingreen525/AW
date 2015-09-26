@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/app/controllers
+END
+oligos_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/app/controllers/oligos_controller.rb
+END
+shoulab_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/app/controllers/shoulab_controller.rb
+END
+application.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/app/controllers/application.rb
+END
+users_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/app/controllers/users_controller.rb
+END
+bacterial_plasmids_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/app/controllers/bacterial_plasmids_controller.rb
+END
+admin_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/app/controllers/admin_controller.rb
+END
+yeast_strains_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/shoulab/!svn/ver/2324/database/tags/1.5/app/controllers/yeast_strains_controller.rb
+END

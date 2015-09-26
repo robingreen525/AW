@@ -1,0 +1,248 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Getopt::Std;
+use Data::Dumper;
+use Hspipeline;
+
+# hspipeline -- A script for calling variants using the output from 
+# Illumina's high-throughput sequencing platforms.
+# REQUREMENTS --
+#
+#  call_plot_cnv.r
+#  plot_cnv.r
+#
+#  Install
+#   * R
+#   * bwa 
+#   * samtools (wich includes 'bcftools' and 'vcfutils.pl')
+#
+#  Put the binary files bwa, samtools, bcftools, cnvhmm, and vcfutils.pl on 
+#  the computer's search PATH.
+
+main();
+exit;
+
+sub main {
+  $| = 1;
+  my %opts;
+  getopts('p:r:t:a:R:e:', \%opts);
+  usage() if scalar values %opts != 6; 
+
+  my $program_tag = "[hspipeline]";
+
+  die "$program_tag Can't find reference sequence!" unless -e    $opts{'r'};
+  die "$program_tag Can't find project folder!"     unless -e -d $opts{'p'};
+  die "$program_tag Can't find ancestor folder!"    unless -e -d $opts{'a'};
+  die "$program_tag Can't find plotting functions!" unless -e -d $opts{'R'};
+
+  for ($opts{'p'},$opts{'a'},$opts{'R'}) {
+    chop if $_ =~ /\/$/;
+  }
+
+
+  my $project_path = $opts{'p'};
+  my $ref_seq      = $opts{'r'};
+  my $anc_path     = $opts{'a'};
+  my $nthread      = $opts{'t'};
+  my $path_to_code = $opts{'R'};
+  my $end_type     = $opts{'e'};
+
+  my $pipeline;
+  my $pattern;
+  my $concat;
+  if ($end_type eq "p") {
+    $pipeline = \&pe_pipeline;
+    $pattern  = '\.fastq\.gz$';
+    $concat   = 1;
+  } elsif ($end_type eq "s") {
+    $pipeline = \&se_pipeline;
+    $pattern  = '\_sequence\.txt$';
+    $concat   = 0;
+  } else {
+    die usage();
+  }
+
+  print "$program_tag Beginning pipeline...\n";
+  index_reference($ref_seq);
+
+  print "$program_tag   Making paths...";
+  my $seq_paths = generate_paths({proj    => $project_path, 
+                                  pattern => $pattern,
+                                  concat  => $concat});
+  print "done!\n";
+
+   #die Dumper($seq_paths);
+  while (my ($strain, $seqs) = each %$seq_paths) {
+    &$pipeline({strain  => $strain,
+                seqs    => $seqs, 
+                ref     => $ref_seq,
+                nthread => $nthread});
+  }
+  
+  find_cnv({anc_path  => $anc_path, 
+            all_paths => $seq_paths,
+            R_path    => $path_to_code,
+            window    => 500});
+
+  while (my ($strain,$seq) = each %$seq_paths) {
+    compare_to_anc({proj   => $project_path,
+                    strain => $strain,
+                    anc_path => $anc_path,
+                    file     => "_raw_vars.vcf"});
+
+    compare_to_anc({proj   => $project_path,
+                    strain => $strain,
+                    anc_path => $anc_path,
+                    file     => "_deletion_locations.txt",
+                    vcf_tol  => 50});
+  }
+}
+
+sub se_pipeline {
+  my $p = shift;
+  my $strain  = $p->{strain};
+  my $seq     = $p->{seqs}[0];
+  my $ref_seq = $p->{ref};
+  my $nthread = $p->{nthread};
+  my $parent = get_parent($seq);
+
+  my $program_tag = "[hspipeline se]";
+
+  # Input/output filenames
+  my $pfx          = $parent.'/'.$strain;
+  my $sai          = $pfx.".sai";
+  my $bam          = $pfx."_aligned.bam";
+  my $sorted       = $pfx."_sorted";
+  my $pileup       = $sorted.".pileup";
+  my $pileup_bcf   = ${sorted}."_pileup.bcf";
+  my $var_bcf      = $pfx."_raw_vars.bcf";
+  my $var_vcf      = $pfx."_raw_vars.vcf";
+  my $depth        = $pfx."_depthstats.txt";
+
+  # Commands
+  my $sa_coord = "bwa aln -I -k4 -t${nthread} $ref_seq $seq > $sai";
+  my $align   = "bwa samse $ref_seq $sai $seq | samtools view -bS - > $bam";
+  my $sort = "samtools sort $bam $sorted";
+
+  my $index    = "samtools index $sorted.bam";
+  my $make_pileup = 
+    "samtools mpileup -BQ0 -d10000000 -f $ref_seq  $sorted.bam > $pileup";
+  my $make_pileup_bcf = 
+    "samtools mpileup -Bg -C50 -q30 -f $ref_seq $sorted.bam > $pileup_bcf";
+
+  my $call_vars   = "bcftools view -Nbvcg $pileup_bcf > $var_bcf";
+
+  my $vars_to_vcf = "bcftools view $var_bcf > $var_vcf";
+
+  # System calls
+  print("$program_tag Processing strain $strain...\n");
+  print "[hspipeline] Generating SA coordinates...\n";
+  system($sa_coord)   == 0 or die "[hspipeline] Alignment failed: $!";
+
+  print "$program_tag Aligning...\n";
+  system($align) == 0 or die "$program_tag Conversion to SAM failed: $!";
+
+  print "$program_tag Sorting...\n";
+  system($sort) == 0 or die "$program_tag Filtering failed: $!";
+
+  print "$program_tag Indexing BAM file...\n";
+  system($index) == 0 or die "$program_tag Indexing failed: $!";
+
+  print "$program_tag Generating pileup...\n";
+  system($make_pileup) == 0 or die "$program_tag Pileup failed: $!";
+
+  print "$program_tag Generating pileup bcf...\n";
+  system($make_pileup_bcf) == 0 or die "$program_tag Pileup bcf failed: $!";
+
+  print "$program_tag Calling variants...\n";
+  system($call_vars) == 0 or die "$program_tag Calling variants failed: $!";
+
+  print "$program_tag Converting variants to vcf...\n";
+  system($vars_to_vcf) == 0 
+    or die "$program_tag Converting vars to vcf failed: $!";
+
+  print "$program_tag Calculating depth stats...\n";
+  my $calc_depth = "depthstats $pileup $depth";
+  system($calc_depth) == 0 
+    or die "$program_tag Calculating depth stats failed: $!";
+
+  print "$program_tag Finished $strain!\n\n";
+}
+
+sub pe_pipeline {
+  my $p = shift;
+  my $strain  = $p->{strain};
+  my $seqs    = $p->{seqs};
+  my $ref_seq = $p->{ref};
+  my $nthread = $p->{nthread};
+
+  my $parent = get_parent($seqs->[0]);
+  my @seqs = sort @$seqs;
+
+  my $program_tag = "[hspipeline pe]";
+
+  # Input/output filenames
+  my $pfx          = $parent.'/'.$strain;
+  my $bam          = $pfx.'_aligned.bam';
+  my $sorted       = $pfx.'_sorted';
+  my $pileup       = ${sorted}.".pileup";
+  my $pileup_bcf   = ${sorted}."_pileup.bcf";
+  my $var_bcf      = $pfx."_raw_vars.bcf";
+  my $var_vcf      = $pfx."_raw_vars.vcf";
+  my $depth        = $pfx."_depthstats.txt";
+
+  print "$program_tag Processing $strain...\n";
+  my @seq_names = ();
+  for my $seq (@seqs) {
+    next unless $seq =~ /^(.*)\.fastq\.gz$/;
+    my $name = $1;
+    push @seq_names, $name;
+
+    print "$program_tag Generating SA coordinates for $strain...\n";
+    my $sa_coord = "bwa aln -k4 -t${nthread} $ref_seq $seq > $name.sai";
+    system($sa_coord) == 0 or die "$program_tag Alignment failed: $!";
+  }
+
+  print "$program_tag Aligning...\n";
+  my $sais        = (join ".sai ", @seq_names).".sai";
+  my $seqs_string = join " ", @seqs;
+  my $align = 
+    "bwa sampe $ref_seq $sais $seqs_string | samtools view -bS - > $bam";
+
+  system($align) == 0 or die "$program_tag Alignment failed: $!";
+
+  print "$program_tag Sorting...\n";
+  my $sort = "samtools sort $bam $sorted";
+  system($sort) == 0 or die "$program_tag Sorting failed: $!";
+
+  print "$program_tag Indexing BAM file...\n";
+  my $index = "samtools index $sorted.bam";
+  system($index) == 0 or die "$program_tag Indexing failed: $!";
+
+  print "$program_tag Generating pileup...\n";
+  my $make_pileup = 
+    "samtools mpileup -BQ0 -d10000000 -f $ref_seq  $sorted.bam > $pileup";
+  system($make_pileup) == 0 or die "$program_tag Pileup failed: $!";
+
+  print "$program_tag Generating pileup bcf...\n";
+  my $make_pileup_bcf = 
+    "samtools mpileup -Bg -C50 -q30 -f $ref_seq $sorted.bam > $pileup_bcf";
+  system($make_pileup_bcf) == 0 or die "$program_tag Pileup failed: $!";
+
+  print "$program_tag Calling variants...\n";
+  my $call_vars   = "bcftools view -Nbvcg $pileup_bcf > $var_bcf";
+  system($call_vars) == 0 or die "$program_tag Calling variants failed: $!";
+
+  print "$program_tag Converting variants to vcf...\n";
+  my $vars_to_vcf = "bcftools view $var_bcf > $var_vcf";
+  system($vars_to_vcf) == 0 
+    or die "$program_tag Converting vars to vcf failed: $!";
+
+  print "$program_tag Calculating depth stats...\n";
+  my $calc_depth = "depthstats $pileup $depth";
+  system($calc_depth) == 0 
+    or die "$program_tag Calculating depth stats failed: $!";
+
+  print "Finished $strain!\n\n";
+}

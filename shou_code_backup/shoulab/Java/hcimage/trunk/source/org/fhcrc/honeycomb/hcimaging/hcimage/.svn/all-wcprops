@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/shoulab/!svn/ver/1438/Java/hcimage/trunk/source/org/fhcrc/honeycomb/hcimaging/hcimage
+END
+FluorescenceImage.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/shoulab/!svn/ver/1438/Java/hcimage/trunk/source/org/fhcrc/honeycomb/hcimaging/hcimage/FluorescenceImage.java
+END
+HCImageFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/shoulab/!svn/ver/1340/Java/hcimage/trunk/source/org/fhcrc/honeycomb/hcimaging/hcimage/HCImageFactory.java
+END
+BrightfieldImage.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/shoulab/!svn/ver/1438/Java/hcimage/trunk/source/org/fhcrc/honeycomb/hcimaging/hcimage/BrightfieldImage.java
+END
+MaskInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/shoulab/!svn/ver/1338/Java/hcimage/trunk/source/org/fhcrc/honeycomb/hcimaging/hcimage/MaskInfo.java
+END
+HCImageInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/shoulab/!svn/ver/1429/Java/hcimage/trunk/source/org/fhcrc/honeycomb/hcimaging/hcimage/HCImageInfo.java
+END
+Mask.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/shoulab/!svn/ver/1338/Java/hcimage/trunk/source/org/fhcrc/honeycomb/hcimaging/hcimage/Mask.java
+END
+HCImage.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/repos/shoulab/!svn/ver/1438/Java/hcimage/trunk/source/org/fhcrc/honeycomb/hcimaging/hcimage/HCImage.java
+END

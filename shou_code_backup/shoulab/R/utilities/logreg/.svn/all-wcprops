@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/shoulab/!svn/ver/1322/R/utilities/logreg
+END
+boxplot_logreg.r
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/shoulab/!svn/ver/1104/R/utilities/logreg/boxplot_logreg.r
+END
+solve_logreg.r
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/shoulab/!svn/ver/1136/R/utilities/logreg/solve_logreg.r
+END
+ci_logreg.r
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/shoulab/!svn/ver/1080/R/utilities/logreg/ci_logreg.r
+END
+bootstrap_p.r
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/shoulab/!svn/ver/1101/R/utilities/logreg/bootstrap_p.r
+END
+plot_logreg.r
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/shoulab/!svn/ver/1322/R/utilities/logreg/plot_logreg.r
+END
+plot_model.r
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/shoulab/!svn/ver/1319/R/utilities/logreg/plot_model.r
+END

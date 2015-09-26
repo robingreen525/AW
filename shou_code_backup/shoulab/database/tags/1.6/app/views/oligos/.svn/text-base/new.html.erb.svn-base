@@ -1,0 +1,3 @@
+<%= render(:partial => "oligo",
+                   :layout => 'shared/form',
+                   :locals => {:caller => 'Oligo', :action => 'Create'} ) %>

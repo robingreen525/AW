@@ -1,0 +1,20 @@
+<!doctype html>
+<title>hspipeline</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static',filename='hspipeline.css')}}">
+
+<div class=page>
+    <h1>hspipeline</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</div>
+
+
+

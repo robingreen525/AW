@@ -1,0 +1,87 @@
+#banner {
+  font: small-caps 40px/40px "Times New Roman", serif;
+  text-align: center;
+  background: #eeeeee;
+}
+
+#columns * {
+  font-size: 12px;
+}
+
+#main {
+  margin-left: 7em;
+  padding-top: 4ex;
+  padding-left: 2em;
+  background: white;
+}
+#main h1 {
+  text-align: center;
+}
+
+.cen {
+  text-align: center;
+}
+
+.lef {
+  text-align: left;
+}
+
+.under {
+  border-bottom: solid black;
+}
+
+.search {
+  text-align: center;
+}
+
+#main th {
+  font-size: 12px;
+}
+
+#main td {
+  font-size: 14px;
+}
+
+
+#side {
+  float: left;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  width: 7em;
+  background: #eeeeee;
+}
+#side p {
+  font-size: 10px;
+}
+
+/* Styles for order form */
+
+#notice {
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}
+
+.form fieldset {
+  background: #efe;
+  width: 400px;
+}
+
+.form legend {
+  color: #dfd;
+  background: #141;
+  font-family: sans-serif;
+  padding: 0.2em 1em;
+}
+
+.form label {
+  width: 5em;
+  float: left;
+  text-align: left;
+  margin-right: 1.5em;
+  font-size: smaller;
+  display: block;
+}

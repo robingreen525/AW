@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/repos/shoulab/!svn/ver/1681/R/utilities
+END
+lsos.r
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/shoulab/!svn/ver/1316/R/utilities/lsos.r
+END
+default_plot.r
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/repos/shoulab/!svn/ver/1681/R/utilities/default_plot.r
+END
+pw_fisher_test.R
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/repos/shoulab/!svn/ver/337/R/utilities/pw_fisher_test.R
+END
+expand_df.r
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/repos/shoulab/!svn/ver/1087/R/utilities/expand_df.r
+END
+od_correction.R
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/repos/shoulab/!svn/ver/659/R/utilities/od_correction.R
+END
+dec_to_logicle.r
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/shoulab/!svn/ver/1121/R/utilities/dec_to_logicle.r
+END
+well_height.R
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/shoulab/!svn/ver/336/R/utilities/well_height.R
+END
+set_par.r
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/repos/shoulab/!svn/ver/1103/R/utilities/set_par.r
+END
+errorbars.r
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/repos/shoulab/!svn/ver/919/R/utilities/errorbars.r
+END
+logicleaxis.r
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/shoulab/!svn/ver/1135/R/utilities/logicleaxis.r
+END
+logaxis.r
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/repos/shoulab/!svn/ver/1088/R/utilities/logaxis.r
+END
+w_mean.R
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/repos/shoulab/!svn/ver/867/R/utilities/w_mean.R
+END
+binom_conf.R
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/shoulab/!svn/ver/1009/R/utilities/binom_conf.R
+END
+splitjoin.r
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/repos/shoulab/!svn/ver/965/R/utilities/splitjoin.r
+END
+superagg.r
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/repos/shoulab/!svn/ver/1060/R/utilities/superagg.r
+END

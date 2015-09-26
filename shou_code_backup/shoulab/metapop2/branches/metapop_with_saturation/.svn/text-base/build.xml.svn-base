@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+<project name="metapop" default="compile" basedir=".">
+    <property name="source" value="source"/>
+    <property name="testsource" value="test"/>
+    <property name="build" value="build"/>
+    <property name="testclasses" value="build/classes/test"/>
+    <property name="frameworkclasses" value="build/classes/framework"/>
+    <property name="jar" value="build/jar"/>
+    <property name="doc" value="doc"/>
+
+    <path id="dependencies">
+        <pathelement location="lib/commons-math.jar"/>
+    </path>
+
+    <path id="testdependencies">
+        <path refid="dependencies"/>
+        <pathelement location="${frameworkclasses}"/>
+        <pathelement location="lib/junit-4.11.jar"/>
+        <pathelement location="lib/hamcrest-all-1.3.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+    </target>
+
+    <target name="compile" description="Compile all Java source code">
+        <mkdir dir="${frameworkclasses}"/>
+        <mkdir dir="${testclasses}"/>
+        <javac 
+            verbose="off"
+            srcdir="${source}" 
+            destdir="${frameworkclasses}" 
+            debug="on"
+            includeantruntime="false"
+            classpathref="dependencies">
+            <compilerarg value="-Xlint:deprecation"/>
+            <!-- <include name="**/MonodCalculator.java"/>
+            <include name="**/FitnessCalculator.java"/> -->
+        </javac>
+
+        <javac srcdir="${testsource}" 
+            destdir="${testclasses}" 
+            debug="on"
+            includeantruntime="false"
+            classpathref="testdependencies">
+            <compilerarg value="-Xlint:deprecation"/>
+        </javac>
+
+        <mkdir dir="${testclasses}"/>
+        <javac srcdir="${testsource}" destdir="${testclasses}" 
+            debug="on"
+            includeantruntime="false">
+            <classpath>
+                <path refid="testdependencies"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="test" depends="clean, compile" description="Run unit tests">
+        <junit printsummary="on" haltonerror="true" haltonfailure="true">
+            <assertions><enable/></assertions>
+            <classpath>
+                <pathelement location="${testclasses}"/>
+                <path refid="testdependencies"/>
+            </classpath>
+            <batchtest>
+                <fileset dir="${testclasses}" includes="**/*Test.class"/>
+            </batchtest>
+            <formatter type="plain" usefile="false"/>
+        </junit>
+    </target>
+
+    <target name="doc" depends="compile">
+        <mkdir dir="${doc}"/>
+        <javadoc sourcepath="${source}" destdir="${doc}"
+            classpathref="dependencies"
+            linksource="yes" />
+    </target>
+
+    <target name="jar" depends="compile, doc">
+        <mkdir dir="${jar}"/>
+        <jar destfile="${jar}/${ant.project.name}.jar"
+            basedir="${frameworkclasses}"/>
+
+        <jar destfile="${jar}/${ant.project.name}_source.jar">
+            <fileset dir="." includes="doc/** source/** test/** build.xml"/>
+        </jar>
+
+        <jar destfile="${jar}/${ant.project.name}_docs.jar"
+            basedir="${doc}"/>
+    </target>
+
+</project>

@@ -1,0 +1,15 @@
+package org.fhcrc.honeycomb.metapop.stop;
+
+import org.fhcrc.honeycomb.metapop.World;
+
+/** 
+ * Doesn't stop.
+ *
+ * Created on 12 May, 2013
+ * @author Adam Waite
+ * @version $Rev$, $Date$, $Author$
+ *
+ */
+public class NoStop extends StopCondition {
+    public boolean isMet() { return false; }
+}
